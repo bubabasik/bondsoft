@@ -1,0 +1,96 @@
+.header{
+	line-height: 1.25;
+	font-weight: 600;
+	letter-spacing: -0.03em;
+	display: flex;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 999;
+	min-height: var(--head-height);
+	padding: 9px 0 5px;
+
+	@include media($w-xl) {
+		font-size: v(18);
+		min-height: v(120);
+		padding-top: v(5);
+	}
+}
+.head__row{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+}
+.head__logo{
+	img{
+		max-height: v(17);
+	}
+	@include media($w-lg) {
+		flex: 0 0 20%;
+		max-width: 20%;
+		margin-right: auto;
+		img{
+			max-height: v(27);
+		}
+	}
+	@include media($w-xl) {
+		flex: 0 0 26.6%;
+		max-width: 26.6%;
+	}
+}
+.hinfo{
+	display: flex;
+	align-items: center;
+
+	&__bid{
+	}
+	&__phone{}
+
+	@include media-max($w-md) {
+		display: none;
+	}
+	@include media($w-md) {
+		flex: 0 0 50%;
+		max-width: 50%;
+		&__bid{
+			margin-right: v(50);
+		}
+	}
+	@include media($w-lg) {
+		flex: 0 0 37.8%;
+		max-width: 37.8%;
+
+		padding-bottom: v(2);
+		&__bid{
+			margin-right: v(50);
+		}
+	}
+	@include media($w-xl) {
+		&__bid{
+			margin-right: v(98);
+		}
+	}
+}
+.hmenu{
+	padding-right: 10px;
+
+	li{
+		margin-right: v(31);
+	}
+
+	@include media-max($w-lg) {
+		display: none;
+	}
+	@include media($w-lg) {
+		flex: 0 0 33.1%;
+		max-width: 33.1%;
+	}
+}
+.head__mmenu{
+	flex: 0 0 calc(34 * var(--fz));
+	max-width: calc(34 * var(--fz));
+	margin-left: v(10);
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Название страницы</title>
+
+	@@include('_meta.html')
+
+</head>
+<body>
+
+	@@include('_header.html')
+
+	<section class="section_pagetop">
+		<div class="container">
+			<div class="pagetop__prev">
+				<a href="./index.html" class="link">
+					<svg class="ico"><use xlink:href="./img/sprite.svg#arrow-left" /></svg>
+					Главная
+				</a>
+			</div>
+			<div class="pagetop__top">
+				<div class="pagetop__title">
+					<h1>Кейсы</h1>
+				</div>
+				<div class="pagetop__sub">
+					Для тех кому важна <br class="d-lg-none">эффективность каждого вложенного рубля
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section_case">
+		<div class="container">
+			<div class="case__cont aside">
+				
+				<div class="case__filter aside-left">
+					<div class="filter">
+						<a href="#" class="btn btn-black">
+							<span class="btn-text">Все кейсы</span>
+							<span class="btn-fill"></span>
+						</a>
+						<a href="#" class="btn">
+							<span class="btn-text">Контекст</span>
+							<span class="btn-fill"></span>
+						</a>
+						<a href="#" class="btn">
+							<span class="btn-text">SEO</span>
+							<span class="btn-fill"></span>
+						</a>
+						<a href="#" class="btn">
+							<span class="btn-text">Таргет</span>
+							<span class="btn-fill"></span>
+						</a>
+						<a href="#" class="btn">
+							<span class="btn-text">Авито</span>
+							<span class="btn-fill"></span>
+						</a>
+					</div>
+				</div>
+				<div class="case__row aside-right">
+					
+					<div class="case__list">
+						@@include('_item-case.html', {"image":"case-gray.jpg", "company":"СМУ-1","date":"2020 — продолжаем ...","name":"Контекст для крупнейшего застройщика ЮФО"})
+
+						@@include('_item-case.html', {"image":"case-blue.jpg", "company":"Девелопмент-Юг","date":"2020 — продолжаем ...","name":"Перфоманс-маркетинг для топового девелопера"})
+
+						@@include('_item-case.html', {"image":"case-yellow.jpg", "company":"Билд","date":"2020 — продолжаем ...","name":"SEO для лидера среди магазинов сантехники"})
+
+						@@include('_item-case.html', {"image":"case-gray.jpg", "company":"ТД ПОИСК","date":"2020 — продолжаем ...","name":"SEO и контекст для торгового дома “Поиск”"})
+
+						@@include('_item-case.html', {"image":"case-green.jpg", "company":"КофеС","date":"2018— продолжаем ...","name":"Перфонанс-маркетинг для лидеров кофейного рынка"})
+
+						@@include('_item-case.html', {"image":"case-image.jpg", "company":"АГС","date":"2021 — продолжаем ...","name":"Новые каналы продаж для российского производителя оборудования"})
+
+						@@include('_item-case.html', {"image":"case-blue.jpg", "company":"Девелопмент-Юг","date":"2020 — продолжаем ...","name":"Перфоманс-маркетинг для топового девелопера"})
+
+						@@include('_item-case.html', {"image":"case-gray.jpg", "company":"СМУ-1","date":"2020 — продолжаем ...","name":"Контекст для крупнейшего застройщика ЮФО"})
+
+						@@include('_item-case.html', {"image":"case-gray.jpg", "company":"ТД ПОИСК","date":"2020 — продолжаем ...","name":"SEO и контекст для торгового дома “Поиск”"})
+
+						@@include('_item-case.html', {"image":"case-yellow.jpg", "company":"Билд","date":"2020 — продолжаем ...","name":"SEO для лидера среди магазинов сантехники"})
+
+					</div>
+
+					<div class="case__more btn-more">
+						<a href="#" class="btn">
+							<span class="btn-text">Показать еще</span>
+							<span class="btn-fill"></span>
+						</a>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+
+
+	@@include('_footer.html')
+
+	@@include('_svg.html')
+	@@include('_modal.html')
+	@@include('_scripts.html')
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+.nav__item{
+	--btn-border: 1px solid var(--text-black);
+	display: inline-block;
+	vertical-align: top;
+	position: absolute;
+	border: none;
+	background: transparent;
+	padding: 0;
+	transition: .3s;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 99;
+	background: transparent;
+	overflow: hidden;
+	cursor: pointer;
+	width: v(47);
+	min-height: v(24);
+
+	&:hover{
+		color: #fff;
+	}	
+
+	&.slick-disabled{
+
+	}
+
+	svg{
+		width: v(6);
+		height: v(5);
+	}
+
+
+	&-prev{
+		left: 0;
+	}
+	&-next{
+		right: 0;
+	}
+
+	@include media($w-lg) {
+		--btn-border: calc(2 * var(--fz)) solid var(--text-black);
+		width: v(66);
+		min-height: v(33);
+		svg{
+			width: v(10);
+			height: v(9);
+		}
+	}
+	@include media($w-xl) {
+		width: v(78);
+		min-height: v(39);
+	}
+}

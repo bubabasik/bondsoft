@@ -1,0 +1,210 @@
+.footer{
+
+}
+.foot__link{
+	--link-color: var(--text-black);
+	--link-color-active: var(--link-color);
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+	padding: v(150) v(10);
+	font-size: v(55);
+	line-height: 0.9;
+	letter-spacing: -0.03em;
+	text-align: center;
+	border-top: 1px solid var(--line-gray);
+
+	&--icon{
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: v(80);
+		height: v(80);
+		border-radius: 50%;
+		background: var(--lime);
+		margin-top: v(10);
+
+		svg{
+			fill: var(--link-color);
+			width: v(20);
+			height: v(18);
+		}
+	}
+
+	@include media-hover() {
+		&--icon{
+			display: none;
+		}
+	}
+
+	@include media($w-md) {
+		padding: v(100) v(20);
+		font-size: v(80);
+		letter-spacing: -0.05em;
+	}
+	@include media($w-lg) {
+		padding: v(180) v(60) v(120);
+		font-size: v(120);
+		&--icon{
+			width: v(120);
+			height: v(120);
+		}
+	}
+	@include media($w-xl) {
+		padding: v(243) v(60) v(200);
+		font-size: v(180);
+	}
+}
+.foot__cont{
+
+}
+.foot__row{
+	display: flex;
+	flex-flow: column;
+	border-top: 1px solid var(--line-gray);
+	font-size: v(14);
+	line-height: 1.5;
+	padding-top: v(49);
+	padding-bottom: v(60);
+
+	.link{
+		--link-color: var(--text-black);
+		--link-color-active: var(--link-color);
+	}
+
+	@include media($w-md) {
+		flex-flow: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+	@include media($w-lg) {
+		padding-top: v(60);
+		padding-bottom: v(60);
+		letter-spacing: -0.03em;
+		flex-wrap: nowrap;
+	}
+	@include media($w-xl) {
+		font-size: v(18);
+		padding-top: v(80);
+		padding-bottom: v(80);
+		line-height: 1.25;
+	}
+}
+.foot__copy{
+	color: var(--text-gray);
+	flex: 0 0 100%;
+	max-width: 100%;
+	margin-top: v(40);
+
+	@include media($w-lg) {
+		flex: 0 0 20%;
+		max-width: 20%;
+		margin-top: 0;
+		order: -1;
+	}
+	@include media($w-xl) {
+		flex: 0 0 26.7%;
+		max-width: 26.7%;
+	}
+}
+.foot__info{
+	flex: 0 0 100%;
+	max-width: 100%;
+	li{
+		display: inline-flex;
+		align-items: center;
+		margin-bottom: v(10);
+		margin-bottom: v(5);
+	}
+
+	a{
+		margin-right: v(26);
+		&.foot__soc{
+			margin-right: v(15);
+		}
+		&:last-child{
+			margin-right: 0;
+		}
+
+		&[href^="tel:"] {
+			font-size: v(22);
+			line-height: 1.25;
+		}
+	}
+
+
+	@include media($w-md) {
+		flex: 0 0 50%;
+		max-width: 50%;
+		padding-right: 10px;
+		li{
+			margin-bottom: v(10);
+		}
+	}
+	@include media($w-lg) {
+		flex: 0 0 27%;
+		max-width: 27%;
+		a{
+			&[href^="tel:"] {
+				font-size: v(20);
+			}
+		}
+	}
+	@include media($w-xl) {
+		flex: 0 0 23.3%;
+		max-width: 23.3%;
+		a{
+			&[href^="tel:"] {
+				font-size: v(18);
+			}
+		}
+	}
+}
+.foot__soc{
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: v(-3);
+	svg{
+		fill: currentColor;
+		width: v(20);
+		height: v(20);
+	}
+
+	@include media($w-xl) {
+		margin-top: v(-5);
+	}
+}
+.foot__address{
+	flex: 0 0 100%;
+	max-width: 100%;
+	margin-top: v(5);
+
+	@include media($w-md) {
+		flex: 0 0 auto;
+		max-width: auto;
+		margin-top: 0;
+	}
+	@include media($w-lg) {
+		flex: 0 0 25%;
+		max-width: 25%;
+	}
+}
+.foot__menu{
+	flex: 0 0 100%;
+	max-width: 100%;
+	margin-top: v(40);
+
+	@include media($w-md) {
+		margin-top: 0;
+		flex: auto;
+		text-align: right;
+		margin-left: auto;
+		order: 4;
+	}
+	@include media($w-lg) {
+
+		margin-top: 0;
+	}
+}

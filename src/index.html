@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Название страницы</title>
+
+	@@include('_meta.html')
+
+</head>
+<body>
+
+	@@include('_header.html')
+
+	<section class="section_top">
+		<div class="container">
+			
+			<div class="top__cont">
+				<div class="top__title">
+					<span>Ваше агентство</span>
+					<span>цифрового</span> 
+					<span>маркетинга</span>
+				</div>
+				<div class="top__sub">
+					<div class="top__sub--slider">
+						<div class="top__sub--slide">Для тех кому важна эффективность каждого вложенного рубля</div>
+						<div class="top__sub--slide">Для тех кто ценит надежность</div>
+						<div class="top__sub--slide">Для тех кто думает об окупаемости</div>
+						<div class="top__sub--slide">Для тех кому важен клиентский сервис</div>
+					</div>
+				</div>
+				<div class="top__link">
+					<a href="#" class="top__link--item">
+						<svg class="ico ico-center"><use xlink:href="./img/sprite.svg#info" /></svg>
+					</a>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<!-- LINES -->
+	<section class="section_lines">
+		<div class="container">
+			
+			<div class="lines__item" data-splitting>Найдем клиентов</div>
+			<div class="lines__item" data-splitting>Построим систему продаж</div>
+			<div class="lines__item" data-splitting>Позаботимся о репутации</div>
+
+		</div>
+	</section>
+	<!-- # LINES -->
+
+	<!-- MODCASE -->
+	<section class="section_modcase">
+		<div class="container">
+			
+			<div class="modcase__cont aside">
+				<div class="mod__title aside-left">
+					кейсы
+				</div>
+				<div class="modcase__list aside-right">
+					<div class="case__list">
+						@@include('_item-case.html', {"image":"case-gray.jpg", "company":"СМУ-1","date":"2020 — продолжаем ...","name":"Контекст для крупнейшего застройщика ЮФО"})
+
+						@@include('_item-case.html', {"image":"case-blue.jpg", "company":"Девелопмент-Юг","date":"2020 — продолжаем ...","name":"Перфоманс-маркетинг для топового девелопера"})
+
+						@@include('_item-case.html', {"image":"case-yellow.jpg", "company":"Билд","date":"2020 — продолжаем ...","name":"SEO для лидера среди магазинов сантехники"})
+
+						@@include('_item-case.html', {"image":"case-gray.jpg", "company":"ТД ПОИСК","date":"2020 — продолжаем ...","name":"SEO и контекст для торгового дома “Поиск”"})
+
+						@@include('_item-case.html', {"image":"case-green.jpg", "company":"КофеС","date":"2018— продолжаем ...","name":"Перфонанс-маркетинг для лидеров кофейного рынка"})
+
+						@@include('_item-case.html', {"image":"case-image.jpg", "company":"АГС","date":"2021 — продолжаем ...","name":"Новые каналы продаж для российского производителя оборудования"})
+
+					</div>
+
+					<div class="case__more btn-more">
+						<a href="#" class="btn">
+							<span class="btn-text">Все кейсы</span>
+							<span class="btn-fill"></span>
+						</a>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</section>
+	<!-- # MODCASE -->
+
+	<!-- MOD SERVICES -->
+	<section class="section_modserv">
+		<div class="container">
+
+			<div class="modserv__cont aside">
+				<div class="mod__title aside-left">услуги</div>
+				<div class="modserv__title title aside-right">
+					<div class="modserv__capt">
+						Работаем на всех 
+						этапах воронки 
+						продаж 
+					</div>
+					<div class="modserv__capt modserv__capt-gray">
+						от лидогенерации 
+						до обучения 
+						продажам
+					</div>
+					
+				</div>
+			</div>
+
+			@@include('_inner-service-list.html')
+
+		</div>
+	</section>
+	<!-- # MOD SERVICES -->
+
+	<!-- MOD ABOUT -->
+	<section class="section_modabout dark-mode-trigger light-section">
+		<div class="container">
+			
+			<div class="subtitle">о нас</div>
+			<div class="title">
+				Специализируемся на проектах в сферах b2b и недвижимости
+			</div>
+		</div>
+
+		@@include('_inner-about-points.html', {"subtitle":""})
+		@@include('_inner-about-quote.html')
+		@@include('_inner-about-numbers.html')
+		@@include('_inner-about-team.html')
+
+	</section>
+	<!-- # MOD ABOUT -->
+
+	@@include('_section-review.html')
+	@@include('_section-trust.html')
+
+	<!-- MOD AIR -->
+	<section class="section_modair">
+		<div class="container">
+			<div class="modair__cont aside">
+				<div class="mod__title aside-left">Мы в эфире</div>
+				<div class="modair__data aside-right">
+
+					<div class="air__list">
+						@@loop('_item-air.html', [
+						{ "image": "air-1.jpg", "date" : "16 февраля 2023", "name" : "АВИТО. С каких пор барахолка стала перфоманс-инструментов для B2B?" },
+						{ "image": "air-2.jpg", "date" : "17 февраля 2023", "name" : "Промо-страницы для застройщиков" },
+						{ "image": "air-3.jpg", "date" : "01 января 2022", "name" : "Проблема нецелевых лидов в интернет-рекламе для застройщиков" },
+						{ "image": "air-1.jpg", "date" : "26 января 2022", "name" : "Медийная реклама: деньги на ветер или снежный ком?" }
+						])
+
+					</div>
+
+					<div class="air__more btn-more">
+						<a href="./air-list.html" class="btn">
+							<span class="btn-text">Все видео</span>
+							<span class="btn-fill"></span>
+						</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- MOD AIR -->
+
+	@@include('_section-media.html')
+
+
+	@@include('_footer.html')
+
+	@@include('_svg.html')
+	@@include('_modal.html')
+	@@include('_scripts.html')
+
+</body>
+</html>

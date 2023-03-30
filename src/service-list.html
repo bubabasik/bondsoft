@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Название страницы</title>
+
+	@@include('_meta.html')
+
+</head>
+<body>
+
+	@@include('_header.html')
+
+	<section class="section_pagetop">
+		<div class="container">
+			<div class="pagetop__prev">
+				<a href="./index.html" class="link">
+					<svg class="ico"><use xlink:href="./img/sprite.svg#arrow-left" /></svg>
+					Главная
+				</a>
+			</div>
+			<div class="pagetop__top">
+				<div class="pagetop__title">
+					<h1>Услуги</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section_serv">
+		<div class="container">
+			@@include('_inner-service-list.html')
+		</div>
+	</section>
+
+
+
+	@@include('_footer.html')
+
+	@@include('_svg.html')
+	@@include('_modal.html')
+	@@include('_scripts.html')
+
+</body>
+</html>

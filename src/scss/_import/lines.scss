@@ -1,0 +1,41 @@
+.section_lines{
+	display: none;
+	padding-top: v(60);
+	padding-bottom: v(60);
+
+	@include media($w-md) {
+		display: block;
+	}
+	@include media($w-lg) {
+		padding-top: v(150);
+		padding-bottom: v(180);
+	}
+	@include media($w-xl) {
+		padding-top: v(230);
+		padding-bottom: v(247);
+	}
+}
+.lines__item{
+	line-height: 1;
+	letter-spacing: -0.05em;
+	border-top: 1px solid var(--line-gray);
+	padding: v(20) 0;
+	display: flex;
+	justify-content: space-between;
+	font-weight: 600;
+
+	&:first-child{
+		border-top: 0;
+	}
+
+	@include media($w-md) {
+		font-size: v(40);
+	}
+	@include media($w-lg) {
+		font-size: v(70);
+		padding: v(30) 0;
+	}
+	@include media($w-xl) {
+		font-size: v(100);
+	}
+}

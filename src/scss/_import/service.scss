@@ -1,0 +1,147 @@
+.section_serv{
+	padding-bottom: v(120);
+	
+	@include media-max($w-md) {
+		.serv__item{
+			&:first-child{
+				padding-top: v(30);
+			}
+		}
+	}
+	@include media($w-xl) {
+		padding-bottom: v(180);
+	}
+	@include media($w-xl) {
+		padding-bottom: v(250);
+	}
+}
+.serv__list{
+
+}
+.serv__item{
+	display: flex;
+	flex-flow: column;
+	border-top: 1px solid var(--line-gray);
+	padding-top: v(60);
+	padding-bottom: v(60);
+
+	&:last-child{
+		padding-bottom: 0;
+	}
+	&--icon{
+		flex: 0 0 v(50);
+		max-width: v(50);
+	}
+	&--data{
+		margin-top: v(15);
+	}
+	&--title{
+		font-size: v(24);
+		line-height: 1.2;
+		letter-spacing: -0.03em;
+	}
+	&--text{
+		font-size: v(14);
+		line-height: 1.5;
+		margin-top: v(15);
+	}
+	&--btns{
+		margin: v(15) v(-5) v(-10);
+		display: flex;
+		flex-wrap: wrap;
+		.btn{
+			margin: 0 v(5) v(10);
+		}
+	}
+	.btn{
+		--btn-height: calc(40 * var(--fz));
+		--btn-padding: calc(25 * var(--fz));
+	}
+
+	@include media-min-max($w-md, $w-lg) {
+		.btn{
+			font-size: v(14);
+			--btn-padding: calc(15 * var(--fz));
+		}
+	}
+	@include media($w-md) {
+		flex-flow: row;
+		padding-left: calc(var(--left-column) - calc( (50 + 20) * var(--fz) ));
+
+		&--data{
+			margin-top: 0;
+			margin-left: v(20);
+			flex: 0 0 v(300);
+			max-width: v(300);
+		}
+		&--btns{
+			margin-top: 0;
+			margin-left: v(20);
+			flex-flow: column;
+			align-items: flex-start;
+		}
+		.btn{
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+
+	@include media($w-lg) {
+		padding-top: v(60);
+		padding-bottom: v(60);
+		padding-left: calc(var(--left-column) - calc( (50 + 30) * var(--fz) ));
+		&--data{
+			flex: 0 0 v(440);
+			max-width: v(440);
+			margin-left: v(30);
+		}
+		&--title{
+			font-size: v(32);
+			line-height: 1;
+			letter-spacing: -0.05em;
+			padding-right: v(20);
+		}
+		&--text{
+			font-size: v(18);
+			margin-top: v(20);
+			letter-spacing: -0.03em;
+		}
+		&--btns{
+			margin-left: v(40);
+		}
+		.btn{
+			--btn-padding: calc(20 * var(--fz));
+		}
+	}
+	@include media($w-xl) {
+		padding-top: v(80);
+		padding-bottom: v(80);
+		padding-left: calc(var(--left-column) - calc( (70 + 40) * var(--fz) ));
+
+		&--icon{
+			flex: 0 0 v(70);
+			max-width: v(70);
+		}
+		&--data{
+			flex: 0 0 v(640);
+			max-width: v(640);
+			margin-left: v(40);
+		}
+		&--title{
+			font-size: v(60);
+			padding-right: v(40);
+		}
+		&--text{
+			font-size: v(28);
+		}
+		&--btns{
+			margin-bottom: v(-20);
+		}
+		.btn{
+			--btn-height: calc(65 * var(--fz));
+			--btn-padding: calc(30 * var(--fz));
+			font-size: v(28);
+			margin-bottom: v(20);
+		}
+	}
+}

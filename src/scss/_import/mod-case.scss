@@ -1,0 +1,33 @@
+.section_modcase{
+	padding-top: v(42);
+	padding-bottom: v(66);
+
+	.mod__title{
+		margin-bottom: v(30);
+	}
+
+	@include media($w-lg) {
+		padding-top: v(60);
+		padding-bottom: v(90);
+	}
+	@include media($w-xl) {
+		padding-top: v(84);
+		padding-bottom: v(125);
+	}
+}
+.modcase__cont{
+	border-top: 1px solid var(--line-gray);
+	padding-top: v(20);
+	display: flex;
+	flex-wrap: wrap;
+
+	@include media($w-md) {
+		padding-top: v(40);
+	}
+	@include media($w-lg) {
+		padding-top: v(60);
+	}
+}
+.modcase__list{
+
+}

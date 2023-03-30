@@ -1,0 +1,156 @@
+.section_review{
+	background: var(--bg-gray);
+	padding-top: v(158);
+	padding-bottom: v(60);
+
+	@include media($w-lg) {
+		padding-top: v(250);
+		padding-bottom: v(90);
+	}
+	@include media($w-xl) {
+		padding-top: v(309);
+		padding-bottom: v(125);
+	}
+}
+.review__cont{
+	padding-top: v(32);
+	border-top: 1px solid var(--line-gray);
+	position: relative;
+
+	@include media($w-lg) {
+		padding-top: v(60);
+	}
+}
+.review__list{
+
+	@include media($w-lg) {
+		padding-left: v(40);
+	}
+	@include media($w-xl) {
+		padding-left: 0;
+	}
+}
+.review__slider{
+	.nav__item{
+		position: absolute;
+		top: v(-111);
+		transform: none;
+		&-next{
+			right: 0;
+		}
+		&-prev{
+			left: auto;
+			right: v(52);
+		}
+	}
+
+	@include media($w-lg) {
+		.nav__item{
+			&-prev{
+				right: v(87);
+			}
+		}
+	}
+	@include media($w-xl) {
+		.nav__item{
+			top: v(-120);
+		}
+	}
+}
+.review__slide{
+	display: flex!important;
+	flex-wrap: wrap;
+	&--img{
+		flex: 0 0 v(113);
+		max-width: v(113);
+	}
+	&--data{
+		flex: 0 0 100%;
+		max-width: 100%;
+		margin-top: v(29);
+	}
+	&--text{
+		font-size: v(24);
+		line-height: 1.2;
+		letter-spacing: -0.03em;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 10;
+		-webkit-box-orient: vertical;
+	}
+	&--info{
+		margin-top: v(20);
+	}
+	&--name{
+		font-size: v(16);
+		line-height: 1.5;
+	}
+	&--exp{
+		font-size: v(18);
+		line-height: 1.25;
+		color: var(--text-gray);
+		margin-top: v(5);
+		letter-spacing: -0.03em;
+	}
+
+	@include media($w-md) {
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		&--img{
+			flex: 0 0 v(150);
+			max-width: v(150);
+		}
+		&--data{
+			flex: 0 0 calc(80% - #{v(150)});
+			max-width: calc(80% - #{v(150)});
+			margin-top: 0;
+		}
+		&--text{
+			-webkit-line-clamp: 7;
+		}
+	}
+
+	@include media($w-lg) {
+		&--img{
+			flex: 0 0 v(150);
+			max-width: v(150);
+		}
+		&--data{
+			flex: 0 0 v(550);
+			max-width: v(550);
+			margin-top: 0;
+		}
+		&--text{
+			font-size: v(26);
+		}
+		&--name{
+			font-size: v(16);
+			line-height: 1.25;
+		}
+		&--info{
+			margin-top: v(30);
+			letter-spacing: -0.03em;
+		}
+	}
+
+	@include media($w-xl) {
+		&--img{
+			flex: 0 0 v(207);
+			max-width: v(207);
+		}
+		&--data{
+			flex: 0 0 v(880);
+			max-width: v(880);
+		}
+		&--text{
+			font-size: v(40);
+		}
+		&--name{
+			font-size: v(18);
+		}
+		&--info{
+			margin-top: v(40);
+		}
+	}
+}

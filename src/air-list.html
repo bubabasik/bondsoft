@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Название страницы</title>
+
+	@@include('_meta.html')
+
+</head>
+<body>
+
+	@@include('_header.html')
+
+	<section class="section_pagetop">
+		<div class="container">
+			<div class="pagetop__prev">
+				<a href="./index.html" class="link">
+					<svg class="ico"><use xlink:href="./img/sprite.svg#arrow-left" /></svg>
+					Главная
+				</a>
+			</div>
+			<div class="pagetop__top">
+				<div class="pagetop__title">
+					<h1>Мы в эфире</h1>
+				</div>
+				<div class="pagetop__sub">
+					Для тех кому важна <br class="d-lg-none">эффективность каждого вложенного рубля
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section_air">
+		<div class="container">
+			<div class="air__cont aside">
+				
+				<div class="air__filter aside-left">
+					<div class="filter">
+						<a href="#" class="btn btn-black">
+							<span class="btn-text">Все кейсы</span>
+							<span class="btn-fill"></span>
+						</a>
+						<a href="#" class="btn">
+							<span class="btn-text">Контекст</span>
+							<span class="btn-fill"></span>
+						</a>
+						<a href="#" class="btn">
+							<span class="btn-text">SEO</span>
+							<span class="btn-fill"></span>
+						</a>
+						<a href="#" class="btn">
+							<span class="btn-text">Таргет</span>
+							<span class="btn-fill"></span>
+						</a>
+						<a href="#" class="btn">
+							<span class="btn-text">Авито</span>
+							<span class="btn-fill"></span>
+						</a>
+					</div>
+				</div>
+				<div class="air__row aside-right">
+					
+					<div class="air__list">
+
+						@@loop('_item-air.html', [
+						{ "image": "air-1.jpg", "date" : "16 февраля 2023", "name" : "АВИТО. С каких пор барахолка стала перфоманс-инструментов для B2B?" },
+						{ "image": "air-2.jpg", "date" : "17 февраля 2023", "name" : "Промо-страницы для застройщиков" },
+						{ "image": "air-3.jpg", "date" : "01 января 2022", "name" : "Проблема нецелевых лидов в интернет-рекламе для застройщиков" },
+						{ "image": "air-4.jpg", "date" : "26 января 2022", "name" : "Медийная реклама: деньги на ветер или снежный ком?" },
+
+						{ "image": "air-4.jpg", "date" : "26 января 2022", "name" : "Медийная реклама: деньги на ветер или снежный ком?" },
+						{ "image": "air-3.jpg", "date" : "01 января 2022", "name" : "Проблема нецелевых лидов в интернет-рекламе для застройщиков" },
+						{ "image": "air-1.jpg", "date" : "16 февраля 2023", "name" : "АВИТО. С каких пор барахолка стала перфоманс-инструментов для B2B?" },
+						{ "image": "air-2.jpg", "date" : "17 февраля 2023", "name" : "Промо-страницы для застройщиков" },
+						
+						{ "image": "air-3.jpg", "date" : "01 января 2022", "name" : "Проблема нецелевых лидов в интернет-рекламе для застройщиков" },
+						{ "image": "air-4.jpg", "date" : "26 января 2022", "name" : "Медийная реклама: деньги на ветер или снежный ком?" },
+
+						])
+
+					</div>
+
+					<div class="case__more btn-more">
+						<a href="#" class="btn">
+							<span class="btn-text">Показать еще</span>
+							<span class="btn-fill"></span>
+						</a>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+
+
+	@@include('_footer.html')
+
+	@@include('_svg.html')
+	@@include('_modal.html')
+	@@include('_scripts.html')
+
+</body>
+</html>

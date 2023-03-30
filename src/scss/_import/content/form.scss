@@ -1,0 +1,101 @@
+.form{
+
+}
+.form__row{
+	margin: 0 v(-5);
+}
+.form__outer{
+	padding: 0 v(5);
+}
+.form__inp{
+	position: relative;
+	margin-bottom: v(10);
+
+	&.has-error{
+		.form__input,
+		.form__textarea{
+			border-color: red!important;
+		}
+		.text-danger{display: none;}
+	}
+
+	@include media($w-xl) {
+		margin-bottom: v(10);
+	}
+}
+
+.form__input,
+.form__textarea{
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	border: none;
+	background: transparent;
+	color: #000;
+	font-size: v(14);
+	position: relative;
+	z-index: 2;
+	cursor: pointer;
+	transition: .3s;
+
+	&:focus,
+	&.valid{
+		& + .form__label{
+			font-size: v(10);
+			top: v(4);
+		}
+	}
+	&:hover{
+		border-color: rgba(129, 141, 94, 0.5);;
+	}
+	&:focus{
+		border-color: green;
+	}
+
+
+}
+.form__input{
+
+	&.error{
+		& + .form__label + .form__error,
+		& + .form__error{
+			opacity: 1;
+			margin-top: 0;
+		}
+	}
+
+}
+.form__textarea{
+	resize: none;
+}
+.form__label{
+	display: inline-block;
+	vertical-align: top;
+	position: absolute;
+	left: 0;
+	right: 0;
+	font-weight: 400;
+	transition: .2s;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+}
+.form__error{
+
+}
+.form__subm{
+
+}
+.form__submit{
+
+}
+
+.form__select{
+	width: 100%;
+	position: relative;
+	z-index: 99;
+	select{
+		display: none;
+	}
+}

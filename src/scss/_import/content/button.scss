@@ -1,0 +1,111 @@
+.btn-more{
+	flex: 0 0 100%;
+	max-width: 100%;
+	.btn{
+		min-width: v(220);
+	}
+
+	@include media($w-xl) {
+		.btn{
+			min-width: v(360);
+		}
+	}
+}
+.btn{
+	--btn-color: var(--text-black);
+	--btn-color-active: var(--text-black);
+	--btn-fill: var(--lime);
+	--btn-bg: transparent;
+	--btn-padding: calc(15 * var(--fz));
+	--btn-height: calc(60 * var(--fz));
+	--btn-border: 1px solid var(--line-gray);
+
+	min-height: var(--btn-height);
+	border-radius: calc(var(--btn-height) * 0.5);
+	font-size: v(16);
+	font-weight: 400;
+	letter-spacing: -0.03em;
+	line-height: 1.25;
+	overflow: hidden;
+	position: relative;
+	z-index: 5;
+	padding: 0 var(--btn-padding);
+	color: var(--btn-color);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	text-decoration: none !important;
+	border: none;
+
+	&:before{
+		content: '';
+		display: inline-block;
+		vertical-align: top;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		border-radius: calc(var(--btn-height) * 0.5);
+		border: var(--btn-border);
+		background: var(--btn-bg);
+		z-index: -2;
+		pointer-events: none;
+	}
+
+	&:active,
+	&:focus{
+		color: var(--btn-color);
+	}
+
+	@include media-hover() {
+		&:hover{
+			color: var(--btn-color-active);
+		}
+	}
+
+	&-black{
+		--btn-color: #fff;
+		--btn-color-active: #fff;
+		--btn-fill: transparent;
+		--btn-bg: var(--bg-black);
+		--btn-border: none;
+	}
+
+	@include media($w-xl) {
+		--btn-padding: calc(60 * var(--fz));
+		--btn-height: calc(100 * var(--fz));
+		font-size: v(28);
+	}
+}
+
+.btn-text{
+	position: relative;
+	z-index: 5;
+}
+
+.btn-fill{
+	@include media-hover() {
+		z-index: -1;
+		display: inline;
+		background: var(--btn-fill);
+		position: absolute;
+		z-index: -1;
+		top: 50%;
+		left: 50%;
+		width: calc(100% + calc(15 * var(--fz)));
+		padding-top: 100%;
+		border-radius: 1000px;
+		transform: scale(0) translate3d(-50%, -50%, 0px);
+		transition: transform 0.7s cubic-bezier(0.25, 0.74, 0.22, 0.99) 0s;
+		backface-visibility: hidden;
+		pointer-events: none;
+	}
+}
+
+.btn-lime{
+	--btn-border: none;
+	--btn-bg: var(--lime);
+	--btn-fill: var(--lime-dark);
+}

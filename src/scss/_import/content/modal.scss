@@ -1,0 +1,54 @@
+.fancybox-is-open {
+	.fancybox-bg{
+		background: #000;
+		opacity: .25;
+		transition: .5s;
+	}
+}
+.fancy-from-right{
+	.fancybox-slide{
+		padding: 0 !important;
+		overflow-x: hidden;
+	}
+}
+.fancy-mmenu{
+	.fancybox-bg{
+		visibility: hidden !important;
+	}
+}
+
+.fancybox-slide--html{
+	padding: 0 !important;
+}
+
+.modal__cont{
+	float: right;
+	min-height: 100vh;
+	transform: translateX(100%);
+	transition: .3s ease-out;
+	opacity: 1!important;
+	width: 100%;
+	
+	&.active{
+		transform: none;
+	}
+
+}
+.modal__close{
+	position: absolute;
+	width: v(30);
+	height: v(30);
+	top: v(20);
+	right: v(20);
+	z-index: 99;
+	padding: 0;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+
+	&:hover{
+		color: $green;
+	}
+
+
+}

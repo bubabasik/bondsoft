@@ -1,0 +1,51 @@
+.fancy-mmenu{
+	.fancybox-slide{
+		padding: 0 !important;
+	}
+}
+.mmenu__btn{
+	display: inline-flex;
+	position: relative;
+	width: v(34);
+	height: v(20);
+	background: transparent;
+	padding: 0;
+	cursor: pointer;
+
+	&:before,
+	&:after{
+		content: '';
+		display: inline-block;
+		vertical-align: top;
+		position: absolute;
+		left: 0;
+		right: 0;
+		background: var(--bg-black);
+		height: 2px;
+		top: 50%;
+		transition: .2s ease-in-out;
+		will-change: left, right, margin;
+	}
+	&:before{
+		margin-top: v(-6);
+	}
+	&:after{
+		margin-bottom: v(-4);
+		top: auto;
+		bottom: 50%;
+	}
+
+	&:hover{
+		&:before,
+		&:after{
+			left: v(-3);
+			right: v(-3);
+		}
+		&:before{
+			margin-top: v(-5);
+		}
+		&:after{
+			margin-bottom: v(-3);
+		}
+	}
+}

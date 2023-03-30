@@ -1,0 +1,98 @@
+.page__row{
+	margin: 20px -5px;
+
+	&:last-child{
+		margin-bottom: 0;
+	}
+
+}
+.pagination{
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	font-size: 0;
+	padding: 0;
+	position: relative;
+	text-align: center;
+	& > li{
+		display: inline-block;
+		vertical-align: top;
+		width: auto;
+		position: relative;
+		padding: 0 8px;
+	}
+
+	& > li > a, 
+	& > li > span{
+		display: inline-block;
+		vertical-align: top;
+		width: 38px;
+		height: 38px;
+		line-height: 38px;
+		text-align: center;
+		color: #000;
+		font-size: 1rem;
+		text-decoration: none;
+		position: relative;
+
+		&:before{
+			content: '';
+			display: inline-block;
+			vertical-align: top;
+			position: absolute;
+			top: -4px;
+			right: -4px;
+			bottom: -4px;
+			left: -4px;
+			border: 1px solid transparent;
+			border-radius: 50%;
+		}
+
+		&:hover,
+		&:active{
+			
+		}
+	}
+
+	& > .active > a, 
+	& > .active > a:focus, 
+	& > .active > a:hover, 
+	& > .active > span, 
+	& > .active > span:focus, 
+	& > .active > span:hover{
+		&:before{
+			border-color: #000;
+		}
+	}
+
+	@include media($w-xl) {
+		& > li{
+			padding: 0 7px;
+		}
+		& > li > a, 
+		& > li > span{
+			&:before{
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+			}
+		}
+	}
+	@include media($w-xxlg) {
+		& > li > a, 
+		& > li > span{
+			width: 44px;
+			height: 44px;
+			line-height: 42px;
+			font-size: 1.375rem;
+		}
+	}
+}
+
+.page__orig_first,
+.page__orig_prev,
+.page__orig_next,
+.page__orig_last{
+	display: none !important;
+}

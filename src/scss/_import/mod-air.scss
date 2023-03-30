@@ -1,0 +1,29 @@
+.section_modair{
+	background: var(--bg-gray);
+	padding-top: v(60);
+	padding-bottom: v(60);
+
+	.mod__title{
+		margin-bottom: v(30);
+	}
+
+	@include media($w-lg) {
+		padding-top: v(90);
+		padding-bottom: v(90);
+	}
+	@include media($w-xl) {
+		padding-top: v(125);
+		padding-bottom: v(125);
+	}
+}
+.modair__cont{
+	border-top: 1px solid var(--line-gray);
+	padding-top: v(30);
+
+	@include media($w-lg) {
+		padding-top: v(60);
+	}
+}
+.modair__data{
+
+}

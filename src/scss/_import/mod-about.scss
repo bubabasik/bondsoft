@@ -1,0 +1,28 @@
+.section_modabout{
+	padding-top: v(120);
+
+	.title{
+		// margin-bottom: v(40);
+	}
+
+	@include media($w-md) {
+		.title{
+			max-width: 70%;
+			margin-bottom: v(100);
+		}
+	}
+	@include media($w-lg) {
+		padding-top: v(180);
+		.title{
+			max-width: v(700);
+			margin-bottom: v(150);
+		}
+	}
+	@include media($w-xl) {
+		padding-top: v(250);
+		.title{
+			max-width: v(1070);
+			margin-bottom: v(123);
+		}
+	}
+}

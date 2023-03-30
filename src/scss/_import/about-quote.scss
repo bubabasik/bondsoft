@@ -1,0 +1,136 @@
+.dark-mode{
+	.abquote{
+		&__text{
+			svg{
+				fill: #4E4E4E;
+			}
+		}
+	}
+}
+.abquote{
+	padding-top: v(60);
+	padding-bottom: v(60);
+	&__row{
+		display: flex;
+		flex-flow: column;
+	}
+	&__img{}
+	&__image{}
+	&__data{
+		display: flex;
+		flex-flow: column;
+		margin-top: v(41);
+	}
+	&__text{
+		font-size: v(28);
+		line-height: 1.2;
+		letter-spacing: -0.03em;
+		font-style: italic;
+		position: relative;
+
+		svg{
+			position: absolute;
+			top: v(-11);
+			right: 0;
+			z-index: -1;
+			width: v(78);
+			height: v(81);
+			fill: var(--lime);
+			transition: var(--dark-timing) var(--dark-transition);
+		}
+	}
+	&__bottom{
+		display: flex;
+		flex-flow: column;
+		justify-content: center;
+		flex: auto;
+		margin-top: v(40);
+	}
+	&__exp{
+		font-size: v(12);
+		line-height: 1.5;
+		text-transform: uppercase;
+	}
+	&__name{
+		font-size: v(22);
+		line-height: 1.25;
+		margin-top: v(5);
+	}
+
+	@include media($w-md) {
+		&__row{
+			flex-flow: row;
+		}
+		&__img{
+			flex: 0 0 50%;
+			max-width: 50%;
+			padding-right: v(10);
+		}
+		&__data{
+			flex: 0 0 50%;
+			max-width: 50%;
+			padding-left: v(10);
+			margin-top: 0;
+		}
+		&__text{
+			line-height: 1;
+			letter-spacing: -0.05em;
+		}
+		&__name{
+			letter-spacing: -0.03em;
+			margin-top: v(10);
+		}
+	}
+	@include media($w-lg) {
+		padding-top: v(90);
+		padding-bottom: v(90);
+		&__img{
+			padding-right: v(20);
+		}
+		&__data{
+			padding-left: v(20);
+		}
+		&__text{
+			font-size: v(40);
+			svg{
+				width: v(124);
+				height: v(130);
+				top: 0;
+			}
+		}
+		&__bottom{
+			margin-top: 0;
+			margin-left: v(-4);
+			padding: v(10) 0;
+		}
+		&__exp{
+			font-size: v(14);
+		}
+		&__name{
+			font-size: v(30);
+		}
+	}
+	@include media($w-xl) {
+		padding-top: v(130);
+		padding-bottom: v(132);
+		&__text{
+			font-size: v(60);
+			svg{
+				width: v(165);
+				height: v(173);
+			}
+		}
+		&__bottom{
+			margin-top: 0;
+			margin-left: v(-4);
+			padding: v(10) 0;
+		}
+		&__exp{
+			font-size: v(18);
+		}
+		&__name{
+			font-size: v(40);
+			margin-top: v(20);
+		}
+	}
+}
