@@ -31,31 +31,8 @@
 	}
 }
 .review__slider{
-	.nav__item{
-		position: absolute;
-		top: v(-111);
-		transform: none;
-		&-next{
-			right: 0;
-		}
-		&-prev{
-			left: auto;
-			right: v(52);
-		}
-	}
 
-	@include media($w-lg) {
-		.nav__item{
-			&-prev{
-				right: v(87);
-			}
-		}
-	}
-	@include media($w-xl) {
-		.nav__item{
-			top: v(-120);
-		}
-	}
+
 }
 .review__slide{
 	display: flex!important;

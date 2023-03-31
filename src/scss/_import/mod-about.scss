@@ -1,6 +1,9 @@
 .section_modabout{
 	padding-top: v(120);
 
+	&-padding{
+		padding-bottom: v(60);
+	}
 	.title{
 		// margin-bottom: v(40);
 	}
@@ -20,6 +23,9 @@
 	}
 	@include media($w-xl) {
 		padding-top: v(250);
+		&-padding{
+			padding-bottom: v(125);
+		}
 		.title{
 			max-width: v(1070);
 			margin-bottom: v(123);

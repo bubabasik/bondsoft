@@ -1,3 +1,12 @@
+.light-section{
+	.abpoints__item{
+		&--top{
+			img{
+				filter: grayscale(100%);
+			}
+		}
+	}
+}
 .dark-mode{
 	.abpoints{
 		&__circle{
@@ -24,6 +33,23 @@
 .abpoints{
 	padding-bottom: v(60);
 
+
+	@include media-max($w-md) {
+		.mod__title{
+			& + .abpoints__cont{
+				.abpoints__item{
+					&:first-child{
+						padding-top: 0;
+					}
+				}
+			}
+		}
+	}
+	@include media($w-md) {
+		.mod__title{
+			margin-bottom: v(40);
+		}
+	}
 	@include media($w-lg) {
 		padding-bottom: v(90);
 	}
@@ -95,7 +121,6 @@
 		font-weight: 300;
 		letter-spacing: -0.05em;
 		img{
-			filter: grayscale(100%);
 			transition: var(--dark-timing) var(--dark-transition);
 		}
 		svg{

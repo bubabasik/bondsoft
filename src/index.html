@@ -135,36 +135,7 @@
 
 	@@include('_section-review.html')
 	@@include('_section-trust.html')
-
-	<!-- MOD AIR -->
-	<section class="section_modair">
-		<div class="container">
-			<div class="modair__cont aside">
-				<div class="mod__title aside-left">Мы в эфире</div>
-				<div class="modair__data aside-right">
-
-					<div class="air__list">
-						@@loop('_item-air.html', [
-						{ "image": "air-1.jpg", "date" : "16 февраля 2023", "name" : "АВИТО. С каких пор барахолка стала перфоманс-инструментов для B2B?" },
-						{ "image": "air-2.jpg", "date" : "17 февраля 2023", "name" : "Промо-страницы для застройщиков" },
-						{ "image": "air-3.jpg", "date" : "01 января 2022", "name" : "Проблема нецелевых лидов в интернет-рекламе для застройщиков" },
-						{ "image": "air-1.jpg", "date" : "26 января 2022", "name" : "Медийная реклама: деньги на ветер или снежный ком?" }
-						])
-
-					</div>
-
-					<div class="air__more btn-more">
-						<a href="./air-list.html" class="btn">
-							<span class="btn-text">Все видео</span>
-							<span class="btn-fill"></span>
-						</a>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- MOD AIR -->
+	@@include('_section-air.html')
 
 	@@include('_section-media.html')
 

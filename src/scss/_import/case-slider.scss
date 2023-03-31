@@ -1,0 +1,45 @@
+.section_slcase{
+	padding-top: v(100);
+	padding-bottom: v(60);
+	overflow: hidden;
+	@include media($w-lg) {
+		padding-top: v(60);
+		padding-bottom: v(125);
+	}
+}
+.slcase__cont{
+	padding-top: v(20);
+	border-top: 1px solid var(--line-gray);
+	position: relative;
+
+	@include media($w-lg) {
+		padding-top: v(60);
+	}
+}
+.slcase__data{
+
+	@include media-max($w-md) {
+	padding-right: v(30);
+	}
+}
+.slcase__slider{
+	margin: 0 v(-7);
+	@include media-max($w-md) {
+		.slick-list{
+			overflow: visible;
+		}
+	}
+	@include media($w-lg) {
+		margin: 0 v(-20);
+	}
+}
+.slcase__slide{
+	padding: 0 v(7);
+	.case__item{
+		max-width: 100%;
+		margin: 0;
+	}
+	@include media($w-lg) {
+		padding: 0 v(20);
+	}
+}

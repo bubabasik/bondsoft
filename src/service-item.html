@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Название страницы</title>
+
+	@@include('_meta.html')
+
+</head>
+<body>
+
+	@@include('_header.html')
+
+	<section class="section_pagetop">
+		<div class="container">
+			<div class="pagetop__prev">
+				<a href="./index.html" class="link">
+					<svg class="ico"><use xlink:href="./img/sprite.svg#arrow-left" /></svg>
+					Главная
+				</a>
+			</div>
+			<div class="pagetop__top">
+				<div class="pagetop__title --sm --half">
+					<h1>Контекстная реклама для B2B и недвижимости</h1>
+				</div>
+			</div>
+			<div class="pagetop__descr">
+				<div class="pagetop__descr--text">
+					Настраиваем и ведем рекламу, которая не просто приводит трафик, 
+					а&nbsp;решает маркетинговые задачи бизнеса. Поможем понять, какие digital-услуги решат вашу задачу и займемся проектом целиком. 
+					<br>Это удобней и дешевле, чем отдельные подрядчики на SEO, контекст 
+					и&nbsp;разработку.
+				</div>
+				<div class="pagetop__descr--btn">
+					<a href="#" class="btn btn-lime">
+						<span class="btn-text">Заказать услугу</span>
+						<span class="btn-fill"></span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section_slcase">
+		<div class="container">
+			<div class="slcase__cont aside">
+				<div class="mod__title aside-left">
+					кейсы по услуге
+				</div>
+				<div class="slcase__data aside-right">
+					
+					<div class="slcase__slider slider">
+						
+						<div class="slcase__slide">
+							@@include('_item-case.html', {"image":"case-gray.jpg", "company":"СМУ-1","date":"2020 — продолжаем ...","name":"Контекст для крупнейшего застройщика ЮФО"})
+						</div>
+						<div class="slcase__slide">
+							@@include('_item-case.html', {"image":"case-blue.jpg", "company":"Девелопмент-Юг","date":"2020 — продолжаем ...","name":"Перфоманс-маркетинг для топового девелопера"})
+						</div>
+						<div class="slcase__slide">
+							@@include('_item-case.html', {"image":"case-yellow.jpg", "company":"Билд","date":"2020 — продолжаем ...","name":"SEO для лидера среди магазинов сантехники"})
+						</div>
+						<div class="slcase__slide">
+							@@include('_item-case.html', {"image":"case-gray.jpg", "company":"ТД ПОИСК","date":"2020 — продолжаем ...","name":"SEO и контекст для торгового дома “Поиск”"})
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section_plus">
+		<div class="container">
+			<div class="plus__cont aside">
+				<div class="mod__title aside-left">преимущества</div>
+				<div class="plus__data aside-right">
+					
+					<!-- item -->
+					<div class="plus__item accord">
+						<div class="plus__item--icon">
+							<img src="./images/plus/plus-1.svg" alt="">
+						</div>
+						<div class="plus__item--name">Позиционирование</div>
+						<div class="plus__item--data accord--data" style="height: auto;">
+							<div class="plus__item--text accord--inner text">
+								<p>Над вашим проектом работает выделенная команда из узкопрофильных специалистов, вместо “мастера на все руки”. Каждый глубоко разбирается в своей области, а не во всем по-немногу:</p>
+								<ul>
+									<li>Руководитель проекта</li>
+									<li>Специалист по контекстной рекламе</li>
+									<li>Интернет-маркетолог</li>
+									<li>Веб-дизайнер</li>
+									<li>Программист</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- # item -->
+					
+					<!-- item -->
+					<div class="plus__item accord">
+						<div class="plus__item--icon">
+							<img src="./images/plus/plus-2.svg" alt="">
+						</div>
+						<div class="plus__item--name">Команда</div>
+						<div class="plus__item--data accord--data">
+							<div class="plus__item--text accord--inner text">
+								<p>Над вашим проектом работает выделенная команда из узкопрофильных специалистов, вместо “мастера на все руки”. Каждый глубоко разбирается в своей области, а не во всем по-немногу:</p>
+								<ul>
+									<li>Руководитель проекта</li>
+									<li>Специалист по контекстной рекламе</li>
+									<li>Интернет-маркетолог</li>
+									<li>Веб-дизайнер</li>
+									<li>Программист</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- # item -->
+					
+					<!-- item -->
+					<div class="plus__item accord">
+						<div class="plus__item--icon">
+							<img src="./images/plus/plus-3.svg" alt="">
+						</div>
+						<div class="plus__item--name">Экспертность</div>
+						<div class="plus__item--data accord--data">
+							<div class="plus__item--text accord--inner text">
+								<p>Над вашим проектом работает выделенная команда из узкопрофильных специалистов, вместо “мастера на все руки”. Каждый глубоко разбирается в своей области, а не во всем по-немногу:</p>
+								<ul>
+									<li>Руководитель проекта</li>
+									<li>Специалист по контекстной рекламе</li>
+									<li>Интернет-маркетолог</li>
+									<li>Веб-дизайнер</li>
+									<li>Программист</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- # item -->
+					
+					<!-- item -->
+					<div class="plus__item accord">
+						<div class="plus__item--icon">
+							<img src="./images/plus/plus-4.svg" alt="">
+						</div>
+						<div class="plus__item--name">Комфорт</div>
+						<div class="plus__item--data accord--data">
+							<div class="plus__item--text accord--inner text">
+								<p>Над вашим проектом работает выделенная команда из узкопрофильных специалистов, вместо “мастера на все руки”. Каждый глубоко разбирается в своей области, а не во всем по-немногу:</p>
+								<ul>
+									<li>Руководитель проекта</li>
+									<li>Специалист по контекстной рекламе</li>
+									<li>Интернет-маркетолог</li>
+									<li>Веб-дизайнер</li>
+									<li>Программист</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- # item -->
+					
+					<!-- item -->
+					<div class="plus__item accord">
+						<div class="plus__item--icon">
+							<img src="./images/plus/plus-5.svg" alt="">
+						</div>
+						<div class="plus__item--name">Финансы</div>
+						<div class="plus__item--data accord--data">
+							<div class="plus__item--text accord--inner text">
+								<p>Над вашим проектом работает выделенная команда из узкопрофильных специалистов, вместо “мастера на все руки”. Каждый глубоко разбирается в своей области, а не во всем по-немногу:</p>
+								<ul>
+									<li>Руководитель проекта</li>
+									<li>Специалист по контекстной рекламе</li>
+									<li>Интернет-маркетолог</li>
+									<li>Веб-дизайнер</li>
+									<li>Программист</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- # item -->
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="section_modabout section_modabout-padding">
+		@@include('_inner-about-points.html', {"subtitle":"<div class='mod__title aside-left'>о нас</div>"})
+	</section>
+
+	@@include('_section-review.html')
+	@@include('_section-trust.html')
+	@@include('_section-air.html')
+	@@include('_section-question.html')
+	@@include('_section-media.html')
+
+
+	@@include('_footer.html')
+
+	@@include('_svg.html')
+	@@include('_modal.html')
+	@@include('_scripts.html')
+
+</body>
+</html>
