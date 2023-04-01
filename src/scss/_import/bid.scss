@@ -1,0 +1,143 @@
+.section_bid{
+	padding-bottom: v(120);
+
+	&-page{
+		padding-top: v(120);
+	}
+	@include media-max($w-md) {
+		.title{
+			font-size: v(36);
+			letter-spacing: -0.03em;
+		}
+	}
+	@include media($w-xl) {
+		padding-bottom: v(125);
+		&-page{
+			padding-top: v(168);
+		}
+	}
+}
+.bid__title{
+
+}
+.bid__cont{
+	margin-top: v(15);
+
+	@include media($w-lg) {
+		display: flex;
+	}
+	@include media($w-xl) {
+		margin-top: v(43);
+	}
+}
+.bid__info{
+	font-size: v(14);
+	line-height: 1.5;
+
+	@include media($w-lg) {
+		flex: 0 0 50%;
+		max-width: 50%;
+		padding-right: v(40);
+		font-size: v(20);
+		letter-spacing: -0.03em;
+	}
+	@include media($w-xl) {
+		font-size: v(28);
+		padding-right: v(260);
+	}
+}
+.bid__text{
+	& + .bid__contact{
+		margin-top: v(29);
+	}
+	@include media($w-md) {
+		& + .bid__contact{
+			margin-top: v(60);
+		}
+	}
+	@include media($w-lg) {
+		& + .bid__contact{
+			margin-top: v(80);
+		}
+	}
+	@include media($w-xl) {
+		& + .bid__contact{
+			margin-top: v(120);
+		}
+	}
+}
+.bid__contact{
+	&--address{
+		color: var(--text-gray);
+	}
+
+	li{
+		margin-bottom: v(4);
+	}
+	&--address{
+		margin-top: v(16);
+	}
+	a{
+		margin-right: v(15);
+		&.bid__soc{
+			margin-right: v(12);
+		}
+	}
+
+	@include media-max($w-lg) {
+		a{
+			&[href^="tel:"] {
+				font-size: v(22);
+				line-height: 1.25;
+			}
+		}
+	}
+	@include media($w-lg) {
+		li{
+			margin-bottom: v(5);
+		}
+		&--address{
+			margin-top: v(25);
+		}
+		a{
+			margin-right: v(18);
+			&.bid__soc{
+				margin-right: v(14);
+			}
+			&:last-child{
+				margin-right: 0;
+			}
+		}
+	}
+}
+.bid__soc{
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	top: v(4);
+	svg{
+		fill: currentColor;
+		width: v(20);
+		height: v(20);
+	}
+
+	@include media($w-xl) {
+		margin-top: v(-3);
+		top: 0;
+		svg{
+			width: v(21);
+			height: v(21);
+		}
+	}
+}
+.bid__form{
+	margin-top: v(31);
+
+	@include media($w-md) {
+		margin-top: v(60);
+	}
+	@include media($w-lg) {
+		margin-top: 0;
+	}
+}

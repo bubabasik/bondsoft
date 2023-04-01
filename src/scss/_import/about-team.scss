@@ -1,11 +1,9 @@
 .dark-mode{
 	.abteam{
 		color: var(--text-black);
-		background: transparent;
 	}
 }
 .abteam{
-	background: var(--bg-gray);
 	transition: var(--dark-timing) var(--dark-transition);
 	padding-top: v(60);
 	padding-bottom: v(120);

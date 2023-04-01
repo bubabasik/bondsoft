@@ -57,6 +57,7 @@
 
 	@include media($w-md) {
 		flex: calc(50% - 40 * var(--fz));
+		max-width: calc(50% - 40 * var(--fz));
 		margin-left: v(20);
 		margin-right: v(20);
 	}

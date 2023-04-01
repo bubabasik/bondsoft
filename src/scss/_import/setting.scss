@@ -117,7 +117,7 @@ body{
 
 	padding-top: var(--head-height);
 
-	&::-webkit-scrollbar { width: 0; }
+	// &::-webkit-scrollbar { width: 0; }
 }
 input,
 button,
@@ -163,6 +163,15 @@ footer{
 	
 }
 
+.dark-mode{
+	.bg-gray{
+		background: transparent;
+	}
+}
+.bg-gray{
+	background: var(--bg-gray);
+}
+
 section{
 	position: relative;
 	z-index: 5;
@@ -192,48 +201,6 @@ section{
 			flex: 0 0 calc(100% - var(--left-column));
 			max-width: calc(100% - var(--left-column));
 			margin-left: auto;
-		}
-	}
-}
-
-.flx{
-	--flex: 100%;
-	--flex-left: 100%;
-	--flex-right: 100%;
-	--flex-padding: 0;
-	--flex-margin: 0;
-	--flex-row: var(--flex-padding);
-	display: flex;
-	flex-wrap: wrap;
-	margin-left: calc(-1 * var(--flex-row));
-	margin-right: calc(-1 * var(--flex-row));
-
-	&-item{
-		
-	}
-
-	&-column{
-		flex: 0 0 var(--flex);
-		max-width: var(--flex);
-		padding-left: var(--flex-padding);
-		padding-right: var(--flex-padding);
-		margin-left: var(--flex-margin);
-		margin-right: var(--flex-margin);
-	}
-
-	&-left{
-		flex: 0 0 var(--flex-left);
-		max-width: var(--flex-left);
-	}
-	&-right{
-		flex: 0 0 var(--flex-right);
-		max-width: var(--flex-right);
-	}
-
-	@include media($w-lg) {
-		&-aside{
-			--flex-left: var(--left-column);
-			--flex-right: calc(100% - var(--flex-left));
 		}
 	}
 }

@@ -44,6 +44,17 @@
 				}
 			}
 		}
+		&-list{
+			.abpoints__item{
+				&--text{
+					font-size: v(18);
+					letter-spacing: -0.03em;
+					max-width: v(260);
+					line-height: 1.25;
+					margin-top: v(11);
+				}
+			}
+		}
 	}
 	@include media($w-md) {
 		.mod__title{
@@ -52,9 +63,21 @@
 	}
 	@include media($w-lg) {
 		padding-bottom: v(90);
+
 	}
 	@include media($w-xl) {
 		padding-bottom: v(125);
+
+		&-list{
+			.abpoints__item{
+				&--top{
+					margin-bottom: v(20);
+				}
+				&--text{
+					max-width: v(480);
+				}
+			}
+		}
 	}
 }
 .abpoints__cont{
@@ -127,6 +150,11 @@
 			fill: currentColor;
 			height: v(40);
 			width: auto;
+			&.--koza{
+				width: v(31);
+				height: v(31);
+				margin-left: v(6);
+			}
 		}
 		img{
 			max-height: v(40);
@@ -172,6 +200,11 @@
 			svg{
 				height: auto;
 				max-height: v(50);
+				&.--koza{
+					width: v(45);
+					height: v(45);
+					margin-left: v(10);
+				}
 			}
 			img{
 				max-height: v(60);
@@ -191,6 +224,11 @@
 			margin-bottom: v(30);
 			svg{
 				max-height: v(100);
+				&.--koza{
+					width: v(64);
+					height: v(64);
+					margin-left: v(16);
+				}
 			}
 			img{
 				max-height: v(100);

@@ -80,6 +80,7 @@
 	}
 	@include media($w-xl) {
 		font-size: v(180);
+		max-width: v(1500);
 
 		&.--sm{
 			font-size: v(100);

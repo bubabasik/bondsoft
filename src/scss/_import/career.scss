@@ -1,0 +1,7 @@
+.section_career{
+	@include media-max($w-md) {
+		.abpoints{
+			margin-top: v(-40);
+		}
+	}
+}

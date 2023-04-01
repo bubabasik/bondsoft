@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Название страницы</title>
+
+	@@include('_meta.html')
+
+</head>
+<body>
+
+	@@include('_header.html')
+
+	<section class="section_pagetop">
+		<div class="container">
+			<div class="pagetop__prev">
+				<a href="./index.html" class="link">
+					<svg class="ico"><use xlink:href="./img/sprite.svg#arrow-left" /></svg>
+					Главная
+				</a>
+			</div>
+			<div class="pagetop__top">
+				<div class="pagetop__title --sm">
+					<h1>Мы уверены, что успех возможен только в компании, где каждый может проявить себя</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section_career">
+
+		<div class="abpoints abpoints-list">
+
+			<div class="container">
+				<div class="abpoints__row aside">
+
+
+					<div class="abpoints__cont aside-right">
+
+						<div class="abpoints__list">
+
+							<div class="abpoints__item">
+								<div class="abpoints__item--top">
+									#2
+								</div>
+								<div class="abpoints__item--text">
+									Входим в ТОП-2 рекламных агентств по ЮФО
+								</div>
+							</div>
+
+							<div class="abpoints__item">
+								<div class="abpoints__circle"></div>
+								<div class="abpoints__item--top">
+									20+
+								</div>
+								<div class="abpoints__item--text">
+									Наград рейтинга <br>Рунета
+								</div>
+							</div>
+
+							<div class="abpoints__item ">
+								<div class="abpoints__item--top">
+									25+
+								</div>
+								<div class="abpoints__item--text">
+									Профессионалов в команде
+								</div>
+							</div>
+
+							<div class="abpoints__item ">
+								<div class="abpoints__item--top">
+									17
+								</div>
+								<div class="abpoints__item--text">
+									Лет на рынке
+								</div>
+							</div>
+
+							<div class="abpoints__item ">
+								<div class="abpoints__item--top">
+									4 <svg class="ico --koza"><use xlink:href="./img/sprite.svg#koza" /></svg>
+								</div>
+								<div class="abpoints__item--text">
+									кофемашины в офисе
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		@@include('_inner-life.html')
+		@@include('_inner-about-team.html', {"class":""})
+	</section>
+
+	<section class="section_vacancy bg-gray">
+		<div class="container">
+			<div class="title">
+				Вакансии
+			</div>
+
+			<div class="vacancy__cont">
+				
+				<a href="#" class="vacancy__item link">
+					<span class="vacancy__item--name">Маркетолог</span>
+					<span class="vacancy__item--info">
+						<span>От 35 000 руб.</span>
+						<span>Офис или удаленка</span>
+					</span>
+				</a>
+				
+				<a href="#" class="vacancy__item link">
+					<span class="vacancy__item--name">Менеджер по продажам</span>
+					<span class="vacancy__item--info">
+						<span>От 30 000 руб.</span>
+						<span>Офис или удаленка</span>
+					</span>
+				</a>
+				
+				<a href="#" class="vacancy__item link">
+					<span class="vacancy__item--name">Аккаунт-менеджер</span>
+				</a>
+
+			</div>
+
+		</div>
+	</section>
+
+	@@include('_section-media.html')
+
+
+	@@include('_footer.html')
+
+	@@include('_svg.html')
+	@@include('_modal.html')
+	@@include('_scripts.html')
+
+</body>
+</html>

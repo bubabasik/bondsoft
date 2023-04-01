@@ -1,4 +1,11 @@
+.dark-header{
+	.header{
+		--header-color: #fff;
+		background: var(--bg-black);
+	}
+}
 .header{
+	--header-color: var(--text-black);
 	line-height: 1.25;
 	font-weight: 600;
 	letter-spacing: -0.03em;
@@ -11,6 +18,9 @@
 	z-index: 999;
 	min-height: var(--head-height);
 	padding: 9px 0 5px;
+	background: #fff;
+	transition: .3s var(--ease-out);
+	color: var(--header-color);
 
 	@include media($w-xl) {
 		font-size: v(18);
@@ -25,8 +35,17 @@
 
 }
 .head__logo{
+	.link{
+		--link-color: var(--header-color);
+		--link-color-active: var(--header-color);
+	}
 	img{
 		max-height: v(17);
+	}
+	svg{
+		width: v(97);
+		height: v(17);
+		fill: currentColor;
 	}
 	@include media($w-lg) {
 		flex: 0 0 20%;
@@ -34,6 +53,10 @@
 		margin-right: auto;
 		img{
 			max-height: v(27);
+		}
+		svg{
+			width: v(160);
+			height: v(28);
 		}
 	}
 	@include media($w-xl) {

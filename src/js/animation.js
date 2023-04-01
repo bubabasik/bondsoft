@@ -39,6 +39,41 @@ $(function(){
 		}
 	});
 
+	mmenuHide = () => {
+		// gsap.set(mmenuEl, {opacity: 0});
+	}
+	mmenuAnim = () => {
+		/*const cont = document.querySelector('.mmenu__cont');
+		const content = document.querySelector('.mmenu__content');
+
+
+		const tl = gsap.timeline();
+
+		tl.fromTo(cont, {
+			x: "100%"
+		}, {
+			x: "0%",
+			ease: "expo.out",
+			duration: 1
+		}, 0);
+
+		tl.fromTo(content, {
+			x: "-35%"
+		}, {
+			x: "0%",
+			ease: "expo.out",
+			duration: 1
+		}, 0);
+		tl.fromTo(content, {
+			opacity: 0
+		}, {
+			opacity: 1,
+			duration: .5
+		}, .1);
+*/
+	}
+	mmenuHide();
+
 	/* dark mode */
 	$(function(darkMode){
 		const darks = gsap.utils.toArray('.dark-mode-trigger, .dark-mode-trigger-last');
@@ -56,13 +91,37 @@ $(function(){
 			ScrollTrigger.create({
 				trigger: box,
 				endTrigger: end_trigger,
-				start: "top+=10% bottom-=10%",
+				start: "top+=10% top",
 				end: end_position,
 				onToggle: self => {
 					if(self.isActive) {
+						$('body').addClass('dark-header');
 						$(box).addClass('dark-mode');
 					}else{
 						$(box).removeClass('dark-mode');
+						$('body').removeClass('dark-header');
+					}
+				},
+			});
+		});
+	});
+
+	/* dark mode header */
+	$(function(darkMode){
+		const darks = gsap.utils.toArray('.header-trigger');
+		const height = $('.header').outerHeight();
+
+		darks.forEach((box, i) => {			
+			ScrollTrigger.create({
+				trigger: box,
+				endTrigger: box,
+				start: "top-=10 top",
+				end: "bottom top",
+				onToggle: self => {
+					if(self.isActive) {
+						$('body').addClass('dark-header');
+					}else{
+						$('body').removeClass('dark-header');
 					}
 				},
 			});

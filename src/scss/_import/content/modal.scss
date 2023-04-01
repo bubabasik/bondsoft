@@ -1,54 +1,30 @@
+
+.fancybox-bg{
+	background: rgb(34,34,34)!important;
+	opacity: 0!important;
+	transition: .5s cubic-bezier(.13,.6,.12,.92)!important;
+}
 .fancybox-is-open {
 	.fancybox-bg{
-		background: #000;
-		opacity: .25;
-		transition: .5s;
+		opacity: .15!important;
 	}
 }
-.fancy-from-right{
+.fancy-from-right,
+.fancy-from-top{
 	.fancybox-slide{
 		padding: 0 !important;
 		overflow-x: hidden;
 	}
 }
-.fancy-mmenu{
-	.fancybox-bg{
-		visibility: hidden !important;
+.fancy-from-top{
+	.modal__cont{
+		transform: translateY(-120%);
+		&.active{
+			transform: none;
+		}
 	}
 }
 
 .fancybox-slide--html{
 	padding: 0 !important;
-}
-
-.modal__cont{
-	float: right;
-	min-height: 100vh;
-	transform: translateX(100%);
-	transition: .3s ease-out;
-	opacity: 1!important;
-	width: 100%;
-	
-	&.active{
-		transform: none;
-	}
-
-}
-.modal__close{
-	position: absolute;
-	width: v(30);
-	height: v(30);
-	top: v(20);
-	right: v(20);
-	z-index: 99;
-	padding: 0;
-	border: none;
-	background: transparent;
-	cursor: pointer;
-
-	&:hover{
-		color: $green;
-	}
-
-
 }

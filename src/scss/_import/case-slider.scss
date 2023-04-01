@@ -19,7 +19,7 @@
 .slcase__data{
 
 	@include media-max($w-md) {
-	padding-right: v(30);
+		padding-right: v(30);
 	}
 }
 .slcase__slider{

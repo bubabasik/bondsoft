@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Название страницы</title>
+
+	@@include('_meta.html')
+
+</head>
+<body>
+
+	@@include('_header.html')
+
+	<section class="section_bid section_bid-page">
+		<div class="container">
+			<div class="bid__title title">
+				<h1>
+					Расскажите 
+					<br>о своем проекте
+				</h1>
+			</div>
+
+			<div class="bid__cont">
+				
+				<div class="bid__info">
+					
+					<div class="bid__text">
+						Кратко опишите свою задачу, и мы свяжемся с вами в кратчайшие сроки.
+					</div>
+
+					<ul class="bid__contact list-vert">
+						<li>
+							<a href="tel:+78633090676" class="link">+7 (863) 309-06-76</a>
+							<a href="#" class="link bid__soc bid__soc-tg">
+								<svg class="ico"><use xlink:href="./img/sprite.svg#soc-tg" /></svg>
+							</a>
+							<a href="#" class="link bid__soc bid__soc-viber">
+								<svg class="ico"><use xlink:href="./img/sprite.svg#soc-viber" /></svg>
+							</a>
+						</li>
+						<li><a href="mailto:info@bondsoft.ru" class="link">info@bondsoft.ru</a></li>
+						<li class="bid__contact--address">г. Ростов-на-Дону, ул. Орская, 14А</li>
+					</ul>
+
+				</div>
+
+				<div class="bid__form">
+					
+					<form action="#" class="form form-order">
+						
+						<div class="form__outer col-md-6">
+							<div class="form__inp">
+								<input type="text" name="name" class="form__input" >
+								<div class="form__label">Имя *</div>
+								<div class="form__line"></div>
+							</div>
+						</div>
+						
+						<div class="form__outer col-md-6">
+							<div class="form__inp">
+								<input type="tel" name="phone" class="form__input" >
+								<div class="form__label">Телефон *</div>
+								<div class="form__line"></div>
+							</div>
+						</div>
+						
+						<div class="form__outer col-md-6">
+							<div class="form__inp">
+								<input type="text" name="email" class="form__input" >
+								<div class="form__label">Email *</div>
+								<div class="form__line"></div>
+							</div>
+						</div>
+						
+						<div class="form__outer col-md-6">
+							<div class="form__inp">
+								<input type="text" name="company" class="form__input" >
+								<div class="form__label">Компания</div>
+								<div class="form__line"></div>
+							</div>
+						</div>
+						
+						<div class="form__outer col-12">
+							<div class="form__select">
+								<div class="form__select--head">
+									<input type="text" class="form__select--input" placeholder="Выберите услугу *">
+									<svg class="ico"><use xlink:href="./img/sprite.svg#arr-down" /></svg>
+									<div class="form__line"></div>
+								</div>
+								<div class="form__select--data">
+
+									<div class="form__select--inner">
+										
+										<div class="form__select--col">
+											<div class="form__select--name">Привлечь клиентов</div>
+											<ul class="form__select--list list-vert">
+												<li>Контекст</li>
+												<li>Таргет</li>
+												<li>Авито</li>
+												<li>SEO</li>
+											</ul>
+										</div>
+
+										<div class="form__select--col">
+											<div class="form__select--name">Помощь с продажами</div>
+											<ul class="form__select--list list-vert">
+												<li>Обучение входящим продажам</li>
+												<li>Курсы холодных продаж</li>
+											</ul>
+										</div>
+
+										<div class="form__select--col">
+											<div class="form__select--name">Настроить аналитику и автоматизацию</div>
+											<ul class="form__select--list list-vert">
+												<li>Аудит рекламных компаний</li>
+												<li>CRM</li>
+											</ul>
+										</div>
+
+										<div class="form__select--col">
+											<div class="form__select--name">Позаботиться о имидже</div>
+											<ul class="form__select--list list-vert">
+												<li>Удаление негативных отзывов</li>
+												<li>Управление репутацией</li>
+											</ul>
+										</div>
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+						
+						<div class="form__outer form__outer-textarea col-12">
+							<div class="form__inp">
+								<textarea name="comment" class="form__textarea"></textarea>
+								<div class="form__label">Комментарий</div>
+								<div class="form__line"></div>
+							</div>
+						</div>
+						
+						<div class="form__outer form__outer-info col-6">
+							<div class="form__info">
+								В чем заключается задача? 
+								<br>В какие сроки? Пару слов о компании.
+								
+							</div>
+						</div>
+						<div class="form__outer form__outer-file col-6">
+							<div class="form__file">
+								<label class="form__file--label">
+									<input type="file">
+									<span class="form__file--icon">
+										<svg class="ico ico-center"><use xlink:href="./img/sprite.svg#file" /></svg>
+									</span>
+									<span class="form__file--name" data-placeholder="Прикрепить файл">Прикрепить файл</span>
+								</label>
+							</div>
+						</div>
+
+						<div class="form__bottom form__outer col-12">
+							<div class="form__subm ">
+								<div class="form__subm--btn">
+									<button type="submit" class="btn btn-lime form__submit">
+										<span class="btn-text">Отправить</span>
+										<span class="btn-fill"></span>
+									</button>
+								</div>
+								<div class="form__subm--agree">
+									Согласен, с обработкой персональных 
+									и&nbsp;политикой конфиденциальности
+								</div>
+							</div>
+
+							<div class="form__success">
+								<div class="form__success--icon">
+									<svg class="ico ico-center"><use xlink:href="./img/sprite.svg#check" /></svg>
+								</div>
+								<div class="form__success--title">Ваша заявка успешно отправлена</div>
+								<div class="form__success--text">
+									Мы свяжемся с вами в ближайшее время,
+									чтобы обсудить детали проекта.
+								</div>
+							</div>
+							
+
+						</div>
+
+					</form>
+
+				</div>
+
+			</div>
+
+
+		</div>
+	</section>
+
+	@@include('_svg.html')
+	@@include('_modal.html')
+	@@include('_scripts.html')
+
+</body>
+</html>
