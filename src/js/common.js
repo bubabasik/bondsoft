@@ -198,7 +198,6 @@ $(function(){
 				},
 				afterShow : function( instance, current ) {
 					$(current.src).addClass('active');
-					mmenuAnim();
 				},
 				beforeClose : function( instance, current ) {
 					this.opts.animationEffect = true;
@@ -206,7 +205,6 @@ $(function(){
 					$(current.src).removeClass('active');
 				},
 				afterClose : function( instance, current ) {
-					mmenuHide();
 				}
 			}
 		});

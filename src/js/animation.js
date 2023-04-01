@@ -39,40 +39,6 @@ $(function(){
 		}
 	});
 
-	mmenuHide = () => {
-		// gsap.set(mmenuEl, {opacity: 0});
-	}
-	mmenuAnim = () => {
-		/*const cont = document.querySelector('.mmenu__cont');
-		const content = document.querySelector('.mmenu__content');
-
-
-		const tl = gsap.timeline();
-
-		tl.fromTo(cont, {
-			x: "100%"
-		}, {
-			x: "0%",
-			ease: "expo.out",
-			duration: 1
-		}, 0);
-
-		tl.fromTo(content, {
-			x: "-35%"
-		}, {
-			x: "0%",
-			ease: "expo.out",
-			duration: 1
-		}, 0);
-		tl.fromTo(content, {
-			opacity: 0
-		}, {
-			opacity: 1,
-			duration: .5
-		}, .1);
-*/
-	}
-	mmenuHide();
 
 	/* dark mode */
 	$(function(darkMode){
