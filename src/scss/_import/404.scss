@@ -1,0 +1,126 @@
+.section_nf{
+	margin-top: calc(-1 * var(--head-height));
+
+}
+.nf__cont{
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: v(80) 0 v(170);
+
+	@include media($w-lg) {
+		padding: v(140) 0 v(130);
+	}
+}
+.nf__link{
+	--link-color: var(--text-black);
+	--link-color-active: var(--text-black);
+	position: relative;
+
+	@include media($w-md) {
+		padding-right: v(150);
+	}
+	@include media($w-lg) {
+		padding-right: v(200);
+	}
+	@include media($w-xl) {
+		padding-right: v(410);
+	}
+}
+.nf__error{
+	font-size: v(208);
+	line-height: 0.9;
+	letter-spacing: -0.05em;
+	color: var(--bg-gray);
+
+	@include media($w-md) {
+		font-size: v(320);
+	}
+	@include media($w-lg) {
+		font-size: v(450);
+	}
+	@include media($w-xl) {
+		font-size: v(562);
+	}
+}
+.nf__text{
+	display: flex;
+	flex-flow: column;
+	position: absolute;
+	left: v(118);
+	bottom: v(-43);
+	margin-right: v(-10);
+	&--title{
+		font-size: v(36);
+		line-height: 1;
+		font-weight: 600;
+		letter-spacing: -0.03em;
+	}
+	&--sub{
+		font-size: v(14);
+		line-height: 1.5;
+		margin-top: v(10);
+	}
+	&--icon{
+		width: v(80);
+		height: v(80);
+		background: var(--lime);
+		position: absolute;
+		border-radius: 50%;
+		right: v(51);
+		bottom: v(-70);
+		svg{
+			width: v(20);
+			height: v(18);
+			fill: currentColor;
+		}
+	}
+
+	@include media($w-md) {
+		left: auto;
+		right: v(50);
+		&--title{
+			font-size: v(60);
+			letter-spacing: -0.05em;
+		}
+		&--sub{
+			font-size: v(18);
+			margin-top: v(20);
+			letter-spacing: -0.03em;
+		}
+		&--icon{
+			right: v(-60);
+			top: v(50);
+			bottom: auto;
+			transform: translateY(-50%);
+		}
+	}
+	@include media($w-lg) {
+		&--title{
+			font-size: v(80);
+		}
+		&--sub{
+			font-size: v(22);
+		}
+		&--icon{
+			width: v(120);
+			height: v(120);
+		}
+	}
+	@include media($w-xl) {
+		bottom: v(-13);
+		right: v(95);
+		&--title{
+			font-size: v(100);
+		}
+		&--sub{
+			font-size: v(28);
+			margin-top: v(30);
+		}
+		&--icon{
+			right: v(-75);
+			top: v(91);
+		}
+	}
+}

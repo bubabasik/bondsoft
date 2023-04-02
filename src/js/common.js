@@ -202,6 +202,8 @@ $(function(){
 				beforeClose : function( instance, current ) {
 					this.opts.animationEffect = true;
 					this.opts.transitionEffect = true;
+					this.opts.animationDuration = 400;
+					this.opts.transitionDuration = 400;
 					$(current.src).removeClass('active');
 				},
 				afterClose : function( instance, current ) {

@@ -1,4 +1,5 @@
 .section_bid{
+	padding-top: v(60);
 	padding-bottom: v(120);
 
 	&-page{
@@ -9,8 +10,33 @@
 			font-size: v(36);
 			letter-spacing: -0.03em;
 		}
+
+		&-content{
+			.title{
+				font-size: v(33);
+				letter-spacing: -0.05em;
+			}
+			.bid__cont{
+				margin-top: v(30);
+			}
+			.bid__text{
+				font-size: v(18);
+				line-height: 1.25;
+			}
+			.form{
+				--form-margin: calc(11 * var(--fz));
+			}
+		}
+	}
+	@include media($w-lg) {
+		padding-top: v(90);
+		padding-bottom: v(90);
+		&-page{
+			padding-top: v(125);
+		}
 	}
 	@include media($w-xl) {
+		padding-top: v(125);
 		padding-bottom: v(125);
 		&-page{
 			padding-top: v(168);
@@ -34,6 +60,9 @@
 	font-size: v(14);
 	line-height: 1.5;
 
+	@include media($w-md) {
+		font-size: v(18);
+	}
 	@include media($w-lg) {
 		flex: 0 0 50%;
 		max-width: 50%;
@@ -41,6 +70,7 @@
 		font-size: v(20);
 		letter-spacing: -0.03em;
 	}
+
 	@include media($w-xl) {
 		font-size: v(28);
 		padding-right: v(260);

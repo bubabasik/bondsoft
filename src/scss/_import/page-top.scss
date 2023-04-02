@@ -112,6 +112,18 @@
 		padding-bottom: v(13);
 	}
 }
+.pagetop__date{
+	color: var(--text-gray);
+	margin-top: v(20);
+	font-size: v(12);
+	line-height: 1.5;
+	text-transform: uppercase;
+
+	@include media($w-lg) {
+		font-size: v(18);
+		margin-top: v(22);
+	}
+}
 
 .pagetop__descr{
 	font-size: v(14);

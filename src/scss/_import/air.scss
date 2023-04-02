@@ -86,3 +86,44 @@
 .air__more{
 
 }
+
+.section_airvideo{
+	padding-top: v(3);
+	padding-bottom: v(60);
+
+	@include media($w-lg) {
+		padding-top: 0;
+		padding-bottom: v(90);
+	}
+	@include media($w-xl) {
+		padding-bottom: v(125);
+	}
+}
+.airvideo__cont{
+	border-top: 1px solid var(--line-gray);
+	display: flex;
+	justify-content: center;
+	padding-top: v(61);
+
+	@include media($w-xl) {
+		padding-top: v(120);
+	}
+}
+.airvideo__video{
+	position: relative;
+	width: 100%;
+	padding-bottom: 57.22%;
+
+	iframe{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%!important;
+		height: 100%!important;
+	}
+
+	@include media($w-xl) {
+		max-width: v(1315);
+		padding-bottom: 41.27%;
+	}
+}

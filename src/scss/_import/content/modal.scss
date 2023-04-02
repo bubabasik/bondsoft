@@ -2,11 +2,12 @@
 .fancybox-bg{
 	background: rgb(34,34,34)!important;
 	opacity: 0!important;
-	transition: .5s cubic-bezier(.13,.6,.12,.92)!important;
+	transition: .4s ease!important;
 }
 .fancybox-is-open {
 	.fancybox-bg{
 		opacity: .15!important;
+	transition: 1s cubic-bezier(.23,.91,.06,1)!important;
 	}
 }
 .fancy-from-right,
@@ -27,4 +28,10 @@
 
 .fancybox-slide--html{
 	padding: 0 !important;
+}
+
+.fancy-mmenu{
+	.fancybox-slide--html{
+		overflow-x: hidden;
+	}
 }
