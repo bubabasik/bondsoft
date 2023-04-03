@@ -8,30 +8,32 @@
 
 </head>
 <body>
-
+<div class="preloader"></div>
 	@@include('_header.html')
 
 	<section class="section_top">
 		<div class="container">
 			
-			<div class="top__cont">
+			<div class="top__cont first-screen-title">
 				<div class="top__title">
-					<span>Ваше агентство</span>
-					<span>цифрового</span> 
-					<span>маркетинга</span>
+					<span class="line"><span>Ваше агентство</span></span>
+					<span class="line"><span>цифрового</span></span>
+					<span class="line"><span>маркетинга</span></span>
 				</div>
 				<div class="top__sub">
-					<div class="top__sub--slider">
-						<div class="top__sub--slide">Для тех кому важна эффективность каждого вложенного рубля</div>
-						<div class="top__sub--slide">Для тех кто ценит надежность</div>
-						<div class="top__sub--slide">Для тех кто думает об окупаемости</div>
-						<div class="top__sub--slide">Для тех кому важен клиентский сервис</div>
+					<div class="top__sub-text-slider">
+						<div class="line_title slide-text slide-text-first">Для тех, кому важна эффективность каждого вложенного рубля</div>
+						<div class="line_title slide-text slide-text-second">Для тех, кто ценит надежность</div>
+						<div class="line_title slide-text slide-text-third">Для тех, кто думает об окупаемости</div>
+						<div class="line_title slide-text slide-text-fourth">Для тех, кому важен клиентский сервис</div>					
 					</div>
 				</div>
 				<div class="top__link">
-					<a href="#" class="top__link--item">
-						<svg class="ico ico-center"><use xlink:href="./img/sprite.svg#info" /></svg>
-					</a>
+					<div class="pin-but">
+						<a href="#" class="top__link--item">
+							<svg class="ico ico-center"><use xlink:href="./img/sprite.svg#info" /></svg>
+						</a>
+					</div>
 				</div>
 			</div>
 
@@ -42,10 +44,21 @@
 	<section class="section_lines">
 		<div class="container">
 			
-			<div class="lines__item" data-splitting>Найдем клиентов</div>
-			<div class="lines__item" data-splitting>Построим систему продаж</div>
-			<div class="lines__item" data-splitting>Позаботимся о репутации</div>
-
+			<div class="flip-anim">
+				<div class="lines__item lines-flip-one" data-splitting>Найдем клиентов</div>
+				<div class="container-flip-one container-line"></div>
+			</div>
+			<div class="flip-line"></div>
+			<div class="flip-anim">
+				<div class="lines__item lines-flip-two" data-splitting>Построим систему продаж</div>
+				<div class="container-flip-two container-line"></div>
+			</div>
+			<div class="flip-line"></div>
+			<div class="flip-anim">
+				<div class="lines__item lines-flip-three" data-splitting>Позаботимся о репутации</div>
+				<div class="container-flip-three container-line"></div>
+			</div>
+			
 		</div>
 	</section>
 	<!-- # LINES -->
@@ -54,8 +67,8 @@
 	<section class="section_modcase">
 		<div class="container">
 			
-			<div class="modcase__cont aside">
-				<div class="mod__title aside-left">
+			<div class="modcase__cont aside sub_title">
+				<div class="mod__title aside-left sub-line_title">
 					кейсы
 				</div>
 				<div class="modcase__list aside-right">
@@ -119,8 +132,8 @@
 	<section class="section_modabout dark-mode-trigger light-section">
 		<div class="container">
 			
-			<div class="subtitle">о нас</div>
-			<div class="title">
+			<div class="subtitle subtitle-anim-about-before">о нас</div>
+			<div class="title line_title subtitle-anim-about">
 				Специализируемся на проектах в сферах b2b и недвижимости
 			</div>
 		</div>
