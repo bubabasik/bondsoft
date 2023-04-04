@@ -307,7 +307,21 @@
 
 .pagetop__image{
 	margin-top: v(60);
+	position: relative;
+	padding-bottom: 71.68%;
+	overflow: hidden;
+	img{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		will-change: transform;
+	}
+
 	@include media($w-xl) {
 		margin-top: v(122);
+		padding-bottom: 42.72%;
 	}
 }

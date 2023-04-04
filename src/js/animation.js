@@ -826,6 +826,36 @@ $(document).ready(function() {
 		})
 	})
 
+	/* параллакс фото */
+	$(function(){
+		const img = document.querySelector('.pagetop__image img');
+
+		if(!img) {return;}
+		
+		gsap.registerPlugin(ScrollTrigger);
+
+		gsap.set(img, {
+			height: '125%',
+			y: '-25%'
+		});
+
+		let parallax = gsap.timeline()
+		.to(img, {
+			scrollTrigger:{
+				trigger: '.pagetop__image',
+				start: 'top bottom',
+				end: 'bottom top',
+				scrub: .5,
+				onUpdate: self  => {
+					let h = self.progress / 4 * 100;
+					gsap.set(img, {
+						transform: 'translateY(calc(-25% + '+h+'%))'
+					})
+				}
+			}
+		})
+	})
+
 });
 
 
