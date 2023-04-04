@@ -20,6 +20,8 @@
 	line-height: 1.25;
 	letter-spacing: -0.03em;
 	margin-bottom: v(21);
+	position: relative;
+	z-index: 5;
 	a{
 		--link-color: var(--text-gray);
 		--link-color-active: var(--text-gray);
@@ -236,6 +238,18 @@
 		font-family: var(--font-avenir);
 		font-weight: 300;
 	}
+	&--number{
+		position: relative;
+		opacity: 0;
+		visibility: hidden;
+		&.--animate-num{
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 1;
+			visibility: visible;
+		}
+	}
 	&--text{
 		font-size: v(14);
 		line-height: 1.5;
@@ -295,18 +309,6 @@
 			.ruble{
 				width: v(53);
 				height: v(72);
-			}
-		}
-		&--number{
-			position: relative;
-			opacity: 0;
-			visibility: hidden;
-			&.--animate-num{
-				position: absolute;
-				top: 0;
-				left: 0;
-				opacity: 1;
-				visibility: visible;
 			}
 		}
 		&--text{

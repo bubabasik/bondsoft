@@ -32,6 +32,7 @@
 	@include media($w-lg) {
 		margin: 0 v(-30);
 		flex-wrap: nowrap;
+		overflow: hidden;
 		& + &{
 			margin-top: v(40);
 		}

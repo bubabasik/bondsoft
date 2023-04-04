@@ -423,20 +423,44 @@ $(document).ready(function() {
 
 	
 	/*Курсор с притяжением*/
-	$(function(){
-		let cur = gsap.timeline({
-			scrollTrigger: {
-				trigger: ".abpoints__list",
-				start: "top+=100px bottom"
-			}
-		});
-		cur.from(".abpoints__circle", 1, {
-			autoAlpha: 0, 
-			transform: "scale(0)",
-			ease: Power4.easeOut
-		})
-	});
+
 	var windowWidth = $(window).width();
+
+	$(function(){
+
+		if(windowWidth >= 1200) {
+			let cur = gsap.timeline({
+				scrollTrigger: {
+					trigger: ".abpoints__list",
+					start: "top+=100px bottom"
+				}
+			});
+			cur.from(".abpoints__circle", 1, {
+				autoAlpha: 0, 
+				transform: "scale(0)",
+				ease: Power4.easeOut
+			})
+		}else{
+			let items = document.querySelectorAll('.abpoints__item');
+			items.forEach(item => {
+				circle = item.querySelector('.abpoints__circle');
+				if(circle) {
+					let tl = gsap.timeline({
+						scrollTrigger: {
+							trigger: item,
+							start: "top center"
+						}
+					});
+					tl.from(circle, 1, {
+						autoAlpha: 0, 
+						transform: "scale(0)",
+						ease: Power4.easeOut
+					})
+				}
+			})
+		}
+
+	});
 	if((windowWidth > 1200) & ($('.abpoints__list').length)){
 		var mArea = document.querySelector('.abpoints__list');
 		function parallaxIt(e, target, movement = 1){
@@ -863,6 +887,35 @@ $(document).ready(function() {
 			}
 		})
 	})
+
+	/* логотипы */
+	$(function(){ 
+		const lines = document.querySelectorAll('.trust__line');
+
+		if(!lines) {return;}
+
+		if(windowWidth >= 992) {
+			lines.forEach( line => {
+				let item = '<div class="marquee__inner">'+line.innerHTML+'</div>';
+				line.innerHTML = item + item + item;
+			});
+		}		
+
+		if($('.text-to-left-side').length) {
+			$(window).on("load resize scroll", function() {
+				if(windowWidth >= 1200) {
+					$(".text-to-left-side").each(function() {
+						var windowTop = $(window).scrollTop();
+						var elementTop = $(this).offset().top;
+						var leftPosition = windowTop * 1600 / elementTop;
+						$(this)
+						.find(".marquee__inner")
+						.css({ right: leftPosition });
+					});  
+				}
+			}); 
+		}
+	}); 
 
 });
 

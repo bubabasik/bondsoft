@@ -218,6 +218,10 @@
 		padding-top: v(80);
 		margin-bottom: v(80);
 
+		&:not(.--main) {
+			.abpoints__circle{display: none !important;}
+		}
+
 		&--top{
 			font-size: v(100);
 			min-height: v(100);
