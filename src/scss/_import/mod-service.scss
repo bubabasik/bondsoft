@@ -30,6 +30,7 @@
 	letter-spacing: -0.03em;
 	font-weight: 600;
 	margin-left: 0;
+	position: relative;
 
 	@include media($w-md) {
 		font-size: v(46);
@@ -47,16 +48,32 @@
 	}
 }
 .modserv__capt{
-	& + &{
-		margin-top: v(20);
+	position: relative;
+	&-original{
+		visibility: hidden;
 	}
-	&-gray{
+	&-back{
+		position: absolute;
+		top: 0;
+		left: 0;
 		color: var(--text-gray);
+	}
+	&-front{
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	&--item{
+		& + &{
+			margin-top: v(20);
+		}
 	}
 
 	@include media($w-xl) {
-		& + &{
-			margin-top: v(40);
+		&--item{
+			& + &{
+				margin-top: v(40);
+			}
 		}
 	}
 }

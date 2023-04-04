@@ -4,6 +4,8 @@
 	margin-top: calc(-1 * var(--head-height));
 	min-height: 100vh;
 	padding: v(90) 0 v(70);
+	position: relative;
+	z-index: 10;
 
 	@include media($w-md) {
 		padding: v(110) 0 v(100);

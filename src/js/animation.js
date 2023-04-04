@@ -131,7 +131,7 @@ $(document).ready(function() {
 
 	$(function(){
 		$('.line_title').each(function(){
-		   $(this).splitLines({ keepHtml:true});  
+			$(this).splitLines({ keepHtml:true});  
 		});
 	});
 
@@ -141,55 +141,55 @@ $(document).ready(function() {
 		var links = document.querySelectorAll("a");
 		var initCursor = false;
 		for (var i = 0; i < links.length; i++) {
-		var selfLink = links[i];
-		selfLink.addEventListener("mouseover", function() {
-			cursor.classList.add("new-cursor--link");
-		});
-		selfLink.addEventListener("mouseout", function() {
-			cursor.classList.remove("new-cursor--link");
-		});
+			var selfLink = links[i];
+			selfLink.addEventListener("mouseover", function() {
+				cursor.classList.add("new-cursor--link");
+			});
+			selfLink.addEventListener("mouseout", function() {
+				cursor.classList.remove("new-cursor--link");
+			});
 		} 
-	/*Стрелка*/
+		/*Стрелка*/
 		var linksArrow = document.querySelectorAll(".batch-block, .foot__link ");
 		for (var i = 0; i < linksArrow.length; i++) {
-		var arrow = linksArrow[i];
-		arrow.addEventListener("mouseover", function() {
-			cursor.classList.add("arrow");
-		});
-		arrow.addEventListener("mouseout", function() {
-			cursor.classList.remove("arrow");
-		});
+			var arrow = linksArrow[i];
+			arrow.addEventListener("mouseover", function() {
+				cursor.classList.add("arrow");
+			});
+			arrow.addEventListener("mouseout", function() {
+				cursor.classList.remove("arrow");
+			});
 		}
 		var linksCircle = document.querySelectorAll(".abpoints__list");			
 		for (var i = 0; i < linksCircle.length; i++) {
-		var circle = linksCircle[i];	
-		circle.addEventListener("mouseover", function() {
-			cursor.classList.add("circle");
-		});
-		circle.addEventListener("mouseout", function() {
-			cursor.classList.remove("circle");
-		});
+			var circle = linksCircle[i];	
+			circle.addEventListener("mouseover", function() {
+				cursor.classList.add("circle");
+			});
+			circle.addEventListener("mouseout", function() {
+				cursor.classList.remove("circle");
+			});
 		}
 		window.onmousemove = function(e) {
-		var mouseX = e.clientX;
-		var mouseY = e.clientY;
-		if (!initCursor) {
-			TweenLite.to(cursor, 0.3, {
-			opacity: 1
+			var mouseX = e.clientX;
+			var mouseY = e.clientY;
+			if (!initCursor) {
+				TweenLite.to(cursor, 0.3, {
+					opacity: 1
+				});
+				initCursor = true;
+			}
+			TweenLite.to(cursor, 0.5, {
+				top: mouseY + "px",
+				left: mouseX + "px",
+				stagger: 0.5
 			});
-			initCursor = true;
-		}
-		TweenLite.to(cursor, 0.5, {
-			top: mouseY + "px",
-			left: mouseX + "px",
-			stagger: 0.5
-		});
 		};
 		window.onmouseout = function(e) {
-		TweenLite.to(cursor, 0.3, {
+			TweenLite.to(cursor, 0.3, {
 		// opacity: 0
-		});
-		initCursor = false;
+	});
+			initCursor = false;
 		};
 	});
 
@@ -286,18 +286,18 @@ $(document).ready(function() {
 		/*Фиксированная кнопка на первом экране*/
 		var windowWidth = $(window).width();
 		if((windowWidth > 1200)){
-		$(function(){
-			ScrollTrigger.create({
-				trigger: ".pin-but",
-				start: "center center",
-				endTrigger: '.lines-flip-one',
-				end: 'center center',
-				pin: true,
-				pinSpacing: false,
-				pinType: "fixed",
-				pinReparent: true
+			$(function(){
+				ScrollTrigger.create({
+					trigger: ".pin-but",
+					start: "center center",
+					endTrigger: '.lines-flip-one',
+					end: 'center center',
+					pin: true,
+					pinSpacing: false,
+					pinType: "fixed",
+					pinReparent: true
+				});
 			});
-		});
 		}
 
 		/* 2 экран */
@@ -336,7 +336,7 @@ $(document).ready(function() {
 				const state = Flip.getState(firstHeading, {
 					props: "justify-content",
 				})
-			   containerTwo.appendChild(firstHeading);
+				containerTwo.appendChild(firstHeading);
 				Flip.from(state, {
 					ease: "cubic-bezier(0.4, 0.1, 0, 1)",
 					delay: "random(0.1, 0.3)",
@@ -345,7 +345,7 @@ $(document).ready(function() {
 				const state2 = Flip.getState(firstHeading2, {
 					props: "justify-content",
 				})
-			   containerTwo2.appendChild(firstHeading2);
+				containerTwo2.appendChild(firstHeading2);
 				Flip.from(state2, {
 					ease: "cubic-bezier(0.4, 0.1, 0, 1)",
 					delay: "random(0.1, 0.3)",
@@ -354,7 +354,7 @@ $(document).ready(function() {
 				const state3 = Flip.getState(firstHeading3, {
 					props: "justify-content",
 				})
-			   containerTwo3.appendChild(firstHeading3);
+				containerTwo3.appendChild(firstHeading3);
 				Flip.from(state3, {
 					ease: "cubic-bezier(0.4, 0.1, 0, 1)",
 					delay: "random(0.1, 0.3)",
@@ -368,54 +368,54 @@ $(document).ready(function() {
 			let revealText = document.querySelectorAll(".subtitle-anim-about");
 			gsap.registerPlugin(ScrollTrigger);
 			let revealLines = revealText.forEach((element) => {
-			const lines = element.querySelectorAll(".split-item");
-			let h2 = gsap.timeline({
-				scrollTrigger: {
-				trigger: element,
-				start: "bottom bottom"
-				}
-			});
-			h2.set(element, { autoAlpha: 1 });
-						h2.from(lines, 0.6, {
-						yPercent: 100,
-						ease: "cubic-bezier(.12,.46,.47,.99)",
-						delay: 0.1,
-						stagger:0.1
-					})  
+				const lines = element.querySelectorAll(".split-item");
+				let h2 = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "bottom bottom"
+					}
+				});
+				h2.set(element, { autoAlpha: 1 });
+				h2.from(lines, 0.6, {
+					yPercent: 100,
+					ease: "cubic-bezier(.12,.46,.47,.99)",
+					delay: 0.1,
+					stagger:0.1
+				})  
 			});
 			
-		/*SUB возле H2 О нас*/
+			/*SUB возле H2 О нас*/
 			let sub = gsap.timeline({
 				scrollTrigger: {
-				trigger: ".subtitle-anim-about",
-				start: "bottom bottom"
+					trigger: ".subtitle-anim-about",
+					start: "bottom bottom"
 				}
 			});      
-				sub.from(".subtitle-anim-about-before", 0.8, {
-						autoAlpha: 0,
-						ease: "cubic-bezier(.12,.46,.47,.99)",
-						delay: 0.1,
-						stagger:0.1 
-				}) 
-			});
+			sub.from(".subtitle-anim-about-before", 0.8, {
+				autoAlpha: 0,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1 
+			}) 
+		});
 
 		/*SUB одиночные*/		
 		$(document).ready(function() {
 			let revealText = document.querySelectorAll(".sub_title");
 			gsap.registerPlugin(ScrollTrigger);
 			let revealLines = revealText.forEach((element) => {
-			const lines = element.querySelectorAll(".sub-line_title");
-			let sub2 = gsap.timeline({
-				scrollTrigger: {
-				trigger: element,
-				start: "top+=200px bottom"
-				}
-			});
-			sub2.from(lines, 0.6, {
-				autoAlpha: 0,
-				ease: "cubic-bezier(.12,.46,.47,.99)",
-				delay: 0.1,
-				stagger:0.1 
+				const lines = element.querySelectorAll(".sub-line_title");
+				let sub2 = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "top+=200px bottom"
+					}
+				});
+				sub2.from(lines, 0.6, {
+					autoAlpha: 0,
+					ease: "cubic-bezier(.12,.46,.47,.99)",
+					delay: 0.1,
+					stagger:0.1 
 				})  
 			});
 		});
@@ -477,57 +477,57 @@ $(document).ready(function() {
 			if((windowWidth > 767)){
 				ScrollTrigger.batch(".batch-block img", {
 					onEnter: elements => {
-					gsap.from(elements, 0.8, {
-						scale: 1.4,
-						ease: "easeOut",
-						stagger: 0.2
-					});
+						gsap.from(elements, 0.8, {
+							scale: 1.4,
+							ease: "easeOut",
+							stagger: 0.2
+						});
 					},
 					once: true
 				});      
 				
 				ScrollTrigger.batch(".batch-block", {
 					onEnter: elements => {
-					gsap.from(elements, 0.6, {
-						autoAlpha: 0,
-						ease: "easeOut",
-						delay: 0.1,
-						stagger: 0.2
-					});
+						gsap.from(elements, 0.6, {
+							autoAlpha: 0,
+							ease: "easeOut",
+							delay: 0.1,
+							stagger: 0.2
+						});
 					},
 					once: true
 				});
 				
 				ScrollTrigger.batch(".batch-block-info", {
 					onEnter: elements => {
-					gsap.from(elements, 0.8, {
+						gsap.from(elements, 0.8, {
 							autoAlpha: 0,
 							delay: 0.3,
 							ease: "cubic-bezier(.12,.46,.47,.99)",
 							stagger: 0.2
-					});
+						});
 					},
 					once: true
 				});   
-					
+
 				ScrollTrigger.batch(".batch-block-name", {
 					onEnter: elements => {
-					gsap.from(elements, 0.8, {
+						gsap.from(elements, 0.8, {
 							autoAlpha: 0,
 							delay: 0.4,
 							ease: "cubic-bezier(.12,.46,.47,.99)",
 							stagger: 0.2
-					});
+						});
 					},
 					once: true
 				});   
 			};
-		
+
 			if((windowWidth < 766)){
 				let revealYsl = document.querySelectorAll(".batch-container");
 				gsap.registerPlugin(ScrollTrigger);
 				let revealLines = revealYsl.forEach((element) => {
-				const lines = element.querySelectorAll(".batch-block img");      
+					const lines = element.querySelectorAll(".batch-block img");      
 					let ysl = gsap.timeline({
 						scrollTrigger: {
 							trigger: element,
@@ -539,27 +539,27 @@ $(document).ready(function() {
 						ease: "easeOut"
 					})       
 				});
-					
+
 				let revealYslmob = document.querySelectorAll(".batch-container");
 				gsap.registerPlugin(ScrollTrigger);
 				let revealLinesmob = revealYslmob.forEach((element) => {
 					const lines3 = element.querySelectorAll(".batch-block-info");   
 					const lines4 = element.querySelectorAll(".batch-block-name");      
 					let ysl = gsap.timeline({
-					scrollTrigger: {
-						trigger: lines3,
-						start: "top bottom"
-					}
+						scrollTrigger: {
+							trigger: lines3,
+							start: "top bottom"
+						}
 					});
 					ysl.from(lines3, 0.8, {
-					autoAlpha: 0,
-					ease: "cubic-bezier(.12,.46,.47,.99)",
-					stagger: 0.1
+						autoAlpha: 0,
+						ease: "cubic-bezier(.12,.46,.47,.99)",
+						stagger: 0.1
 					})  
 					ysl.from(lines4, 0.8, {
-					autoAlpha: 0,
-					ease: "cubic-bezier(.12,.46,.47,.99)",
-					stagger: 0.1
+						autoAlpha: 0,
+						ease: "cubic-bezier(.12,.46,.47,.99)",
+						stagger: 0.1
 					},0.2)              
 				});			    
 			};
@@ -590,65 +590,14 @@ $(document).ready(function() {
 				let revealYsl = document.querySelectorAll(".serv-anim-block");
 				gsap.registerPlugin(ScrollTrigger);
 				let revealLines = revealYsl.forEach((element) => {
-				const lines = element.querySelectorAll(".serv__item--title.line_title .split-item");
-				const lines2 = element.querySelectorAll(".serv__item--data .split-item");
-				const lines3 = element.querySelectorAll(".serv__item--btns a");   
-				const lines4 = element.querySelectorAll(".serv__item--icon");      
-				let ysl = gsap.timeline({
-					scrollTrigger: {
-						trigger: element,
-						start: "top+=100px bottom"
-					}
-				});
-				ysl.from(lines2, 0.5, {
-					autoAlpha: 0,  
-					yPercent: 80,
-					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
-					delay: 0.1,
-					stagger:0.2
-				},0.1) 
-				ysl.from(lines3, 0.3, {
-					autoAlpha: 0,  
-					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
-					delay: 0.1,
-					stagger:0.2
-				},0.1)     
-				ysl.from(lines4, 0.4, {
-					autoAlpha: 0,  
-					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
-					delay: 0.1,
-					stagger:0.2
-					},0.1)  
-				});
-			};		
-			/* Мобильная версия */ 
-			if((windowWidth < 766)){
-				$(function(){
-					let revealYsl = document.querySelectorAll(".serv-anim-block");
-					let revealLines = revealYsl.forEach((element) => {  
+					const lines = element.querySelectorAll(".serv__item--title.line_title .split-item");
+					const lines2 = element.querySelectorAll(".serv__item--data .split-item");
+					const lines3 = element.querySelectorAll(".serv__item--btns a");   
 					const lines4 = element.querySelectorAll(".serv__item--icon");      
 					let ysl = gsap.timeline({
 						scrollTrigger: {
-							trigger: lines4,
-							start: "top bottom"
-						}
-					});
-					ysl.from(lines4, 0.4, {
-						autoAlpha: 0,  
-						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
-						delay: 0.1,
-						stagger:0.2
-						},0.1)			
-					});
-				});
-				$(function(){
-					let revealYsl = document.querySelectorAll(".serv-anim-block");
-					let revealLines = revealYsl.forEach((element) => {  
-					const lines2 = element.querySelectorAll(".serv__item--data .split-item");    
-					let ysl = gsap.timeline({
-						scrollTrigger: {
-							trigger: lines2,
-							start: "top bottom"
+							trigger: element,
+							start: "top+=100px bottom"
 						}
 					});
 					ysl.from(lines2, 0.5, {
@@ -657,25 +606,76 @@ $(document).ready(function() {
 						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
 						delay: 0.1,
 						stagger:0.2
-					},0.1) 		
-					});
-				});
-				$(function(){
-					let revealYsl = document.querySelectorAll(".serv-anim-block");
-					let revealLines = revealYsl.forEach((element) => {  
-					const lines3 = element.querySelectorAll(".serv__item--btns a");    
-					let ysl = gsap.timeline({
-						scrollTrigger: {
-							trigger: lines3,
-							start: "top bottom"
-						}
-					});
+					},0.1) 
 					ysl.from(lines3, 0.3, {
 						autoAlpha: 0,  
 						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
 						delay: 0.1,
 						stagger:0.2
-					},0.1) 	
+					},0.1)     
+					ysl.from(lines4, 0.4, {
+						autoAlpha: 0,  
+						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+						delay: 0.1,
+						stagger:0.2
+					},0.1)  
+				});
+			};		
+			/* Мобильная версия */ 
+			if((windowWidth < 766)){
+				$(function(){
+					let revealYsl = document.querySelectorAll(".serv-anim-block");
+					let revealLines = revealYsl.forEach((element) => {  
+						const lines4 = element.querySelectorAll(".serv__item--icon");      
+						let ysl = gsap.timeline({
+							scrollTrigger: {
+								trigger: lines4,
+								start: "top bottom"
+							}
+						});
+						ysl.from(lines4, 0.4, {
+							autoAlpha: 0,  
+							ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+							delay: 0.1,
+							stagger:0.2
+						},0.1)			
+					});
+				});
+				$(function(){
+					let revealYsl = document.querySelectorAll(".serv-anim-block");
+					let revealLines = revealYsl.forEach((element) => {  
+						const lines2 = element.querySelectorAll(".serv__item--data .split-item");    
+						let ysl = gsap.timeline({
+							scrollTrigger: {
+								trigger: lines2,
+								start: "top bottom"
+							}
+						});
+						ysl.from(lines2, 0.5, {
+							autoAlpha: 0,  
+							yPercent: 80,
+							ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+							delay: 0.1,
+							stagger:0.2
+						},0.1) 		
+					});
+				});
+				$(function(){
+					let revealYsl = document.querySelectorAll(".serv-anim-block");
+					let revealLines = revealYsl.forEach((element) => {  
+						const lines3 = element.querySelectorAll(".serv__item--btns a");    
+						let ysl = gsap.timeline({
+							scrollTrigger: {
+								trigger: lines3,
+								start: "top bottom"
+							}
+						});
+						ysl.from(lines3, 0.3, {
+							autoAlpha: 0,  
+							ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+							delay: 0.1,
+							stagger:0.2
+						},0.1) 	
 					});
 				});
 			};
@@ -683,31 +683,31 @@ $(document).ready(function() {
 	});
 
 
-    /* Анимаия цифр*/ 
+	/* Анимаия цифр*/ 
 	$(function(){	
 		if($('.numb-anim').length) { 
 			const items = document.querySelectorAll(".numb-anim");		
 			let revealLines = items.forEach((elem) => {
 				let numb = gsap.timeline({
 					scrollTrigger: {
-					trigger: elem,
-					start: "top+=100px bottom"
+						trigger: elem,
+						start: "top+=100px bottom"
 					}
 				});
 				numb.from(elem, {
-				textContent: 0,
-				duration: 2,
-				ease: "easeOut",
-				snap: { textContent: 1 },
-				stagger: {
-					each: 1.0,
-					onUpdate: function() {
-					this.targets()[0].innerHTML = numberWithCommas(Math.ceil(this.targets()[0].textContent));
-					},
-				}
+					textContent: 0,
+					duration: 2,
+					ease: "easeOut",
+					snap: { textContent: 1 },
+					stagger: {
+						each: 1.0,
+						onUpdate: function() {
+							this.targets()[0].innerHTML = numberWithCommas(Math.ceil(this.targets()[0].textContent));
+						},
+					}
 				});
 				function numberWithCommas(x) {
-				return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "");
+					return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "");
 				}
 			});
 		};
@@ -728,40 +728,104 @@ $(document).ready(function() {
 
 	/*Header*/
 	$(function(){
-	    const header = document.querySelector("header");
-        let lastScroll = 0;
-        const throttle = (func, time = 100) => {
-          let lastTime = 0;
-          return () => {
-            const now = new Date();
-            if (now - lastTime >= time) {
-              func();
-              time = now;
-            }
-          };
-        };
-        const validateHeader = () => {
-          const windowY = window.scrollY;
-          const windowH = window.innerHeight;
-          if (windowY > windowH) {
-            header.classList.add("is-fixed");
-            if (windowY > windowH + 50) {
-              header.classList.add("can-animate");
-              if (windowY < lastScroll) {
-                header.classList.add("scroll-up");
-              } else {
-                header.classList.remove("scroll-up");
-              }
-            } else {
-              header.classList.remove("scroll-up");
-            }
-          } else {
-            header.classList.remove("is-fixed", "can-animate");
-          }
-          lastScroll = windowY;
-        };
-        window.addEventListener("scroll", throttle(validateHeader, 100));
+		const header = document.querySelector("header");
+		let lastScroll = 0;
+		const throttle = (func, time = 100) => {
+			let lastTime = 0;
+			return () => {
+				const now = new Date();
+				if (now - lastTime >= time) {
+					func();
+					time = now;
+				}
+			};
+		};
+		const validateHeader = () => {
+			const windowY = window.scrollY;
+			const windowH = window.innerHeight;
+			if (windowY > windowH) {
+				header.classList.add("is-fixed");
+				if (windowY > windowH + 50) {
+					header.classList.add("can-animate");
+					if (windowY < lastScroll) {
+						header.classList.add("scroll-up");
+					} else {
+						header.classList.remove("scroll-up");
+					}
+				} else {
+					header.classList.remove("scroll-up");
+				}
+			} else {
+				header.classList.remove("is-fixed", "can-animate");
+			}
+			lastScroll = windowY;
+		};
+		window.addEventListener("scroll", throttle(validateHeader, 100));
 	});
+
+
+	/* Заголовок Услуги */
+	$(function(){
+		const original = document.querySelector('.modserv__capt-original');
+		const front = document.querySelector('.modserv__capt-front');
+		const back = document.querySelector('.modserv__capt-back');
+
+		if(!back) {return;}
+
+		front.innerHTML = back.innerHTML = original.innerHTML;
+
+		gsap.set(front, {clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",})
+		gsap.set(back, {clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",})
+
+		const tl = gsap.timeline({ 
+			scrollTrigger: {
+				trigger: ".modserv__cont",
+				start: "top top+=150",
+				end: "bottom top+=150",    
+				anticipatePin: 1,
+				pin: true,
+				pinSpacing : true,
+				scrub: .5,
+				toggleActions: "play none reverse none",
+				onUpdate: self  => {
+					let h = self.progress * 100;
+					gsap.set(back, {
+						clipPath: "polygon(0 0, 100% 0, 100% " + 100 - h + "%, 0 " + 100 - h + "%)",
+					})
+					gsap.set(front, {
+						clipPath: "polygon(0 0, 100% 0, 100% " + h + "%, 0 " + h + "%)",
+					})
+				}
+			}
+		})
+	})
+
+	/* О нас ЛОГО */
+	$(function(){
+		const img = document.querySelector('.abtop__img img');
+
+		if(!img) {return;}
+
+		const tl = gsap.timeline({ 
+			scrollTrigger: {
+				trigger: ".abtop__img",
+				start: "top-=100 top",
+				end: "bottom+=250 botom+=250",    
+				anticipatePin: 1,
+				pin: true,
+				pinSpacing : true,
+				scrub: .5,
+				toggleActions: "play none reverse none",
+				onUpdate: self  => {
+					let h = self.progress * 100;
+					gsap.set(img, {
+						opacity: 1 - self.progress
+					})
+				}
+			}
+		})
+	})
+
 });
 
 
