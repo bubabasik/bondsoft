@@ -291,9 +291,22 @@
 		}
 		&--num{
 			font-size: v(100);
+			position: relative;
 			.ruble{
 				width: v(53);
 				height: v(72);
+			}
+		}
+		&--number{
+			position: relative;
+			opacity: 0;
+			visibility: hidden;
+			&.--animate-num{
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: 1;
+				visibility: visible;
 			}
 		}
 		&--text{

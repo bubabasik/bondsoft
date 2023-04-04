@@ -685,8 +685,16 @@ $(document).ready(function() {
 
 	/* Анимаия цифр*/ 
 	$(function(){	
+
+		const pageNums = document.querySelectorAll('.pagetop__attr--num');
+		if(pageNums) {
+			pageNums.forEach((number) => {
+				number.innerHTML = '<div class="pagetop__attr--number">'+number.innerHTML+'</div>'+'<div class="pagetop__attr--number --animate-num">'+number.innerHTML+'</div>';
+			})
+		}
+
 		if($('.numb-anim').length) { 
-			const items = document.querySelectorAll(".numb-anim");		
+			const items = document.querySelectorAll(".--animate-num .numb-anim");		
 			let revealLines = items.forEach((elem) => {
 				let numb = gsap.timeline({
 					scrollTrigger: {
