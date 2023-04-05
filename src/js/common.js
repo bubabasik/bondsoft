@@ -83,36 +83,6 @@ $(function(){
 		}
 	});
 
-	$('.accord').on('click', function(e){
-		e.preventDefault();
-		var
-		self = $(this),
-		body = self.find('.accord--data'),
-		inner = self.find('.accord--inner'),
-		height = inner.outerHeight();
-
-		if(body.hasClass('collapsing')) {
-			return;
-		}
-
-		if(body.outerHeight() > 0) {
-			body.css('height', inner.outerHeight() + 'px')
-			setTimeout(function(){
-				body.css('height', 0).addClass('collapsing');
-			}, 10);
-			setTimeout(function(){
-				body.removeClass('collapsing');
-			}, 500);
-			self.removeClass('--active');
-		}else{
-			body.css('height', inner.outerHeight() + 'px').addClass('collapsing');
-			setTimeout(function(){
-				body.css('height', 'auto').removeClass('collapsing');
-			}, 500);
-			self.addClass('--active');
-		}
-	})
-
 
 	$(document).on('click', '.form__select--list li', function(e){
 		e.preventDefault();

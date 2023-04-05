@@ -6,7 +6,8 @@
 .abteam{
 	transition: var(--dark-timing) var(--dark-transition);
 	padding-top: v(60);
-	padding-bottom: v(120);
+	// padding-bottom: v(120);
+	padding-bottom: v(60);
 
 	&__cont{
 		display: flex;
