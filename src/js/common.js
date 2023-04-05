@@ -103,11 +103,13 @@ $(function(){
 			setTimeout(function(){
 				body.removeClass('collapsing');
 			}, 500);
+			self.removeClass('--active');
 		}else{
 			body.css('height', inner.outerHeight() + 'px').addClass('collapsing');
 			setTimeout(function(){
 				body.css('height', 'auto').removeClass('collapsing');
 			}, 500);
+			self.addClass('--active');
 		}
 	})
 

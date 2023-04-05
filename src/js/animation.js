@@ -1549,7 +1549,7 @@ $(document).ready(function() {
 		list.forEach( form => {
 			let mainTimeline = gsap.timeline();
 			let pause = 0;
-			let outers = form.querySelectorAll('.form__outer');
+			let outers = form.querySelectorAll('.form__outer:not(.form__bottom)');
 
 			outers.forEach( (outer, index) => {
 				let tl = gsap.timeline();
@@ -1583,6 +1583,17 @@ $(document).ready(function() {
 				mainTimeline.add(tl, pause);
 			});
 
+			let subms = form.querySelectorAll('.form__subm--btn, .form__subm--agree');
+			subms.forEach( (item, index) => {
+				let tl = gsap.timeline();
+				tl.from(item, {
+					autoAlpha: 0,  
+					duration: .8,
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+				}) 
+				pause += .3;
+				mainTimeline.add(tl, pause);
+			})
 
 			ScrollTrigger.create({  
 				trigger: form,
