@@ -129,6 +129,42 @@ $(function(){
 
 $(document).ready(function() {
 
+	/* Заголовок Услуги */
+	$(function(){
+		const original = document.querySelector('.modserv__capt-original');
+		const front = document.querySelector('.modserv__capt-front');
+		const back = document.querySelector('.modserv__capt-back');
+
+		if(!back) {return;}
+
+		front.innerHTML = back.innerHTML = original.innerHTML;
+
+		gsap.set(front, {clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",})
+		gsap.set(back, {clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",})
+
+		const tl = gsap.timeline({ 
+			scrollTrigger: {
+				trigger: ".modserv__cont",
+				start: "top top+=150",
+				end: "bottom top+=150",    
+				anticipatePin: 1,
+				pin: true,
+				pinSpacing : true,
+				scrub: .5,
+				toggleActions: "play none reverse none",
+				onUpdate: self  => {
+					let h = self.progress * 100;
+					gsap.set(back, {
+						clipPath: "polygon(0 0, 100% 0, 100% " + 100 - h + "%, 0 " + 100 - h + "%)",
+					})
+					gsap.set(front, {
+						clipPath: "polygon(0 0, 100% 0, 100% " + h + "%, 0 " + h + "%)",
+					})
+				}
+			}
+		})
+	})
+
 	$(function(){
 		$('.line_title').each(function(){
 			$(this).splitLines({ keepHtml:true});  
@@ -399,8 +435,13 @@ $(document).ready(function() {
 			}) 
 		});
 
-		/*SUB одиночные*/		
-		$(document).ready(function() {
+
+	};
+
+
+	/*SUB одиночные*/		
+	$(document).ready(function() {
+		if($('.sub-line_title').length) { 
 			let revealText = document.querySelectorAll(".sub_title");
 			gsap.registerPlugin(ScrollTrigger);
 			let revealLines = revealText.forEach((element) => {
@@ -418,81 +459,83 @@ $(document).ready(function() {
 					stagger:0.1 
 				})  
 			});
-		});
-	};
+		};
+	});	
 
-	
+
 	/*Курсор с притяжением*/
-
-	var windowWidth = $(window).width();
-
-	$(function(){
-
-		if(windowWidth >= 1200) {
-			let cur = gsap.timeline({
-				scrollTrigger: {
-					trigger: ".abpoints__list",
-					start: "top+=100px bottom"
-				}
-			});
-			cur.from(".abpoints__circle", 1, {
-				autoAlpha: 0, 
-				transform: "scale(0)",
-				ease: Power4.easeOut
-			})
-		}else{
-			let items = document.querySelectorAll('.abpoints__item');
-			items.forEach(item => {
-				circle = item.querySelector('.abpoints__circle');
-				if(circle) {
-					let tl = gsap.timeline({
-						scrollTrigger: {
-							trigger: item,
-							start: "top center"
-						}
-					});
-					tl.from(circle, 1, {
-						autoAlpha: 0, 
-						transform: "scale(0)",
-						ease: Power4.easeOut
-					})
-				}
-			})
-		}
-
-	});
-	if((windowWidth > 1200) & ($('.abpoints__list').length)){
-		var mArea = document.querySelector('.abpoints__list');
-		function parallaxIt(e, target, movement = 1){
-			var boundingRect = mArea.getBoundingClientRect();
-			var relX = e.pageX - boundingRect.left;
-			var relY = e.pageY - boundingRect.top;
-			var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-			gsap.to(target, {
-				x: (relX - boundingRect.width / 1.75),
-				y: (relY - boundingRect.height / 10.6 - scrollTop),
-				ease: "power1",
-				duration: 0.6
-			});
-		}
-		function callParallax(e){
-			parallaxIt(e, '.abpoints__circle');
-		}
-		mArea.addEventListener('mousemove', function(e){
-			callParallax(e);
+	if(($('.abpoints__list').length)){	
+	
+		var windowWidth = $(window).width();	
+			
+		$(function(){
+			if(windowWidth >= 1200) {
+				let cur = gsap.timeline({
+					scrollTrigger: {
+						trigger: ".abpoints__list",
+						start: "top+=100px bottom"
+					}
+				});
+				cur.from(".abpoints__circle", 1, {
+					autoAlpha: 0, 
+					transform: "scale(0)",
+					ease: Power4.easeOut
+				})
+			}else{
+				let items = document.querySelectorAll('.abpoints__item');
+				items.forEach(item => {
+					circle = item.querySelector('.abpoints__circle');
+					if(circle) {
+						let tl = gsap.timeline({
+							scrollTrigger: {
+								trigger: item,
+								start: "top center"
+							}
+						});
+						tl.from(circle, 1, {
+							autoAlpha: 0, 
+							transform: "scale(0)",
+							ease: Power4.easeOut
+						})
+					}
+				})
+			}
+			
 		});
-		mArea.addEventListener('mouseleave', function(e){
-			gsap.to('.abpoints__circle', {
-				scale:1,
-				x: 0,
-				y: 0,
-				ease: "power3",
-				duration: 0.6
+
+		if((windowWidth > 1200) & ($('.abpoints__list').length)){
+			var mArea = document.querySelector('.abpoints__list');
+			function parallaxIt(e, target, movement = 1){
+				var boundingRect = mArea.getBoundingClientRect();
+				var relX = e.pageX - boundingRect.left;
+				var relY = e.pageY - boundingRect.top;
+				var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+				gsap.to(target, {
+					x: (relX - boundingRect.width / 1.75),
+					y: (relY - boundingRect.height / 10.6 - scrollTop),
+					ease: "power1",
+					duration: 0.6
+				});
+			}
+			function callParallax(e){
+				parallaxIt(e, '.abpoints__circle');
+			}
+			mArea.addEventListener('mousemove', function(e){
+				callParallax(e);
 			});
-		});
+			mArea.addEventListener('mouseleave', function(e){
+				gsap.to('.abpoints__circle', {
+					scale:1,
+					x: 0,
+					y: 0,
+					ease: "power3",
+					duration: 0.6
+				});
+			});
+		}
 	}
-
+	
 
 	/* Кейсы и мы в эфире */
 	$(document).ready(function() {
@@ -795,43 +838,6 @@ $(document).ready(function() {
 		window.addEventListener("scroll", throttle(validateHeader, 100));
 	});
 
-
-	/* Заголовок Услуги */
-	$(function(){
-		const original = document.querySelector('.modserv__capt-original');
-		const front = document.querySelector('.modserv__capt-front');
-		const back = document.querySelector('.modserv__capt-back');
-
-		if(!back) {return;}
-
-		front.innerHTML = back.innerHTML = original.innerHTML;
-
-		gsap.set(front, {clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",})
-		gsap.set(back, {clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",})
-
-		const tl = gsap.timeline({ 
-			scrollTrigger: {
-				trigger: ".modserv__cont",
-				start: "top top+=150",
-				end: "bottom top+=150",    
-				anticipatePin: 1,
-				pin: true,
-				pinSpacing : true,
-				scrub: .5,
-				toggleActions: "play none reverse none",
-				onUpdate: self  => {
-					let h = self.progress * 100;
-					gsap.set(back, {
-						clipPath: "polygon(0 0, 100% 0, 100% " + 100 - h + "%, 0 " + 100 - h + "%)",
-					})
-					gsap.set(front, {
-						clipPath: "polygon(0 0, 100% 0, 100% " + h + "%, 0 " + h + "%)",
-					})
-				}
-			}
-		})
-	})
-
 	/* О нас ЛОГО */
 	$(function(){
 		const img = document.querySelector('.abtop__img img');
@@ -916,6 +922,744 @@ $(document).ready(function() {
 			}); 
 		}
 	}); 
+
+	/*Появление слайдов на стр. Карьера*/
+	$(function(){
+		if($('.life__slider').length) { 
+			let revealText = document.querySelectorAll(".life__slider");
+			gsap.registerPlugin(ScrollTrigger);
+			let revealLines = revealText.forEach((element) => {
+			const lines = element.querySelectorAll(".overlay");
+			let ov = gsap.timeline({
+				scrollTrigger: {
+				trigger: element,
+				start: "top+=200px bottom"
+				}
+			});
+			ov.to(lines, {
+				duration: 0.8,
+				ease: "epower4.out",
+				webkitClipPath:"polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+				clipPath:"polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+				stagger:0.2              
+			})
+			});
+		}
+	})
+
+	/*Одиночные заголовки внутри страниц */
+	$(function(){
+		let revealYsl = document.querySelectorAll(".subtitle-anim-dop-title");
+			gsap.registerPlugin(ScrollTrigger);
+			let revealLines = revealYsl.forEach((element) => {
+				const lines2 = element.querySelectorAll(".split-item");
+				let ysl = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "top+=100px bottom"
+					}
+				});
+				ysl.from(lines2, 0.6, {
+					yPercent: 100,
+					ease: "cubic-bezier(.12,.46,.47,.99)",
+					delay: 0.1,
+					stagger:0.1
+				}) 
+			});
+	});	
+		
+	/*Одиночные кнопки*/
+	$(function(){
+		let revealYsl = document.querySelectorAll(".btn-anim");
+		gsap.registerPlugin(ScrollTrigger);
+		let revealLines = revealYsl.forEach((element) => {
+			const btn = element.querySelectorAll(".btn");
+			let ysl = gsap.timeline({
+				scrollTrigger: {
+					trigger: element,
+					start: "top+=100px bottom"
+				}
+			});
+			ysl.from(btn, 0.3, {
+				autoAlpha: 0,  
+				ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+				delay: 0.1,
+				stagger:0.1
+			},0.1) 
+		});
+	});
+
+	/*Стр Карьера*/	
+	if($('.section_career').length) { 
+		$(function(){
+			let tt = gsap.timeline();
+			tt.to(".preloader", {
+				autoAlpha: 0,
+				ease: "epower4.out",
+				duration: 0.2,
+				onComplete: function() {
+					$('.preloader').addClass('onComplete');
+				}
+			})
+			tt.to(".pagetop__prev .link", 0.6, {
+				autoAlpha: 1,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1
+			},0.2)
+			tt.from(".subtitle-anim-h2 .split-item", 0.6, {
+				yPercent: 100,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1
+			},0.2)
+		});   
+
+		$(function(){
+			let revealYsl = document.querySelectorAll(".abpoints__item");
+				gsap.registerPlugin(ScrollTrigger);
+				let revealLines = revealYsl.forEach((element) => {
+					const lines = element.querySelectorAll(".abpoints__item--top");
+					let ysl = gsap.timeline({
+						scrollTrigger: {
+							trigger: element,
+							start: "center bottom"
+						}
+					});
+					ysl.from(lines, 0.3, {
+						autoAlpha: 0,  
+						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+						delay: 0.1,
+						stagger:0.2
+					},0.1) 				
+				});
+		});  
+	
+		$(function(){
+			let revealYsl = document.querySelectorAll(".abpoints__item");
+				gsap.registerPlugin(ScrollTrigger);
+				let revealLines = revealYsl.forEach((element) => {
+					const lines2 = element.querySelectorAll(".abpoints__item--text .split-item");
+					let ysl = gsap.timeline({
+						scrollTrigger: {
+							trigger: element,
+							start: "center bottom"
+						}
+					});
+					ysl.from(lines2, 0.5, {
+						autoAlpha: 0,  
+						yPercent: 80,
+						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+						delay: 0.1,
+						stagger:0.2
+					},0.1) 
+				});
+		}); 		
+
+		/*Блок Вакансии - пункты*/
+		$(function(){
+			let revealYsl = document.querySelectorAll(".vacancy__item");
+			gsap.registerPlugin(ScrollTrigger);
+			let revealLines = revealYsl.forEach((element) => {
+				const lines = element.querySelectorAll("span");
+				let ysl = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "top+=100px bottom"
+					}
+				});
+				ysl.from(lines, 0.3, {
+					autoAlpha: 0,  
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					delay: 0.1,
+					stagger:0.1
+				},0.1) 				
+			});
+		});  
+	}
+
+
+	/*Стр Кейсы*/	
+	if($('.section_case').length) { 
+		$(function(){
+			let tt = gsap.timeline();
+			tt.to(".preloader", {
+				autoAlpha: 0,
+				ease: "epower4.out",
+				duration: 0.2,
+				onComplete: function() {
+					$('.preloader').addClass('onComplete');
+				}
+			})
+			tt.to(".pagetop__prev .link", 0.6, {
+				autoAlpha: 1,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1
+			},0.2)
+			tt.from(".subtitle-anim-h2 .split-item", 0.6, {
+				yPercent: 100,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1
+			},0.2)
+			tt.to(".pagetop__sub", 0.6, {
+				autoAlpha: 1,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1
+			},0.4)			
+		});  
+	};
+
+	/* Кнопки-фильтры */
+	if($('.filter-anim').length) { 
+		$(function(){
+			let revealYsl = document.querySelectorAll(".filter-anim");
+			gsap.registerPlugin(ScrollTrigger);
+			let revealLines = revealYsl.forEach((element) => {
+				const lines3 = element.querySelectorAll("a");
+				let ysl = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "top+=100px bottom"
+					}
+				});
+				ysl.to(lines3, 0.3, {
+					autoAlpha: 1,  
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					delay: 0.1,
+					stagger:0.1
+				},0.1) 
+			});
+		});	
+	};
+
+	/*Отдельная страница кейса*/	
+	if($('.section-one-case').length) { 
+		$(function(){
+			$(function(){
+				let tt = gsap.timeline();
+				tt.to(".preloader", {
+					autoAlpha: 0,
+					ease: "epower4.out",
+					duration: 0.2,
+					onComplete: function() {
+						$('.preloader').addClass('onComplete');
+					}
+				})
+				tt.to(".pagetop__prev .link", 0.6, {
+					autoAlpha: 1,
+					ease: "cubic-bezier(.12,.46,.47,.99)",
+					delay: 0.1,
+					stagger:0.1
+				},0.2)
+				tt.from(".subtitle-anim-h2 .split-item", 0.6, {
+					yPercent: 100,
+					ease: "cubic-bezier(.12,.46,.47,.99)",
+					delay: 0.1,
+					stagger:0.1
+				},0.2)			
+				tt.from(".pagetop__term--text .split-item", 0.5, {
+					autoAlpha: 0,  
+					yPercent: 80,
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					delay: 0.1,
+					stagger:0.2
+				},0.2) 
+			/*	tt.from(".pagetop__attr--item:last-child", 1, {
+					autoAlpha: 0, 
+					transform: "scale(0)",
+					ease: Power4.easeOut
+				})	*/
+				tt.to(".pagetop__term--date", 0.6, {
+					autoAlpha: 1,
+					ease: "cubic-bezier(.12,.46,.47,.99)",
+					delay: 0.1,
+					stagger:0.1
+				},0.4)
+				tt.from(".pagetop__attr--num", 0.3, {
+					autoAlpha: 0,  
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					delay: 0.1
+				},0.4) 	
+				tt.from(".pagetop__attr--text", 0.5, {
+					autoAlpha: 0,  
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					delay: 0.1
+				},0.5) 
+			});  
+		});
+
+
+		$(function(){
+			let revealYsl = document.querySelectorAll(".attr__item--data");
+				gsap.registerPlugin(ScrollTrigger);
+				let revealLines = revealYsl.forEach((element) => {
+					const lines2 = element.querySelectorAll("div");
+					let ysl = gsap.timeline({
+						scrollTrigger: {
+							trigger: element,
+							start: "center bottom"
+						}
+					});
+					ysl.from(lines2, 0.5, {
+						autoAlpha: 0,  
+						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+						delay: 0.1,
+						stagger:0.1
+					},0.1) 
+				});
+		}); 
+	};
+
+
+	/*Стр. Услуги*/	
+	if($('.service-anim').length) { 
+		$(function(){
+			let tt = gsap.timeline();
+			tt.to(".preloader", {
+				autoAlpha: 0,
+				ease: "epower4.out",
+				duration: 0.2,
+				onComplete: function() {
+					$('.preloader').addClass('onComplete');
+				}
+			})
+			tt.to(".pagetop__prev .link", 0.6, {
+				autoAlpha: 1,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1
+			},0.2)
+			tt.from(".subtitle-anim-h2 .split-item", 0.6, {
+				yPercent: 100,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1
+			},0.2)
+		});  
+	};
+
+	/*Стр. Контекстная реклама для B2B*/	
+	if($('.service-item-anim').length) { 
+		$(function(){
+			let tt = gsap.timeline();
+			tt.to(".preloader", {
+				autoAlpha: 0,
+				ease: "epower4.out",
+				duration: 0.2,
+				onComplete: function() {
+					$('.preloader').addClass('onComplete');
+				}
+			})
+			tt.to(".pagetop__prev .link", 0.6, {
+				autoAlpha: 1,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1
+			},0.2)
+			tt.from(".subtitle-anim-h2 .split-item", 0.6, {
+				yPercent: 100,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1
+			},0.2)		
+			tt.from(".pagetop__descr--text .split-item", 0.5, {
+				autoAlpha: 0,  
+				yPercent: 80,
+				ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+				delay: 0.1,
+				stagger:0.2
+			},0.3) 	
+			tt.to(".pagetop__descr--btn a", 0.3, {
+				autoAlpha: 1,  
+				ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+				delay: 0.1,
+				stagger:0.1
+			},0.4)
+		});  
+
+		$(function(){
+			let revealYsl = document.querySelectorAll(".plus__item accord");
+				gsap.registerPlugin(ScrollTrigger);
+				let revealLines = revealYsl.forEach((element) => {
+					const lines2 = element.querySelectorAll("div");
+					let ysl = gsap.timeline({
+						scrollTrigger: {
+							trigger: element,
+							start: "center bottom"
+						}
+					});
+					ysl.from(lines2, 0.5, {
+						autoAlpha: 0,  
+						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+						delay: 0.1,
+						stagger:0.1
+					},0.1) 
+				});
+		}); 
+	};
+
+
+	/* Блок О нас*/	
+	if($('.aboute-list-anim').length) { 
+		$(function(){
+			let revealYsl = document.querySelectorAll(".abpoints__item");
+				gsap.registerPlugin(ScrollTrigger);
+				let revealLines = revealYsl.forEach((element) => {
+					const lines = element.querySelectorAll(".abpoints__item--top");
+					let ysl = gsap.timeline({
+						scrollTrigger: {
+							trigger: element,
+							start: "center bottom"
+						}
+					});
+					ysl.from(lines, 0.3, {
+						autoAlpha: 0,  
+						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+						delay: 0.1,
+						stagger:0.2
+					},0.1) 				
+				});
+		});  
+
+		$(function(){
+			let revealYsl = document.querySelectorAll(".abpoints__item");
+				gsap.registerPlugin(ScrollTrigger);
+				let revealLines = revealYsl.forEach((element) => {
+					const lines2 = element.querySelectorAll(".abpoints__item--text .split-item");
+					let ysl = gsap.timeline({
+						scrollTrigger: {
+							trigger: element,
+							start: "center bottom"
+						}
+					});
+					ysl.from(lines2, 0.5, {
+						autoAlpha: 0,  
+						yPercent: 80,
+						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+						delay: 0.1,
+						stagger:0.2
+					},0.1) 
+				});
+		}); 		
+	};
+
+
+	/* Блок Отзывы клиентов*/	
+	if($('.review__slide').length) {
+		$(function(){
+			let revealYsl = document.querySelectorAll(".review__slide");
+				gsap.registerPlugin(ScrollTrigger);
+				let revealLines = revealYsl.forEach((element) => {
+					const lines2 = element.querySelectorAll("div");
+					let ysl = gsap.timeline({
+						scrollTrigger: {
+							trigger: element,
+							start: "center bottom"
+						}
+					});
+					ysl.from(lines2, 0.5, {
+						autoAlpha: 0,  
+						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+						delay: 0.1,
+						stagger:0.1
+					},0.1) 
+				});
+		}); 
+	};
+
+	/* Блок Преимущества */
+	if($('.section_plus').length) {
+		$(function(){
+			let revealYsl = document.querySelectorAll(".section_plus");
+				gsap.registerPlugin(ScrollTrigger);
+				let revealLines = revealYsl.forEach((element) => {
+					const lines2 = element.querySelectorAll(".plus__item div");
+					let ysl = gsap.timeline({
+						scrollTrigger: {
+							trigger: element,
+							start: "center bottom"
+						}
+					});
+					ysl.from(lines2, 0.5, {
+						autoAlpha: 0,  
+						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+						delay: 0.1,
+						stagger:0.1
+					},0.1) 
+				});
+		}); 
+	};
+
+	/* Блок Отвечаем на вопросы*/	
+	if($('.faq__data').length) {
+		$(function(){
+			let revealYsl = document.querySelectorAll(".faq__data");
+				gsap.registerPlugin(ScrollTrigger);
+				let revealLines = revealYsl.forEach((element) => {
+					const faq = element.querySelectorAll(".faq__item.accord");
+					let ysl = gsap.timeline({
+						scrollTrigger: {
+							trigger: element,
+							start: "center bottom"
+						}
+					});
+					ysl.from(faq, 0.5, {
+						autoAlpha: 0,  
+						yPercent: 100,
+						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+						delay: 0.1,
+						stagger:0.1
+					},0.1) 
+				});
+		}); 
+	};
+
+	/*Стр. Мы в эфире*/	
+	if($('.air-list-anim').length) { 
+		$(function(){
+			let tt = gsap.timeline();
+			tt.to(".preloader", {
+				autoAlpha: 0,
+				ease: "epower4.out",
+				duration: 0.2,
+				onComplete: function() {
+					$('.preloader').addClass('onComplete');
+				}
+			})
+			tt.to(".pagetop__prev .link", 0.6, {
+				autoAlpha: 1,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1
+			},0.2)
+			tt.from(".subtitle-anim-h2 .split-item", 0.6, {
+				yPercent: 100,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1
+			},0.2)
+			tt.to(".pagetop__sub", 0.6, {
+				autoAlpha: 1,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1
+			},0.4)	
+		});  
+	};
+
+		/*Стр. Мы в эфире - item*/	
+		if($('.air-item-anim').length) { 
+			$(function(){
+				let tt = gsap.timeline();
+				tt.to(".preloader", {
+					autoAlpha: 0,
+					ease: "epower4.out",
+					duration: 0.2,
+					onComplete: function() {
+						$('.preloader').addClass('onComplete');
+					}
+				})
+				tt.to(".pagetop__prev .link", 0.6, {
+					autoAlpha: 1,
+					ease: "cubic-bezier(.12,.46,.47,.99)",
+					delay: 0.1,
+					stagger:0.1
+				},0.2)
+				tt.from(".subtitle-anim-h2 .split-item", 0.6, {
+					yPercent: 100,
+					ease: "cubic-bezier(.12,.46,.47,.99)",
+					delay: 0.1,
+					stagger:0.1
+				},0.2)
+				tt.to(".pagetop__date", 0.6, {
+					autoAlpha: 1,
+					ease: "cubic-bezier(.12,.46,.47,.99)",
+					delay: 0.1,
+					stagger:0.1
+				},0.4)	
+			});  
+
+			$(function(){
+				let revealText = document.querySelectorAll(".subtitle-anim-about");
+				gsap.registerPlugin(ScrollTrigger);
+				let revealLines = revealText.forEach((element) => {
+					const lines = element.querySelectorAll(".split-item");
+					let h2 = gsap.timeline({
+						scrollTrigger: {
+							trigger: element,
+							start: "bottom bottom"
+						}
+					});
+					h2.set(element, { autoAlpha: 1 });
+					h2.from(lines, 0.6, {
+						yPercent: 100,
+						ease: "cubic-bezier(.12,.46,.47,.99)",
+						delay: 0.1,
+						stagger:0.1
+					})  
+				});
+				
+				let sub = gsap.timeline({
+					scrollTrigger: {
+						trigger: ".subtitle-anim-about",
+						start: "bottom bottom"
+					}
+				});      
+				sub.from(".subtitle-anim-about-before", 0.8, {
+					autoAlpha: 0,
+					ease: "cubic-bezier(.12,.46,.47,.99)",
+					delay: 0.1,
+					stagger:0.1 
+				}) 
+			});
+		};
+
+	/* Форма */
+	if($('.form').length) {
+		$(function(){
+			let revealYsl = document.querySelectorAll(".form");
+				gsap.registerPlugin(ScrollTrigger);
+				let revealLines = revealYsl.forEach((element) => {
+					const lines2 = element.querySelectorAll("div");
+					let ysl = gsap.timeline({
+						scrollTrigger: {
+							trigger: element,
+							start: "top bottom"
+						}
+					});
+					ysl.from(lines2, 0.2, {
+						autoAlpha: 0,  
+						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+						delay: 0.1,
+						stagger:0.1
+					},0.1) 
+				});
+		}); 
+	};
+
+	/* Видео */
+	if($('.airvideo__cont').length) {
+		$(function(){
+			let revealYsl = document.querySelectorAll(".airvideo__cont");
+				gsap.registerPlugin(ScrollTrigger);
+				let revealLines = revealYsl.forEach((element) => {
+					const lines2 = element.querySelectorAll(".airvideo__video");
+					let ysl = gsap.timeline({
+						scrollTrigger: {
+							trigger: element,
+							start: "top bottom"
+						}
+					});
+					ysl.from(lines2, 0.5, {
+						autoAlpha: 0,  
+						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+						delay: 0.1,
+						stagger:0.1
+					},0.1) 
+				});
+		}); 
+	};	
+
+
+	/* О нас - цифры */
+	if($('.abnum').length) {
+		$(function(){
+			let revealYsl = document.querySelectorAll(".abnum__item");
+				gsap.registerPlugin(ScrollTrigger);
+				let revealLines = revealYsl.forEach((element) => {
+					const lines = element.querySelectorAll(".abnum__num");
+					let ysl = gsap.timeline({
+						scrollTrigger: {
+							trigger: element,
+							start: "center bottom"
+						}
+					});
+					ysl.from(lines, 0.3, {
+						autoAlpha: 0,  
+						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+						delay: 0.1,
+						stagger:0.2
+					},0.1) 				
+				});
+		});  
+
+		$(function(){
+			let revealYsl = document.querySelectorAll(".abnum__item");
+				gsap.registerPlugin(ScrollTrigger);
+				let revealLines = revealYsl.forEach((element) => {
+					const lines2 = element.querySelectorAll(".abnum__name .split-item");
+					const lines3 = element.querySelectorAll(".abnum__text");			
+					let ysl = gsap.timeline({
+						scrollTrigger: {
+							trigger: element,
+							start: "center bottom"
+						}
+					});
+					ysl.from(lines2, 0.5, {
+						autoAlpha: 0,  
+						yPercent: 80,
+						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+						delay: 0.1,
+						stagger:0.2
+					},0.1) 
+					ysl.from(lines3, 0.5, {
+						autoAlpha: 0,  
+						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+						delay: 0.1,
+						stagger:0.2
+					},0.2) 					
+				});
+		}); 		
+
+	};	
+
+		/* 404 */	
+		if($('.section_nf').length) { 
+			$(function(){
+				let tt = gsap.timeline();
+				tt.to(".preloader", {
+					autoAlpha: 0,
+					ease: "epower4.out",
+					duration: 0.2,
+					onComplete: function() {
+						$('.preloader').addClass('onComplete');
+					}
+				})	
+			}); 	
+		};
+		
+		/* bid */	
+		if($('.section_bid').length) { 
+			$(function(){
+				let tt = gsap.timeline();
+				tt.to(".preloader", {
+					autoAlpha: 0,
+					ease: "epower4.out",
+					duration: 0.2,
+					onComplete: function() {
+						$('.preloader').addClass('onComplete');
+					}
+				})	
+			}); 	
+		};		
+		
+		/* bid */	
+		if($('.dark-header').length) { 
+			$(function(){
+				let tt = gsap.timeline();
+				tt.to(".preloader", {
+					autoAlpha: 0,
+					ease: "epower4.out",
+					duration: 0.2,
+					onComplete: function() {
+						$('.preloader').addClass('onComplete');
+					}
+				})	
+			}); 	
+		};	
 
 });
 

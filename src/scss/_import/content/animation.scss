@@ -141,7 +141,8 @@ header.is-fixed {
 header.scroll-up {
   transform: translate3d(0, 0, 0);
 }
-.head__row a, .head__mmenu{
+.head__row a, .head__mmenu, .pagetop__prev .link, .pagetop__sub, .filter-anim a, 
+.pagetop__term--date, .pagetop__descr--btn a, .air-item-anim .pagetop__date{
 	opacity: 0;
 }
 
@@ -210,4 +211,31 @@ header.scroll-up {
     .top__sub {
         margin-bottom: 70px;
     }   
+}
+
+/*Появление слайдов на стр. Карьера*/
+.slick-slide.slick-cloned .overlay{
+    display: none;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+     -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.slick-slide {
+    position: relative;
+}
+.overlay {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+.dark-header .preloader {
+   background: #222222;
 }
