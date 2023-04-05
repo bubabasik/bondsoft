@@ -9,10 +9,16 @@
 	@include media($w-lg) {
 		padding-top: v(60);
 		padding-bottom: v(90);
+		& + .section_modserv{
+			padding-top: v(180);
+		}
 	}
 	@include media($w-xl) {
 		padding-top: v(84);
 		padding-bottom: v(125);
+		& + .section_modserv{
+			padding-top: v(250);
+		}
 	}
 }
 .modcase__cont{

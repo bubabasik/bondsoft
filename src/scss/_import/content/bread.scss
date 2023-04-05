@@ -1,4 +1,11 @@
-
+.bread{
+	.link{
+		&:hover{
+			opacity: 0.5!important;
+		}
+	}
+}
+/*
 .bread__cont_{
 	@extend .clearfix;
 	ul{
@@ -28,3 +35,4 @@
 		}
 	}
 }
+*/

@@ -125,6 +125,7 @@
 		background: #fff;
 		border-radius: 50%;
 		z-index: -1;
+		transition: .25s var(--ease-out);
 	}
 
 	img{
@@ -136,5 +137,16 @@
 		margin: auto;
 		max-width: calc(100% - #{v(40)});
 		object-fit: contain;
+	}
+
+	@include media-hover() {
+		&:hover{
+			&:before{
+				top: v(-10);
+				right: v(-10);
+				bottom: v(-10);
+				left: v(-10);
+			}
+		}
 	}
 }

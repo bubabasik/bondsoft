@@ -158,7 +158,50 @@ $(function(){
 		form = $(this),
 		success = form.find('.form__success'),
 		bottom = form.find('.form__bottom'),
-		error = false;
+		error = false,
+		rv_email = /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/,
+
+		inp_name = form.find('input[name="name"].required'),
+		inp_phone = form.find('input[name="phone"].required'),
+		inp_email = form.find('input[name="email"].required'),
+		inp_service = form.find('input[name="service"].required');
+
+		if(inp_name.length) {
+			if(inp_name.val().length < 1) {
+				 inp_name.addClass('invalid');
+				 error=true;
+			}else{
+				inp_name.removeClass('invalid');
+			}
+		}
+
+		if(inp_phone.length) {
+			if(!inp_phone.inputmask('isComplete')) {
+				 inp_phone.addClass('invalid');
+				 error=true;
+			}else{
+				inp_phone.removeClass('invalid');
+			}
+		}
+
+		if(inp_email.length) {
+			if(!rv_email.test(inp_email.val())) {
+				 inp_email.addClass('invalid');
+				 error=true;
+			}else{
+				inp_email.removeClass('invalid');
+			}
+		}
+
+		if(inp_service.length) {
+			if(inp_service.val().length < 1) {
+				 inp_service.addClass('invalid');
+				 error=true;
+			}else{
+				inp_service.removeClass('invalid');
+			}
+		}
+
 
 		if(!error) {
 			form.addClass('--success');

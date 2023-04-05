@@ -135,12 +135,34 @@ $(document).ready(function() {
 		const front = document.querySelector('.modserv__capt-front');
 		const back = document.querySelector('.modserv__capt-back');
 
+		const sub = document.querySelector('.modserv__cont .mod__title');
+		const title = document.querySelector('.modserv__title');
+
 		if(!back) {return;}
 
 		front.innerHTML = back.innerHTML = original.innerHTML;
 
 		gsap.set(front, {clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",})
 		gsap.set(back, {clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",})
+
+		gsap.timeline({
+			scrollTrigger: {
+				trigger: ".modserv__cont",
+				start: "top+=200px bottom"
+			}
+		})
+		.from(sub, 0.6, {
+			autoAlpha: 0,
+			ease: "cubic-bezier(.12,.46,.47,.99)",
+			delay: 0.1,
+			stagger:0.1 
+		}) 
+		.from(title, 0.6, {
+			autoAlpha: 0,
+			ease: "cubic-bezier(.12,.46,.47,.99)",
+			delay: 0.1,
+			stagger:0.1 
+		}, 0)  
 
 		const tl = gsap.timeline({ 
 			scrollTrigger: {
@@ -173,7 +195,7 @@ $(document).ready(function() {
 
 		const tl = gsap.timeline({ 
 			scrollTrigger: {
-				trigger: ".abtop__img",
+				trigger: ".abtop__cont",
 				start: "top-=100 top",
 				end: "bottom+=250 botom+=250",    
 				anticipatePin: 1,
@@ -1520,7 +1542,57 @@ $(document).ready(function() {
 	};
 
 	/* Форма */
-	if($('.form').length) {
+	$(function(){
+		const list = document.querySelectorAll('.form');
+		if(!list.length) {return;}
+
+		list.forEach( form => {
+			let mainTimeline = gsap.timeline();
+			let pause = 0;
+			let outers = form.querySelectorAll('.form__outer');
+
+			outers.forEach( (outer, index) => {
+				let tl = gsap.timeline();
+
+				let inp = outer.querySelector('.form__inp, .form__select, .form__info, .form__file, .form__subm--btn');
+				let line = outer.querySelector('.form__line');
+				let agree = outer.querySelector('.form__subm--agree');
+
+				if(inp) {
+					tl.from(inp, {
+						autoAlpha: 0,  
+						duration: .6,
+						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					}) 
+				}
+				if(line) {
+					tl.from(line, {
+						duration: .6,
+						width: 0
+					}, '-=.4') 
+				}
+				if(agree) {
+					tl.from(agree, {
+						autoAlpha: 0,  
+						duration: .6,
+						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					}, '-=.4') 
+				}
+
+				pause += .3;
+				mainTimeline.add(tl, pause);
+			});
+
+
+			ScrollTrigger.create({  
+				trigger: form,
+				start: "top bottom",
+				animation: mainTimeline,
+			}); 
+
+		})
+	})
+	if($('.form--').length) {
 		$(function(){
 			let revealYsl = document.querySelectorAll(".form");
 			gsap.registerPlugin(ScrollTrigger);

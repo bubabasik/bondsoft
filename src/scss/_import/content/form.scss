@@ -4,6 +4,8 @@
 	--form-transition: .3s cubic-bezier(.4,0,1,1);
 	--form-top: calc(16 * var(--fz));
 	--form-padding: calc(9 * var(--fz));
+	position: relative;
+	z-index: 10;
 
 	margin: 0 calc(-1 * var(--form-padding));
 	display: flex;
@@ -23,7 +25,7 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
-		z-index: 1;
+		z-index: 20;
 		visibility: hidden;
 		transition: var(--form-transition);
 	}
@@ -39,17 +41,17 @@
 		}
 		& > .form__outer{
 			&:not(.form__bottom) {
-				opacity: 0.5;
+				opacity: 0.5!important;
 				z-index: 1;
 			}
 		}
 		.form__subm{
-			opacity: 0;
-			visibility: hidden;
+			opacity: 0!important;
+			visibility: hidden!important;
 		}
 		.form__success{
-			opacity: 1;
-			visibility: visible;
+			opacity: 1!important;
+			visibility: visible!important;
 			transition-delay: .3s;
 		}
 	}
@@ -70,6 +72,12 @@
 .form__outer{
 	padding: 0 var(--form-padding);
 	margin-bottom: var(--form-margin);
+	position: relative;
+	z-index: 5;
+
+	&-select{
+		z-index: 10;
+	}
 
 	@include media-max($w-md) {
 		&-info{
@@ -137,7 +145,8 @@
 			top: v(4);
 		}
 	}
-	&.error{
+	&.error,
+	&.invalid{
 		& ~ .form__line{
 			&:before{
 				width: 0;
@@ -171,7 +180,7 @@
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	right: 0;
+	width: 100%;
 	pointer-events: none;
 	z-index: 10;
 
@@ -252,14 +261,28 @@
 		display: inline-flex;
 		align-items: center;
 		max-width: 100%;
+		cursor: pointer;
 	}
 	&--icon{
 		width: v(21);
 		height: v(21);
 		min-width: v(21);
-		background: var(--lime);
-		border-radius: 50%;
 		position: relative;
+		&:before{
+			content: '';
+			display: inline-block;
+			vertical-align: top;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: var(--lime);
+			border-radius: 50%;
+			transition: .3s var(--ease-out);
+			transform: scale(1);
+			will-change: transform;
+		}
 		svg{
 			width: v(9);
 			height: v(9);
@@ -274,6 +297,20 @@
 		line-height: 1.25;
 		letter-spacing: -0.03em;
 		font-weight: 600;
+	}
+
+	@include media-hover() {
+		&--label{
+			&:hover{
+				.form__file{
+					&--icon{
+						&:before{
+							transform: scale(1.25);
+						}
+					}
+				}
+			}
+		}
 	}
 
 	@include media($w-lg) {
@@ -324,6 +361,18 @@
 					width: 0;
 				}
 				&:after{
+					width: 100%;
+				}
+			}
+		}
+		&.error,
+		&.invalid{
+			& ~ .form__line{
+				&:before{
+					width: 0;
+				}
+				&:after{
+					background: red;
 					width: 100%;
 				}
 			}
@@ -441,6 +490,7 @@
 	transition: var(--form-transition);
 	min-height: 0;
 	margin-top: v(17);
+	z-index: 5;
 
 	@include media($w-lg) {
 		margin-top: var(--form-margin);
