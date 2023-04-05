@@ -517,8 +517,7 @@ $(document).ready(function() {
 						let tl = gsap.timeline({
 							scrollTrigger: {
 								trigger: item,
-								start: "center 80%",
-								markers: true,
+								start: "center 80%"
 							}
 						});
 						tl.from(circle, 1, {
