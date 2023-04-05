@@ -81,7 +81,33 @@ svg.ico.ico-center {
 .abpoints__list{
 	cursor: none;	
 }
-
+.plus, .minus, .arrow-min{
+    transform: translate(-50%, -50%) scale(4.5) !important;
+}
+.plus::after, .minus::after, .arrow-min::after {
+    will-change: transform;
+    content: '';
+    color: black;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 20px;
+    height: 20px;
+}
+.plus::after {
+    background-image: url(../images/plus-cursor.svg);  
+    scale: 0.23;
+}
+.minus::after {
+    background-image: url(../images/minus-cursor.svg);
+    scale: 0.23;
+}
+.arrow-min::after{
+    background-image: url(../images/arrow-cursor.svg);
+    scale: 0.15;   
+}
 
 .line {
 	position: relative;
@@ -142,7 +168,7 @@ header.scroll-up {
   transform: translate3d(0, 0, 0);
 }
 .head__row a, .head__mmenu, .pagetop__prev .link, .pagetop__sub, .filter-anim a, 
-.pagetop__term--date, .pagetop__descr--btn a, .air-item-anim .pagetop__date{
+.pagetop__term--date, .pagetop__descr--btn a, .air-item-anim .pagetop__date, .bid-anim-text, .abtop__prev .link{
 	opacity: 0;
 }
 
@@ -238,4 +264,7 @@ header.scroll-up {
 }
 .dark-header .preloader {
    background: #222222;
+}
+.abpoints__circle {
+    pointer-events: none !important;
 }
