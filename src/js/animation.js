@@ -165,6 +165,34 @@ $(document).ready(function() {
 		})
 	})
 
+	/* О нас ЛОГО */
+	$(function(){
+		const img = document.querySelector('.abtop__img img');
+
+		if(!img) {return;}
+
+		const tl = gsap.timeline({ 
+			scrollTrigger: {
+				trigger: ".abtop__img",
+				start: "top-=100 top",
+				end: "bottom+=250 botom+=250",    
+				anticipatePin: 1,
+				pin: true,
+				pinSpacing : true,
+				scrub: .5,
+				toggleActions: "play none reverse none",
+				onUpdate: self  => {
+					let h = self.progress * 100;
+					gsap.set(img, {
+						opacity: 1 - self.progress
+					})
+				}
+			}
+		})
+	})
+
+
+
 	$(function(){
 		$('.line_title').each(function(){
 			$(this).splitLines({ keepHtml:true});  
@@ -465,9 +493,9 @@ $(document).ready(function() {
 
 	/*Курсор с притяжением*/
 	if(($('.abpoints__list').length)){	
-	
+
 		var windowWidth = $(window).width();	
-			
+
 		$(function(){
 			if(windowWidth >= 1200) {
 				let cur = gsap.timeline({
@@ -489,7 +517,8 @@ $(document).ready(function() {
 						let tl = gsap.timeline({
 							scrollTrigger: {
 								trigger: item,
-								start: "top center"
+								start: "center 80%",
+								markers: true,
 							}
 						});
 						tl.from(circle, 1, {
@@ -838,32 +867,6 @@ $(document).ready(function() {
 		window.addEventListener("scroll", throttle(validateHeader, 100));
 	});
 
-	/* О нас ЛОГО */
-	$(function(){
-		const img = document.querySelector('.abtop__img img');
-
-		if(!img) {return;}
-
-		const tl = gsap.timeline({ 
-			scrollTrigger: {
-				trigger: ".abtop__img",
-				start: "top-=100 top",
-				end: "bottom+=250 botom+=250",    
-				anticipatePin: 1,
-				pin: true,
-				pinSpacing : true,
-				scrub: .5,
-				toggleActions: "play none reverse none",
-				onUpdate: self  => {
-					let h = self.progress * 100;
-					gsap.set(img, {
-						opacity: 1 - self.progress
-					})
-				}
-			}
-		})
-	})
-
 	/* параллакс фото */
 	$(function(){
 		const img = document.querySelector('.pagetop__image img');
@@ -929,20 +932,20 @@ $(document).ready(function() {
 			let revealText = document.querySelectorAll(".life__slider");
 			gsap.registerPlugin(ScrollTrigger);
 			let revealLines = revealText.forEach((element) => {
-			const lines = element.querySelectorAll(".overlay");
-			let ov = gsap.timeline({
-				scrollTrigger: {
-				trigger: element,
-				start: "top+=200px bottom"
-				}
-			});
-			ov.to(lines, {
-				duration: 0.8,
-				ease: "epower4.out",
-				webkitClipPath:"polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
-				clipPath:"polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
-				stagger:0.2              
-			})
+				const lines = element.querySelectorAll(".overlay");
+				let ov = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "top+=200px bottom"
+					}
+				});
+				ov.to(lines, {
+					duration: 0.8,
+					ease: "epower4.out",
+					webkitClipPath:"polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+					clipPath:"polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+					stagger:0.2              
+				})
 			});
 		}
 	})
@@ -950,24 +953,24 @@ $(document).ready(function() {
 	/*Одиночные заголовки внутри страниц */
 	$(function(){
 		let revealYsl = document.querySelectorAll(".subtitle-anim-dop-title");
-			gsap.registerPlugin(ScrollTrigger);
-			let revealLines = revealYsl.forEach((element) => {
-				const lines2 = element.querySelectorAll(".split-item");
-				let ysl = gsap.timeline({
-					scrollTrigger: {
-						trigger: element,
-						start: "top+=100px bottom"
-					}
-				});
-				ysl.from(lines2, 0.6, {
-					yPercent: 100,
-					ease: "cubic-bezier(.12,.46,.47,.99)",
-					delay: 0.1,
-					stagger:0.1
-				}) 
+		gsap.registerPlugin(ScrollTrigger);
+		let revealLines = revealYsl.forEach((element) => {
+			const lines2 = element.querySelectorAll(".split-item");
+			let ysl = gsap.timeline({
+				scrollTrigger: {
+					trigger: element,
+					start: "top+=100px bottom"
+				}
 			});
+			ysl.from(lines2, 0.6, {
+				yPercent: 100,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1
+			}) 
+		});
 	});	
-		
+
 	/*Одиночные кнопки*/
 	$(function(){
 		let revealYsl = document.querySelectorAll(".btn-anim");
@@ -1017,43 +1020,43 @@ $(document).ready(function() {
 
 		$(function(){
 			let revealYsl = document.querySelectorAll(".abpoints__item");
-				gsap.registerPlugin(ScrollTrigger);
-				let revealLines = revealYsl.forEach((element) => {
-					const lines = element.querySelectorAll(".abpoints__item--top");
-					let ysl = gsap.timeline({
-						scrollTrigger: {
-							trigger: element,
-							start: "center bottom"
-						}
-					});
-					ysl.from(lines, 0.3, {
-						autoAlpha: 0,  
-						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
-						delay: 0.1,
-						stagger:0.2
-					},0.1) 				
+			gsap.registerPlugin(ScrollTrigger);
+			let revealLines = revealYsl.forEach((element) => {
+				const lines = element.querySelectorAll(".abpoints__item--top");
+				let ysl = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "center bottom"
+					}
 				});
+				ysl.from(lines, 0.3, {
+					autoAlpha: 0,  
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					delay: 0.1,
+					stagger:0.2
+				},0.1) 				
+			});
 		});  
-	
+
 		$(function(){
 			let revealYsl = document.querySelectorAll(".abpoints__item");
-				gsap.registerPlugin(ScrollTrigger);
-				let revealLines = revealYsl.forEach((element) => {
-					const lines2 = element.querySelectorAll(".abpoints__item--text .split-item");
-					let ysl = gsap.timeline({
-						scrollTrigger: {
-							trigger: element,
-							start: "center bottom"
-						}
-					});
-					ysl.from(lines2, 0.5, {
-						autoAlpha: 0,  
-						yPercent: 80,
-						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
-						delay: 0.1,
-						stagger:0.2
-					},0.1) 
+			gsap.registerPlugin(ScrollTrigger);
+			let revealLines = revealYsl.forEach((element) => {
+				const lines2 = element.querySelectorAll(".abpoints__item--text .split-item");
+				let ysl = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "center bottom"
+					}
 				});
+				ysl.from(lines2, 0.5, {
+					autoAlpha: 0,  
+					yPercent: 80,
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					delay: 0.1,
+					stagger:0.2
+				},0.1) 
+			});
 		}); 		
 
 		/*Блок Вакансии - пункты*/
@@ -1194,22 +1197,22 @@ $(document).ready(function() {
 
 		$(function(){
 			let revealYsl = document.querySelectorAll(".attr__item--data");
-				gsap.registerPlugin(ScrollTrigger);
-				let revealLines = revealYsl.forEach((element) => {
-					const lines2 = element.querySelectorAll("div");
-					let ysl = gsap.timeline({
-						scrollTrigger: {
-							trigger: element,
-							start: "center bottom"
-						}
-					});
-					ysl.from(lines2, 0.5, {
-						autoAlpha: 0,  
-						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
-						delay: 0.1,
-						stagger:0.1
-					},0.1) 
+			gsap.registerPlugin(ScrollTrigger);
+			let revealLines = revealYsl.forEach((element) => {
+				const lines2 = element.querySelectorAll("div");
+				let ysl = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "center bottom"
+					}
 				});
+				ysl.from(lines2, 0.5, {
+					autoAlpha: 0,  
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					delay: 0.1,
+					stagger:0.1
+				},0.1) 
+			});
 		}); 
 	};
 
@@ -1282,22 +1285,22 @@ $(document).ready(function() {
 
 		$(function(){
 			let revealYsl = document.querySelectorAll(".plus__item accord");
-				gsap.registerPlugin(ScrollTrigger);
-				let revealLines = revealYsl.forEach((element) => {
-					const lines2 = element.querySelectorAll("div");
-					let ysl = gsap.timeline({
-						scrollTrigger: {
-							trigger: element,
-							start: "center bottom"
-						}
-					});
-					ysl.from(lines2, 0.5, {
-						autoAlpha: 0,  
-						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
-						delay: 0.1,
-						stagger:0.1
-					},0.1) 
+			gsap.registerPlugin(ScrollTrigger);
+			let revealLines = revealYsl.forEach((element) => {
+				const lines2 = element.querySelectorAll("div");
+				let ysl = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "center bottom"
+					}
 				});
+				ysl.from(lines2, 0.5, {
+					autoAlpha: 0,  
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					delay: 0.1,
+					stagger:0.1
+				},0.1) 
+			});
 		}); 
 	};
 
@@ -1306,43 +1309,43 @@ $(document).ready(function() {
 	if($('.aboute-list-anim').length) { 
 		$(function(){
 			let revealYsl = document.querySelectorAll(".abpoints__item");
-				gsap.registerPlugin(ScrollTrigger);
-				let revealLines = revealYsl.forEach((element) => {
-					const lines = element.querySelectorAll(".abpoints__item--top");
-					let ysl = gsap.timeline({
-						scrollTrigger: {
-							trigger: element,
-							start: "center bottom"
-						}
-					});
-					ysl.from(lines, 0.3, {
-						autoAlpha: 0,  
-						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
-						delay: 0.1,
-						stagger:0.2
-					},0.1) 				
+			gsap.registerPlugin(ScrollTrigger);
+			let revealLines = revealYsl.forEach((element) => {
+				const lines = element.querySelectorAll(".abpoints__item--top");
+				let ysl = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "center bottom"
+					}
 				});
+				ysl.from(lines, 0.3, {
+					autoAlpha: 0,  
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					delay: 0.1,
+					stagger:0.2
+				},0.1) 				
+			});
 		});  
 
 		$(function(){
 			let revealYsl = document.querySelectorAll(".abpoints__item");
-				gsap.registerPlugin(ScrollTrigger);
-				let revealLines = revealYsl.forEach((element) => {
-					const lines2 = element.querySelectorAll(".abpoints__item--text .split-item");
-					let ysl = gsap.timeline({
-						scrollTrigger: {
-							trigger: element,
-							start: "center bottom"
-						}
-					});
-					ysl.from(lines2, 0.5, {
-						autoAlpha: 0,  
-						yPercent: 80,
-						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
-						delay: 0.1,
-						stagger:0.2
-					},0.1) 
+			gsap.registerPlugin(ScrollTrigger);
+			let revealLines = revealYsl.forEach((element) => {
+				const lines2 = element.querySelectorAll(".abpoints__item--text .split-item");
+				let ysl = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "center bottom"
+					}
 				});
+				ysl.from(lines2, 0.5, {
+					autoAlpha: 0,  
+					yPercent: 80,
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					delay: 0.1,
+					stagger:0.2
+				},0.1) 
+			});
 		}); 		
 	};
 
@@ -1351,22 +1354,22 @@ $(document).ready(function() {
 	if($('.review__slide').length) {
 		$(function(){
 			let revealYsl = document.querySelectorAll(".review__slide");
-				gsap.registerPlugin(ScrollTrigger);
-				let revealLines = revealYsl.forEach((element) => {
-					const lines2 = element.querySelectorAll("div");
-					let ysl = gsap.timeline({
-						scrollTrigger: {
-							trigger: element,
-							start: "center bottom"
-						}
-					});
-					ysl.from(lines2, 0.5, {
-						autoAlpha: 0,  
-						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
-						delay: 0.1,
-						stagger:0.1
-					},0.1) 
+			gsap.registerPlugin(ScrollTrigger);
+			let revealLines = revealYsl.forEach((element) => {
+				const lines2 = element.querySelectorAll("div");
+				let ysl = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "center bottom"
+					}
 				});
+				ysl.from(lines2, 0.5, {
+					autoAlpha: 0,  
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					delay: 0.1,
+					stagger:0.1
+				},0.1) 
+			});
 		}); 
 	};
 
@@ -1374,22 +1377,22 @@ $(document).ready(function() {
 	if($('.section_plus').length) {
 		$(function(){
 			let revealYsl = document.querySelectorAll(".section_plus");
-				gsap.registerPlugin(ScrollTrigger);
-				let revealLines = revealYsl.forEach((element) => {
-					const lines2 = element.querySelectorAll(".plus__item div");
-					let ysl = gsap.timeline({
-						scrollTrigger: {
-							trigger: element,
-							start: "center bottom"
-						}
-					});
-					ysl.from(lines2, 0.5, {
-						autoAlpha: 0,  
-						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
-						delay: 0.1,
-						stagger:0.1
-					},0.1) 
+			gsap.registerPlugin(ScrollTrigger);
+			let revealLines = revealYsl.forEach((element) => {
+				const lines2 = element.querySelectorAll(".plus__item div");
+				let ysl = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "center bottom"
+					}
 				});
+				ysl.from(lines2, 0.5, {
+					autoAlpha: 0,  
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					delay: 0.1,
+					stagger:0.1
+				},0.1) 
+			});
 		}); 
 	};
 
@@ -1397,23 +1400,23 @@ $(document).ready(function() {
 	if($('.faq__data').length) {
 		$(function(){
 			let revealYsl = document.querySelectorAll(".faq__data");
-				gsap.registerPlugin(ScrollTrigger);
-				let revealLines = revealYsl.forEach((element) => {
-					const faq = element.querySelectorAll(".faq__item.accord");
-					let ysl = gsap.timeline({
-						scrollTrigger: {
-							trigger: element,
-							start: "center bottom"
-						}
-					});
-					ysl.from(faq, 0.5, {
-						autoAlpha: 0,  
-						yPercent: 100,
-						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
-						delay: 0.1,
-						stagger:0.1
-					},0.1) 
+			gsap.registerPlugin(ScrollTrigger);
+			let revealLines = revealYsl.forEach((element) => {
+				const faq = element.querySelectorAll(".faq__item.accord");
+				let ysl = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "center bottom"
+					}
 				});
+				ysl.from(faq, 0.5, {
+					autoAlpha: 0,  
+					yPercent: 100,
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					delay: 0.1,
+					stagger:0.1
+				},0.1) 
+			});
 		}); 
 	};
 
@@ -1450,93 +1453,93 @@ $(document).ready(function() {
 		});  
 	};
 
-		/*Стр. Мы в эфире - item*/	
-		if($('.air-item-anim').length) { 
-			$(function(){
-				let tt = gsap.timeline();
-				tt.to(".preloader", {
-					autoAlpha: 0,
-					ease: "epower4.out",
-					duration: 0.2,
-					onComplete: function() {
-						$('.preloader').addClass('onComplete');
+	/*Стр. Мы в эфире - item*/	
+	if($('.air-item-anim').length) { 
+		$(function(){
+			let tt = gsap.timeline();
+			tt.to(".preloader", {
+				autoAlpha: 0,
+				ease: "epower4.out",
+				duration: 0.2,
+				onComplete: function() {
+					$('.preloader').addClass('onComplete');
+				}
+			})
+			tt.to(".pagetop__prev .link", 0.6, {
+				autoAlpha: 1,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1
+			},0.2)
+			tt.from(".subtitle-anim-h2 .split-item", 0.6, {
+				yPercent: 100,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1
+			},0.2)
+			tt.to(".pagetop__date", 0.6, {
+				autoAlpha: 1,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1
+			},0.4)	
+		});  
+
+		$(function(){
+			let revealText = document.querySelectorAll(".subtitle-anim-about");
+			gsap.registerPlugin(ScrollTrigger);
+			let revealLines = revealText.forEach((element) => {
+				const lines = element.querySelectorAll(".split-item");
+				let h2 = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "bottom bottom"
 					}
-				})
-				tt.to(".pagetop__prev .link", 0.6, {
-					autoAlpha: 1,
-					ease: "cubic-bezier(.12,.46,.47,.99)",
-					delay: 0.1,
-					stagger:0.1
-				},0.2)
-				tt.from(".subtitle-anim-h2 .split-item", 0.6, {
+				});
+				h2.set(element, { autoAlpha: 1 });
+				h2.from(lines, 0.6, {
 					yPercent: 100,
 					ease: "cubic-bezier(.12,.46,.47,.99)",
 					delay: 0.1,
 					stagger:0.1
-				},0.2)
-				tt.to(".pagetop__date", 0.6, {
-					autoAlpha: 1,
-					ease: "cubic-bezier(.12,.46,.47,.99)",
-					delay: 0.1,
-					stagger:0.1
-				},0.4)	
-			});  
-
-			$(function(){
-				let revealText = document.querySelectorAll(".subtitle-anim-about");
-				gsap.registerPlugin(ScrollTrigger);
-				let revealLines = revealText.forEach((element) => {
-					const lines = element.querySelectorAll(".split-item");
-					let h2 = gsap.timeline({
-						scrollTrigger: {
-							trigger: element,
-							start: "bottom bottom"
-						}
-					});
-					h2.set(element, { autoAlpha: 1 });
-					h2.from(lines, 0.6, {
-						yPercent: 100,
-						ease: "cubic-bezier(.12,.46,.47,.99)",
-						delay: 0.1,
-						stagger:0.1
-					})  
-				});
-				
-				let sub = gsap.timeline({
-					scrollTrigger: {
-						trigger: ".subtitle-anim-about",
-						start: "bottom bottom"
-					}
-				});      
-				sub.from(".subtitle-anim-about-before", 0.8, {
-					autoAlpha: 0,
-					ease: "cubic-bezier(.12,.46,.47,.99)",
-					delay: 0.1,
-					stagger:0.1 
-				}) 
+				})  
 			});
-		};
+
+			let sub = gsap.timeline({
+				scrollTrigger: {
+					trigger: ".subtitle-anim-about",
+					start: "bottom bottom"
+				}
+			});      
+			sub.from(".subtitle-anim-about-before", 0.8, {
+				autoAlpha: 0,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1 
+			}) 
+		});
+	};
 
 	/* Форма */
 	if($('.form').length) {
 		$(function(){
 			let revealYsl = document.querySelectorAll(".form");
-				gsap.registerPlugin(ScrollTrigger);
-				let revealLines = revealYsl.forEach((element) => {
-					const lines2 = element.querySelectorAll("div");
-					let ysl = gsap.timeline({
-						scrollTrigger: {
-							trigger: element,
-							start: "top bottom"
-						}
-					});
-					ysl.from(lines2, 0.2, {
-						autoAlpha: 0,  
-						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
-						delay: 0.1,
-						stagger:0.1
-					},0.1) 
+			gsap.registerPlugin(ScrollTrigger);
+			let revealLines = revealYsl.forEach((element) => {
+				const lines2 = element.querySelectorAll("div");
+				let ysl = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "top bottom"
+					}
 				});
+				ysl.from(lines2, 0.2, {
+					autoAlpha: 0,  
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					delay: 0.1,
+					stagger:0.1
+				},0.1) 
+			});
 		}); 
 	};
 
@@ -1544,22 +1547,22 @@ $(document).ready(function() {
 	if($('.airvideo__cont').length) {
 		$(function(){
 			let revealYsl = document.querySelectorAll(".airvideo__cont");
-				gsap.registerPlugin(ScrollTrigger);
-				let revealLines = revealYsl.forEach((element) => {
-					const lines2 = element.querySelectorAll(".airvideo__video");
-					let ysl = gsap.timeline({
-						scrollTrigger: {
-							trigger: element,
-							start: "top bottom"
-						}
-					});
-					ysl.from(lines2, 0.5, {
-						autoAlpha: 0,  
-						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
-						delay: 0.1,
-						stagger:0.1
-					},0.1) 
+			gsap.registerPlugin(ScrollTrigger);
+			let revealLines = revealYsl.forEach((element) => {
+				const lines2 = element.querySelectorAll(".airvideo__video");
+				let ysl = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "top bottom"
+					}
 				});
+				ysl.from(lines2, 0.5, {
+					autoAlpha: 0,  
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					delay: 0.1,
+					stagger:0.1
+				},0.1) 
+			});
 		}); 
 	};	
 
@@ -1568,98 +1571,98 @@ $(document).ready(function() {
 	if($('.abnum').length) {
 		$(function(){
 			let revealYsl = document.querySelectorAll(".abnum__item");
-				gsap.registerPlugin(ScrollTrigger);
-				let revealLines = revealYsl.forEach((element) => {
-					const lines = element.querySelectorAll(".abnum__num");
-					let ysl = gsap.timeline({
-						scrollTrigger: {
-							trigger: element,
-							start: "center bottom"
-						}
-					});
-					ysl.from(lines, 0.3, {
-						autoAlpha: 0,  
-						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
-						delay: 0.1,
-						stagger:0.2
-					},0.1) 				
+			gsap.registerPlugin(ScrollTrigger);
+			let revealLines = revealYsl.forEach((element) => {
+				const lines = element.querySelectorAll(".abnum__num");
+				let ysl = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "center bottom"
+					}
 				});
+				ysl.from(lines, 0.3, {
+					autoAlpha: 0,  
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					delay: 0.1,
+					stagger:0.2
+				},0.1) 				
+			});
 		});  
 
 		$(function(){
 			let revealYsl = document.querySelectorAll(".abnum__item");
-				gsap.registerPlugin(ScrollTrigger);
-				let revealLines = revealYsl.forEach((element) => {
-					const lines2 = element.querySelectorAll(".abnum__name .split-item");
-					const lines3 = element.querySelectorAll(".abnum__text");			
-					let ysl = gsap.timeline({
-						scrollTrigger: {
-							trigger: element,
-							start: "center bottom"
-						}
-					});
-					ysl.from(lines2, 0.5, {
-						autoAlpha: 0,  
-						yPercent: 80,
-						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
-						delay: 0.1,
-						stagger:0.2
-					},0.1) 
-					ysl.from(lines3, 0.5, {
-						autoAlpha: 0,  
-						ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
-						delay: 0.1,
-						stagger:0.2
-					},0.2) 					
+			gsap.registerPlugin(ScrollTrigger);
+			let revealLines = revealYsl.forEach((element) => {
+				const lines2 = element.querySelectorAll(".abnum__name .split-item");
+				const lines3 = element.querySelectorAll(".abnum__text");			
+				let ysl = gsap.timeline({
+					scrollTrigger: {
+						trigger: element,
+						start: "center bottom"
+					}
 				});
+				ysl.from(lines2, 0.5, {
+					autoAlpha: 0,  
+					yPercent: 80,
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					delay: 0.1,
+					stagger:0.2
+				},0.1) 
+				ysl.from(lines3, 0.5, {
+					autoAlpha: 0,  
+					ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+					delay: 0.1,
+					stagger:0.2
+				},0.2) 					
+			});
 		}); 		
 
 	};	
 
-		/* 404 */	
-		if($('.section_nf').length) { 
-			$(function(){
-				let tt = gsap.timeline();
-				tt.to(".preloader", {
-					autoAlpha: 0,
-					ease: "epower4.out",
-					duration: 0.2,
-					onComplete: function() {
-						$('.preloader').addClass('onComplete');
-					}
-				})	
-			}); 	
-		};
-		
-		/* bid */	
-		if($('.section_bid').length) { 
-			$(function(){
-				let tt = gsap.timeline();
-				tt.to(".preloader", {
-					autoAlpha: 0,
-					ease: "epower4.out",
-					duration: 0.2,
-					onComplete: function() {
-						$('.preloader').addClass('onComplete');
-					}
-				})	
-			}); 	
-		};		
-		
-		/* bid */	
-		if($('.dark-header').length) { 
-			$(function(){
-				let tt = gsap.timeline();
-				tt.to(".preloader", {
-					autoAlpha: 0,
-					ease: "epower4.out",
-					duration: 0.2,
-					onComplete: function() {
-						$('.preloader').addClass('onComplete');
-					}
-				})	
-			}); 	
-		};	
+	/* 404 */	
+	if($('.section_nf').length) { 
+		$(function(){
+			let tt = gsap.timeline();
+			tt.to(".preloader", {
+				autoAlpha: 0,
+				ease: "epower4.out",
+				duration: 0.2,
+				onComplete: function() {
+					$('.preloader').addClass('onComplete');
+				}
+			})	
+		}); 	
+	};
+
+	/* bid */	
+	if($('.section_bid').length) { 
+		$(function(){
+			let tt = gsap.timeline();
+			tt.to(".preloader", {
+				autoAlpha: 0,
+				ease: "epower4.out",
+				duration: 0.2,
+				onComplete: function() {
+					$('.preloader').addClass('onComplete');
+				}
+			})	
+		}); 	
+	};		
+
+	/* bid */	
+	if($('.dark-header').length) { 
+		$(function(){
+			let tt = gsap.timeline();
+			tt.to(".preloader", {
+				autoAlpha: 0,
+				ease: "epower4.out",
+				duration: 0.2,
+				onComplete: function() {
+					$('.preloader').addClass('onComplete');
+				}
+			})	
+		}); 	
+	};	
 
 });
 
