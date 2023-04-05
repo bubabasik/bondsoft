@@ -1,5 +1,10 @@
 .footer{
-
+	overflow: hidden;
+	border-top: 1px solid var(--line-gray);
+}
+.footer__inner{
+	// transition: .15s;
+	will-change: transform;
 }
 .foot__link{
 	--link-color: var(--text-black);
@@ -13,7 +18,8 @@
 	line-height: 0.9;
 	letter-spacing: -0.03em;
 	text-align: center;
-	border-top: 1px solid var(--line-gray);
+	transition: .2s var(--ease-out);
+	will-change: transform;
 
 	&--icon{
 		display: inline-flex;

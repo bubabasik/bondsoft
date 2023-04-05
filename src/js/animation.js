@@ -213,6 +213,31 @@ $(document).ready(function() {
 		})
 	})
 
+	/* футер */
+
+	$(function(){
+		const footer = document.querySelector('.footer');
+		const inner = footer.querySelector('.footer__inner');
+ 	
+ 		gsap.set(inner, {yPercent: -50})
+
+		const tl = gsap.timeline({ 
+			scrollTrigger: {
+				trigger: footer,
+				start: "top bottom",   
+				end: "bottom bottom",   
+				scrub: .5,
+				toggleActions: "play none reverse none",
+				onUpdate: self  => {
+					let result = -50 + self.progress / 2 * 100;
+					gsap.set(inner, {
+						yPercent: result,
+					})
+				}
+			}
+		})
+	})
+
 
 
 	$(function(){
