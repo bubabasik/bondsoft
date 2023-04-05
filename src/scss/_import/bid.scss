@@ -34,12 +34,18 @@
 		&-page{
 			padding-top: v(125);
 		}
+		&-content{
+			padding-bottom: v(180);
+		}
 	}
 	@include media($w-xl) {
 		padding-top: v(125);
 		padding-bottom: v(125);
 		&-page{
 			padding-top: v(168);
+		}
+		&-content{
+			padding-bottom: v(250);
 		}
 	}
 }
