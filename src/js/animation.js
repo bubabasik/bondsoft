@@ -131,12 +131,14 @@ $(document).ready(function() {
 
 	/* Заголовок Услуги */
 	$(function(){
-		const original = document.querySelector('.modserv__capt-original');
-		const front = document.querySelector('.modserv__capt-front');
-		const back = document.querySelector('.modserv__capt-back');
+		const cont = document.querySelector('.modserv__cont');
 
-		const sub = document.querySelector('.modserv__cont .mod__title');
-		const title = document.querySelector('.modserv__title');
+		const original = cont.querySelector('.modserv__capt-original');
+		const front = cont.querySelector('.modserv__capt-front');
+		const back = cont.querySelector('.modserv__capt-back');
+
+		const sub = cont.querySelector('.mod__title');
+		const title = cont.querySelector('.modserv__title');
 
 		if(!back) {return;}
 
@@ -166,9 +168,9 @@ $(document).ready(function() {
 
 		const tl = gsap.timeline({ 
 			scrollTrigger: {
-				trigger: ".modserv__title",
+				trigger: ".modserv__cont",
 				start: "top top+=150",
-				end: "bottom+=50% top+=150",    
+				end: "bottom+=100% top+=150",    
 				anticipatePin: 1,
 				pin: true,
 				pinSpacing : true,
@@ -176,6 +178,7 @@ $(document).ready(function() {
 				toggleActions: "play none reverse none",
 				onUpdate: self  => {
 					let h = self.progress * 100;
+					let subScroll = 
 
 					gsap.set(back, {
 						clipPath: "polygon(0 0, 100% 0, 100% " + 100 - h + "%, 0 " + 100 - h + "%)",
@@ -183,18 +186,23 @@ $(document).ready(function() {
 					gsap.set(front, {
 						clipPath: "polygon(0 0, 100% 0, 100% " + h + "%, 0 " + h + "%)",
 					})
+					gsap.set(sub, {
+						y: (cont.offsetHeight - sub.offsetHeight) * self.progress
+					})
 				}
 			}
 		})
 	})
 	$(function(){
-		const original = document.querySelector('.modserv__capt-original');
-		const front = document.querySelector('.modserv__capt-1');
-		const lime = document.querySelector('.modserv__capt-2');
-		const back = document.querySelector('.modserv__capt-3');
+		const cont = document.querySelector('.modserv__cont');
 
-		const sub = document.querySelector('.modserv__cont .mod__title');
-		const title = document.querySelector('.modserv__title');
+		const original = cont.querySelector('.modserv__capt-original');
+		const front = cont.querySelector('.modserv__capt-1');
+		const lime = cont.querySelector('.modserv__capt-2');
+		const back = cont.querySelector('.modserv__capt-3');
+
+		const sub = cont.querySelector('.mod__title');
+		const title = cont.querySelector('.modserv__title');
 
 		if(!back) {return;}
 
@@ -206,9 +214,9 @@ $(document).ready(function() {
 
 		const tl = gsap.timeline({ 
 			scrollTrigger: {
-				trigger: ".modserv__title",
+				trigger: ".modserv__cont",
 				start: "top top+=150",
-				end: "bottom+=50% top+=150",    
+				end: "bottom+=100% top+=150",    
 				anticipatePin: 1,
 				pin: true,
 				pinSpacing : true,
@@ -217,7 +225,7 @@ $(document).ready(function() {
 				onUpdate: self  => {
 					let h = self.progress * 100;
 					let hb = 0;
-					let start = 0.75;
+					let start = 0.4;
 
 					if(self.progress > start) { 
 						let diff = self.progress - start;
@@ -234,6 +242,9 @@ $(document).ready(function() {
 					})
 					gsap.set(lime, {
 						clipPath: "polygon(0 0, 100% 0, 100% " + h + "%, 0 " + h + "%)",
+					})
+					gsap.set(sub, {
+						y: (cont.offsetHeight - sub.offsetHeight) * self.progress
 					})
 				}
 			}

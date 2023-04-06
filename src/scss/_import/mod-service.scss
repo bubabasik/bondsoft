@@ -23,7 +23,12 @@
 	}
 }
 .modserv__cont{
-	align-items: flex-end;
+	align-items: flex-start;
+	.mod__title{
+		padding-bottom: v(15);
+		// position: relative;
+		// will-change: top;
+	}
 }
 .modserv__title{
 	font-size: v(36);
