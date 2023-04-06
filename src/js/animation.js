@@ -311,6 +311,109 @@ $(document).ready(function() {
 	});
 
 
+	/* !!!!!!!!! 2-й вариант двух экранов */
+	var windowWidth = $(window).width();
+	if((windowWidth > 1200) & ($('.section_top-fix').length)){
+		$(function(){
+			var heightBut = $('.pin-but').height();
+			const firstScreen = document.querySelector('.first-screen-fix');
+			if(!firstScreen) {return;}
+			const tl = gsap.timeline({ 
+				scrollTrigger: {
+					trigger: firstScreen,
+					start: "center center",
+					endTrigger: '.lines-flip-two',
+					end: 'center bottom',    
+					anticipatePin: 1,
+					pinType: "fixed",
+					pinReparent: false,
+					pin: true,
+					pinSpacing: false,
+					scrub: 2,
+					toggleActions: "play none reverse none",
+					onUpdate: self  => {
+						let h = self.progress * 80;
+						gsap.set(".top__title, .top__sub", {
+							opacity: 1 - self.progress,
+							duration: 4
+						})
+					}
+				}
+			})
+				tl.to(".pin-but", {
+					yPercent: heightBut/2,
+					ease: "liner",				
+					duration: 1				
+				})
+		})
+
+		$(function(){
+			gsap.registerPlugin(Flip);
+			gsap.registerPlugin(ScrollTrigger);
+			const firstHeading = document.querySelector('.lines-flip-one');
+			const containerTwo = document.querySelector('.container-flip-one');
+			const firstHeading2 = document.querySelector('.lines-flip-two');
+			const containerTwo2 = document.querySelector('.container-flip-two');    
+			const firstHeading3 = document.querySelector('.lines-flip-three');
+			const containerTwo3 = document.querySelector('.container-flip-three');
+			const word = document.querySelectorAll('.lines__item .word');
+			let tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: firstHeading2,
+					start: "center bottom"
+				}
+			});
+			tl.from(".flip-line", 0.4, {
+				scaleX:0, 
+				transformOrigin:"left",
+				ease: "Expo.easeOut",
+				stagger:0.2
+			})
+			tl.from(word, 0.5, {
+				yPercent: 130,
+				ease: "Expo.easeOut",
+				stagger: { 
+					from: "random", 
+					amount: 0.2 
+				},
+				onComplete: myEnterFunc
+			},0.2)        
+			function myEnterFunc() {
+				const state = Flip.getState(firstHeading, {
+					props: "justify-content",
+				})
+				containerTwo.appendChild(firstHeading);
+				Flip.from(state, {
+					ease: "Expo.easeOut",
+					delay: "random(0.1, 0.3)",
+					duration: 0.7
+				})
+				const state2 = Flip.getState(firstHeading2, {
+					props: "justify-content",
+				})
+				containerTwo2.appendChild(firstHeading2);
+				Flip.from(state2, {
+					ease: "Expo.easeOut",
+					delay: "random(0.1, 0.3)",
+					duration: 0.7
+				})
+				const state3 = Flip.getState(firstHeading3, {
+					props: "justify-content",
+				})
+				containerTwo3.appendChild(firstHeading3);
+				Flip.from(state3, {
+					ease: "Expo.easeOut",
+					delay: "random(0.1, 0.3)",
+					duration: 0.7
+				})
+			}
+		});
+	};
+
+
+
+
+
 	/*Курсор*/
 	$(function(){
 
@@ -436,7 +539,7 @@ $(document).ready(function() {
 			};
 		};
 	});
-
+	
 if($('.first-screen-title').length) { 
 	/*Первый экран*/
 	$(function(){
@@ -527,87 +630,90 @@ if($('.first-screen-title').length) {
 		},10) 
 	});
 
+	if($('.first-screen-old-anim').length) { 
 	/*Фиксированная кнопка на первом экране*/
-	var windowWidth = $(window).width();
-	if((windowWidth > 1200)){
-		$(function(){
-			ScrollTrigger.create({
-				trigger: ".pin-but",
-				start: "center center",
-				endTrigger: '.lines-flip-one',
-				end: 'center center',
-				pin: true,
-				pinSpacing: false,
-				pinType: "transform",
-				pinReparent: true,
-				scrub:true
+		var windowWidth = $(window).width();
+		if((windowWidth > 1200)){
+			$(function(){
+				ScrollTrigger.create({
+					trigger: ".pin-but",
+					start: "center center",
+					endTrigger: '.lines-flip-one',
+					end: 'center center',
+					pin: true,
+					pinSpacing: false,
+					pinType: "transform",
+					pinReparent: true,
+					scrub:true
+				});
 			});
-		});
-	}
+		}
+	
 
-	/* 2 экран */
-	$(function(){
-		gsap.registerPlugin(Flip);
-		gsap.registerPlugin(ScrollTrigger);
-		const firstHeading = document.querySelector('.lines-flip-one');
-		const containerTwo = document.querySelector('.container-flip-one');
-		const firstHeading2 = document.querySelector('.lines-flip-two');
-		const containerTwo2 = document.querySelector('.container-flip-two');    
-		const firstHeading3 = document.querySelector('.lines-flip-three');
-		const containerTwo3 = document.querySelector('.container-flip-three');
-		const word = document.querySelectorAll('.lines__item .word');
-		let tl = gsap.timeline({
-			scrollTrigger: {
-				trigger: ".lines-flip-three",
-				start: "bottom bottom"
+		/* 2 экран */
+		$(function(){
+			gsap.registerPlugin(Flip);
+			gsap.registerPlugin(ScrollTrigger);
+			const firstHeading = document.querySelector('.lines-flip-one');
+			const containerTwo = document.querySelector('.container-flip-one');
+			const firstHeading2 = document.querySelector('.lines-flip-two');
+			const containerTwo2 = document.querySelector('.container-flip-two');    
+			const firstHeading3 = document.querySelector('.lines-flip-three');
+			const containerTwo3 = document.querySelector('.container-flip-three');
+			const word = document.querySelectorAll('.lines__item .word');
+			let tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: ".lines-flip-three",
+					start: "bottom bottom"
+				}
+			});
+			tl.from(".flip-line", 0.8, {
+				scaleX:0, 
+				transformOrigin:"left",
+				ease: "Expo.easeOut",
+				stagger:0.2
+			})
+			tl.from(word, 0.4, {
+				yPercent: 130,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				stagger: { 
+					from: "random", 
+					amount: 0.5 
+				},
+				onComplete: myEnterFunc
+			},0.4)        
+			function myEnterFunc() {
+				const state = Flip.getState(firstHeading, {
+					props: "justify-content",
+				})
+				containerTwo.appendChild(firstHeading);
+				Flip.from(state, {
+					ease: "cubic-bezier(0.4, 0.1, 0, 1)",
+					delay: "random(0.1, 0.3)",
+					duration: "random(0.5, 1)"
+				})
+				const state2 = Flip.getState(firstHeading2, {
+					props: "justify-content",
+				})
+				containerTwo2.appendChild(firstHeading2);
+				Flip.from(state2, {
+					ease: "cubic-bezier(0.4, 0.1, 0, 1)",
+					delay: "random(0.1, 0.3)",
+					duration: "random(0.5, 1)"
+				})
+				const state3 = Flip.getState(firstHeading3, {
+					props: "justify-content",
+				})
+				containerTwo3.appendChild(firstHeading3);
+				Flip.from(state3, {
+					ease: "cubic-bezier(0.4, 0.1, 0, 1)",
+					delay: "random(0.1, 0.3)",
+					duration: "random(0.5, 1)"
+				})
 			}
 		});
-		tl.from(".flip-line", 0.8, {
-			scaleX:0, 
-			transformOrigin:"left",
-			ease: "Expo.easeOut",
-			stagger:0.2
-		})
-		tl.from(word, 0.4, {
-			yPercent: 130,
-			ease: "cubic-bezier(.12,.46,.47,.99)",
-			stagger: { 
-				from: "random", 
-				amount: 0.5 
-			},
-			onComplete: myEnterFunc
-		},0.4)        
-		function myEnterFunc() {
-			const state = Flip.getState(firstHeading, {
-				props: "justify-content",
-			})
-			containerTwo.appendChild(firstHeading);
-			Flip.from(state, {
-				ease: "cubic-bezier(0.4, 0.1, 0, 1)",
-				delay: "random(0.1, 0.3)",
-				duration: "random(0.5, 1)"
-			})
-			const state2 = Flip.getState(firstHeading2, {
-				props: "justify-content",
-			})
-			containerTwo2.appendChild(firstHeading2);
-			Flip.from(state2, {
-				ease: "cubic-bezier(0.4, 0.1, 0, 1)",
-				delay: "random(0.1, 0.3)",
-				duration: "random(0.5, 1)"
-			})
-			const state3 = Flip.getState(firstHeading3, {
-				props: "justify-content",
-			})
-			containerTwo3.appendChild(firstHeading3);
-			Flip.from(state3, {
-				ease: "cubic-bezier(0.4, 0.1, 0, 1)",
-				delay: "random(0.1, 0.3)",
-				duration: "random(0.5, 1)"
-			})
-		}
-	});
-
+	}
+	
 	/*H2 О нас*/
 	$(document).ready(function() {
 		let revealText = document.querySelectorAll(".subtitle-anim-about");

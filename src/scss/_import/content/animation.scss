@@ -1,4 +1,6 @@
-.split-item, .pin-but, .top__link--item, .word, .words, .lines__item {
+.split-item, .pin-but, .top__link--item, .word, .words, .lines__item, .container.first-screen-fix,
+.top__cont.first-screen-title, .top__cont.first-screen-title, .flip-anim, .top__title, .top__sub,
+.line, .line span, .char{
     will-change: transform;
 }
 .split-line {
@@ -267,4 +269,9 @@ header.scroll-up {
 }
 .abpoints__circle {
     pointer-events: none !important;
+}
+@media (min-width: 1200px){
+	.section_top-fix {
+		margin-bottom: 100vh;
+	}
 }
