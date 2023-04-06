@@ -142,8 +142,8 @@ $(document).ready(function() {
 
 		front.innerHTML = back.innerHTML = original.innerHTML;
 
-		gsap.set(front, {clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",})
-		gsap.set(back, {clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",})
+		gsap.set(front, {clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)"})
+		gsap.set(back, {clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)"})
 
 		gsap.timeline({
 			scrollTrigger: {
@@ -166,9 +166,9 @@ $(document).ready(function() {
 
 		const tl = gsap.timeline({ 
 			scrollTrigger: {
-				trigger: ".modserv__cont",
+				trigger: ".modserv__title",
 				start: "top top+=150",
-				end: "bottom top+=150",    
+				end: "bottom+=50% top+=150",    
 				anticipatePin: 1,
 				pin: true,
 				pinSpacing : true,
@@ -176,10 +176,63 @@ $(document).ready(function() {
 				toggleActions: "play none reverse none",
 				onUpdate: self  => {
 					let h = self.progress * 100;
+
 					gsap.set(back, {
 						clipPath: "polygon(0 0, 100% 0, 100% " + 100 - h + "%, 0 " + 100 - h + "%)",
 					})
 					gsap.set(front, {
+						clipPath: "polygon(0 0, 100% 0, 100% " + h + "%, 0 " + h + "%)",
+					})
+				}
+			}
+		})
+	})
+	$(function(){
+		const original = document.querySelector('.modserv__capt-original');
+		const front = document.querySelector('.modserv__capt-1');
+		const lime = document.querySelector('.modserv__capt-2');
+		const back = document.querySelector('.modserv__capt-3');
+
+		const sub = document.querySelector('.modserv__cont .mod__title');
+		const title = document.querySelector('.modserv__title');
+
+		if(!back) {return;}
+
+		front.innerHTML = back.innerHTML = lime.innerHTML = original.innerHTML;
+
+		gsap.set(front, {clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)"})
+		gsap.set(lime, {clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)"})
+		gsap.set(back, {clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)"})
+
+		const tl = gsap.timeline({ 
+			scrollTrigger: {
+				trigger: ".modserv__title",
+				start: "top top+=150",
+				end: "bottom+=50% top+=150",    
+				anticipatePin: 1,
+				pin: true,
+				pinSpacing : true,
+				scrub: .5,
+				toggleActions: "play none reverse none",
+				onUpdate: self  => {
+					let h = self.progress * 100;
+					let hb = 0;
+					let start = 0.75;
+
+					if(self.progress > start) { 
+						let diff = self.progress - start;
+						let koeff = 1 / (1 - start);
+						hb = diff * koeff * 100;
+					}
+					// h = self.progress * 2 * 100;
+					// hb = (self.progress - 0.5) * 2 * 100;
+					gsap.set(back, {
+						clipPath: "polygon(0 0, 100% 0, 100% " + 100 - h + "%, 0 " + 100 - h + "%)",
+					})
+					gsap.set(front, {
+						clipPath: "polygon(0 0, 100% 0, 100% " + hb + "%, 0 " + hb + "%)",
+					})
+					gsap.set(lime, {
 						clipPath: "polygon(0 0, 100% 0, 100% " + h + "%, 0 " + h + "%)",
 					})
 				}

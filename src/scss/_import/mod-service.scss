@@ -23,7 +23,7 @@
 	}
 }
 .modserv__cont{
-	
+	align-items: flex-end;
 }
 .modserv__title{
 	font-size: v(36);
@@ -53,6 +53,16 @@
 	&-original{
 		visibility: hidden;
 	}
+	&-1,
+	&-2,
+	&-3{
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	&-1{z-index: 10;color: var(--text-black);}
+	&-2{z-index: 5;color: var(--lime);}
+	&-3{z-index: 0;color: #C8C8C8;}
 	&-back{
 		position: absolute;
 		top: 0;
