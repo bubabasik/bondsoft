@@ -212,6 +212,25 @@ $(document).ready(function() {
 		gsap.set(lime, {clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)"})
 		gsap.set(back, {clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)"})
 
+		gsap.timeline({
+			scrollTrigger: {
+				trigger: ".modserv__cont",
+				start: "top+=200px bottom"
+			}
+		})
+		.from(sub, 0.6, {
+			autoAlpha: 0,
+			ease: "cubic-bezier(.12,.46,.47,.99)",
+			delay: 0.1,
+			stagger:0.1 
+		}) 
+		.from(title, 0.6, {
+			autoAlpha: 0,
+			ease: "cubic-bezier(.12,.46,.47,.99)",
+			delay: 0.1,
+			stagger:0.1 
+		}, 0)  
+
 		const tl = gsap.timeline({ 
 			scrollTrigger: {
 				trigger: ".modserv__cont",
