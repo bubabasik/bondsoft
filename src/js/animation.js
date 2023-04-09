@@ -126,246 +126,77 @@ $(function(){
 /*-----------------------------*/
 
 
-
 $(document).ready(function() {
-
-	/* Заголовок Услуги */
-	$(function(){
-		const cont = document.querySelector('.modserv__cont');
-
-		const original = cont.querySelector('.modserv__capt-original');
-		const front = cont.querySelector('.modserv__capt-front');
-		const back = cont.querySelector('.modserv__capt-back');
-
-		const sub = cont.querySelector('.mod__title');
-		const title = cont.querySelector('.modserv__title');
-
-		if(!back) {return;}
-
-		front.innerHTML = back.innerHTML = original.innerHTML;
-
-		gsap.set(front, {clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)"})
-		gsap.set(back, {clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)"})
-
-		gsap.timeline({
-			scrollTrigger: {
-				trigger: ".modserv__cont",
-				start: "top+=200px bottom"
-			}
-		})
-		.from(sub, 0.6, {
-			autoAlpha: 0,
-			ease: "cubic-bezier(.12,.46,.47,.99)",
-			delay: 0.1,
-			stagger:0.1 
-		}) 
-		.from(title, 0.6, {
-			autoAlpha: 0,
-			ease: "cubic-bezier(.12,.46,.47,.99)",
-			delay: 0.1,
-			stagger:0.1 
-		}, 0)  
-
-		const tl = gsap.timeline({ 
-			scrollTrigger: {
-				trigger: ".modserv__cont",
-				start: "top top+=150",
-				end: "bottom+=100% top+=150",    
-				anticipatePin: 1,
-				pin: true,
-				pinSpacing : true,
-				scrub: .5,
-				toggleActions: "play none reverse none",
-				onUpdate: self  => {
-					let h = self.progress * 100;
-					let subScroll = 
-
-					gsap.set(back, {
-						clipPath: "polygon(0 0, 100% 0, 100% " + 100 - h + "%, 0 " + 100 - h + "%)",
-					})
-					gsap.set(front, {
-						clipPath: "polygon(0 0, 100% 0, 100% " + h + "%, 0 " + h + "%)",
-					})
-					gsap.set(sub, {
-						y: (cont.offsetHeight - sub.offsetHeight) * self.progress
-					})
-				}
-			}
-		})
-	})
-	$(function(){
-		const cont = document.querySelector('.modserv__cont');
-
-		const original = cont.querySelector('.modserv__capt-original');
-		const front = cont.querySelector('.modserv__capt-1');
-		const lime = cont.querySelector('.modserv__capt-2');
-		const back = cont.querySelector('.modserv__capt-3');
-
-		const sub = cont.querySelector('.mod__title');
-		const title = cont.querySelector('.modserv__title');
-
-		if(!back) {return;}
-
-		front.innerHTML = back.innerHTML = lime.innerHTML = original.innerHTML;
-
-		gsap.set(front, {clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)"})
-		gsap.set(lime, {clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)"})
-		gsap.set(back, {clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)"})
-
-		gsap.timeline({
-			scrollTrigger: {
-				trigger: ".modserv__cont",
-				start: "top+=200px bottom"
-			}
-		})
-		.from(sub, 0.6, {
-			autoAlpha: 0,
-			ease: "cubic-bezier(.12,.46,.47,.99)",
-			delay: 0.1,
-			stagger:0.1 
-		}) 
-		.from(title, 0.6, {
-			autoAlpha: 0,
-			ease: "cubic-bezier(.12,.46,.47,.99)",
-			delay: 0.1,
-			stagger:0.1 
-		}, 0)  
-
-		const tl = gsap.timeline({ 
-			scrollTrigger: {
-				trigger: ".modserv__cont",
-				start: "top top+=150",
-				end: "bottom+=100% top+=150",    
-				anticipatePin: 1,
-				pin: true,
-				pinSpacing : true,
-				scrub: .5,
-				toggleActions: "play none reverse none",
-				onUpdate: self  => {
-					let h = self.progress * 100;
-					let hb = 0;
-					let start = 0.4;
-
-					if(self.progress > start) { 
-						let diff = self.progress - start;
-						let koeff = 1 / (1 - start);
-						hb = diff * koeff * 100;
+	
+	/* ------- ! NEW ! ------- ЗАКРАШИВАНИЕ ТЕКСТА ВОРОНКА ПРОДАЖ ------- ! NEW ! ------- */
+	if($('.new-color').length) {
+		$(function(){
+			let revealText = document.querySelectorAll(".new-color");
+			gsap.registerPlugin(ScrollTrigger);
+			let revealLines = revealText.forEach((element) => {
+				const lines = element.querySelectorAll(".modserv__capt-original span");
+				let color = gsap.timeline({
+					scrollTrigger: {
+						trigger: ".modserv__cont",
+						start: "top top+=150",
+						end: "bottom+=100% top+=150",    
+						pin: true,
+						pinType: "fixed",
+						pinReparent: true,
+						scrub: 0.5
 					}
-					// h = self.progress * 2 * 100;
-					// hb = (self.progress - 0.5) * 2 * 100;
-					gsap.set(back, {
-						clipPath: "polygon(0 0, 100% 0, 100% " + 100 - h + "%, 0 " + 100 - h + "%)",
-					})
-					gsap.set(front, {
-						clipPath: "polygon(0 0, 100% 0, 100% " + hb + "%, 0 " + hb + "%)",
-					})
-					gsap.set(lime, {
-						clipPath: "polygon(0 0, 100% 0, 100% " + h + "%, 0 " + h + "%)",
-					})
-					gsap.set(sub, {
-						y: (cont.offsetHeight - sub.offsetHeight) * self.progress
-					})
-				}
-			}
-		})
-	})
-
-	/* О нас ЛОГО */
-	$(function(){
-		const img = document.querySelector('.abtop__img img');
-
-		if(!img) {return;}
-
-		const tl = gsap.timeline({ 
-			scrollTrigger: {
-				trigger: ".abtop__cont",
-				start: "top-=100 top",
-				end: "bottom+=250 botom+=250",    
-				anticipatePin: 1,
-				pin: true,
-				pinSpacing : true,
-				scrub: .5,
-				toggleActions: "play none reverse none",
-				onUpdate: self  => {
-					let h = self.progress * 100;
-					gsap.set(img, {
-						opacity: 1 - self.progress
-					})
-				}
-			}
-		})
-	})
-
-	/* футер */
-
-	$(function(){
-		const footer = document.querySelector('.footer');
-		const inner = footer.querySelector('.footer__inner');
-
-		gsap.set(inner, {yPercent: -50})
-
-		const tl = gsap.timeline({ 
-			scrollTrigger: {
-				trigger: footer,
-				start: "top bottom",   
-				end: "bottom bottom",   
-				scrub: .5,
-				toggleActions: "play none reverse none",
-				onUpdate: self  => {
-					let result = -50 + self.progress / 2 * 100;
-					gsap.set(inner, {
-						yPercent: result,
-					})
-				}
-			}
-		})
-	})
-
-
-
-	$(function(){
-		$('.line_title').each(function(){
-			$(this).splitLines({ keepHtml:true});  
+				});
+				color.to(lines, {color: "rgba(154, 154, 154, 1)", stagger:0.3})
+					.to(lines, {color: "rgba(34,34,34,1)", stagger:0.3}, 0.6);
+				gsap.to(lines, { repeat: -1, yoyo: true});
+			});
 		});
-	});
+	};  
 
-
-	/* !!!!!!!!! 2-й вариант двух экранов */
+	/* ------- ! NEW ! -------  II ВАРИАНТ ПЕРВЫХ 2-Х ЭКРАНОВ ------- ! NEW ! -------  */
 	var windowWidth = $(window).width();
 	if((windowWidth > 1200) & ($('.section_top-fix').length)){
+		
 		$(function(){
-			var heightBut = $('.pin-but').height();
-			const firstScreen = document.querySelector('.first-screen-fix');
-			if(!firstScreen) {return;}
-			const tl = gsap.timeline({ 
-				scrollTrigger: {
-					trigger: firstScreen,
-					start: "center center",
-					endTrigger: '.lines-flip-two',
-					end: 'center bottom',    
-					anticipatePin: 1,
-					pinType: "fixed",
-					pinReparent: false,
-					pin: true,
-					pinSpacing: false,
-					scrub: 2,
-					toggleActions: "play none reverse none",
-					onUpdate: self  => {
-						let h = self.progress * 80;
-						gsap.set(".top__title, .top__sub", {
-							opacity: 1 - self.progress,
-							duration: 4
-						})
-					}
-				}
-			})
-				tl.to(".pin-but", {
-					yPercent: heightBut/2,
-					ease: "liner",				
-					duration: 1				
-				})
+			gsap.set(".top__title", { yPercent: -90});
+			gsap.to(".top__title", {
+			  yPercent: 90,
+			  ease: "none",
+			  scrollTrigger: {
+				trigger: ".section_top-fix",
+				scrub: 0.2
+			  }
+			});
+			  gsap.to(".top__title", {
+			  opacity: 0,
+			  ease: "none",
+			  scrollTrigger: {
+				trigger: ".section_top-fix",
+				start: "center center",
+				scrub: 0.2
+			  }
+			}); 
 		})
-
+	
+		$(function(){
+			tl =  gsap.timeline({
+				scrollTrigger: {
+					trigger: ".pin-but",
+					start: 'center center', 
+					endTrigger: '.lines-flip-one',
+					end: 'center center',
+					pin: true,
+					pinSpacing: true,
+					pinType: "transform",
+					pinReparent: true,
+					scrub:true
+				}
+			});
+			tl.to(".pin-but", {scale: 0.7})
+				.to(".pin-but", {scale: 1});
+				gsap.to(".pin-but", { duration: 1, ease: "none", repeat: -1, yoyo: true});
+		}); 
+						
 		$(function(){
 			gsap.registerPlugin(Flip);
 			gsap.registerPlugin(ScrollTrigger);
@@ -429,8 +260,323 @@ $(document).ready(function() {
 		});
 	};
 
+	/* ------- ! NEW ! -------  III ВАРИАНТ ПЕРВЫХ 2-Х ЭКРАНОВ ------- ! NEW ! -------  */
+	if((windowWidth > 1200) & ($('.section_top-fix-var3').length)){
+		$(function(){
+			gsap.registerPlugin(ScrollTrigger);
+			gsap.to(".top__title", {
+			  scrollTrigger: {
+				trigger: ".first-screen-fix-var3",
+				start: 0,
+				endTrigger: ".lines-flip-one",
+				end: "bottom bottom",
+				pin: ".top__title",
+				scrub: 3,
+				pinSpacing: false,
+				pinType: "trasnsform",
+				pinReparent: true
+			  },
+			  opacity: 0.03,
+			  duration:0.5,
+			  yPercent: 15
+			});
+		});
+		
+		$(function(){
+			gsap.registerPlugin(ScrollTrigger);
+			gsap.to(".pin-but", {
+			  scrollTrigger: {
+			trigger: ".first-screen-fix-var3",
+				start: 0, 
+				endTrigger: '.lines-flip-one',
+				end: 'center center',
+				pin: ".pin-but",
+				pinSpacing: true,
+				pinType: "trasnsform",
+				pinReparent: true,
+				scrub: 1
+			  },		   
+		 		xPercent: 200,
+				ease: "none"
+			});
+		});
+	
+		$(function(){
+			gsap.registerPlugin(Flip);
+			gsap.registerPlugin(ScrollTrigger);
+			const firstHeading = document.querySelector('.lines-flip-one');
+			const containerTwo = document.querySelector('.container-flip-one');
+			const firstHeading2 = document.querySelector('.lines-flip-two');
+			const containerTwo2 = document.querySelector('.container-flip-two');    
+			const firstHeading3 = document.querySelector('.lines-flip-three');
+			const containerTwo3 = document.querySelector('.container-flip-three');
+			const word = document.querySelectorAll('.lines__item .word');
+			let tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: firstHeading2,
+					start: "center bottom"
+				}
+			});
+			tl.from(".flip-line", 0.4, {
+				scaleX:0, 
+				transformOrigin:"left",
+				ease: "Expo.easeOut",
+				stagger:0.2
+			})
+			tl.from(word, 0.5, {
+				yPercent: 130,
+				ease: "Expo.easeOut",
+				stagger: { 
+					from: "random", 
+					amount: 0.2 
+				},
+				onComplete: myEnterFunc
+			},0.2)
+			function myEnterFunc() {
+				const state = Flip.getState(firstHeading, {
+					props: "justify-content",
+				})
+				containerTwo.appendChild(firstHeading);
+				Flip.from(state, {
+					ease: "Expo.easeOut",
+					delay: "random(0.1, 0.3)",
+					duration: 0.7
+				})
+				const state2 = Flip.getState(firstHeading2, {
+					props: "justify-content",
+				})
+				containerTwo2.appendChild(firstHeading2);
+				Flip.from(state2, {
+					ease: "Expo.easeOut",
+					delay: "random(0.1, 0.3)",
+					duration: 0.7
+				})
+				const state3 = Flip.getState(firstHeading3, {
+					props: "justify-content",
+				})
+				containerTwo3.appendChild(firstHeading3);
+				Flip.from(state3, {
+					ease: "Expo.easeOut",
+					delay: "random(0.1, 0.3)",
+					duration: 0.7
+				})
+			}
+		});
+	};
+});
 
 
+
+/*-----------------------------*/
+
+
+
+$(document).ready(function() {
+
+	/* Заголовок Услуги */
+	if($('.first-screen-old-anim').length) { 
+		$(function(){
+			const cont = document.querySelector('.modserv__cont');
+
+			const original = cont.querySelector('.modserv__capt-original');
+			const front = cont.querySelector('.modserv__capt-front');
+			const back = cont.querySelector('.modserv__capt-back');
+
+			const sub = cont.querySelector('.mod__title');
+			const title = cont.querySelector('.modserv__title');
+
+			if(!back) {return;}
+
+			front.innerHTML = back.innerHTML = original.innerHTML;
+
+			gsap.set(front, {clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)"})
+			gsap.set(back, {clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)"})
+
+			gsap.timeline({
+				scrollTrigger: {
+					trigger: ".modserv__cont",
+					start: "top+=200px bottom"
+				}
+			})
+			.from(sub, 0.6, {
+				autoAlpha: 0,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1 
+			}) 
+			.from(title, 0.6, {
+				autoAlpha: 0,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1 
+			}, 0)  
+
+			const tl = gsap.timeline({ 
+				scrollTrigger: {
+					trigger: ".modserv__cont",
+					start: "top top+=150",
+					end: "bottom+=100% top+=150",    
+					anticipatePin: 1,
+					pin: true,
+					pinSpacing : true,
+					scrub: .5,
+					toggleActions: "play none reverse none",
+					onUpdate: self  => {
+						let h = self.progress * 100;
+						let subScroll = 
+
+						gsap.set(back, {
+							clipPath: "polygon(0 0, 100% 0, 100% " + 100 - h + "%, 0 " + 100 - h + "%)",
+						})
+						gsap.set(front, {
+							clipPath: "polygon(0 0, 100% 0, 100% " + h + "%, 0 " + h + "%)",
+						})
+						gsap.set(sub, {
+							y: (cont.offsetHeight - sub.offsetHeight) * self.progress
+						})
+					}
+				}
+			})
+		})
+	}
+	
+	if($('.index2').length) { 
+		$(function(){
+			const cont = document.querySelector('.modserv__cont');
+
+			const original = cont.querySelector('.modserv__capt-original');
+			const front = cont.querySelector('.modserv__capt-1');
+			const lime = cont.querySelector('.modserv__capt-2');
+			const back = cont.querySelector('.modserv__capt-3');
+
+			const sub = cont.querySelector('.mod__title');
+			const title = cont.querySelector('.modserv__title');
+
+			if(!back) {return;}
+
+			front.innerHTML = back.innerHTML = lime.innerHTML = original.innerHTML;
+
+			gsap.set(front, {clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)"})
+			gsap.set(lime, {clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)"})
+			gsap.set(back, {clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)"})
+
+			gsap.timeline({
+				scrollTrigger: {
+					trigger: ".modserv__cont",
+					start: "top+=200px bottom"
+				}
+			})
+			.from(sub, 0.6, {
+				autoAlpha: 0,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1 
+			}) 
+			.from(title, 0.6, {
+				autoAlpha: 0,
+				ease: "cubic-bezier(.12,.46,.47,.99)",
+				delay: 0.1,
+				stagger:0.1 
+			}, 0)  
+
+			const tl = gsap.timeline({ 
+				scrollTrigger: {
+					trigger: ".modserv__cont",
+					start: "top top+=150",
+					end: "bottom+=100% top+=150",    
+					anticipatePin: 1,
+					pin: true,
+					pinSpacing : true,
+					scrub: .5,
+					toggleActions: "play none reverse none",
+					onUpdate: self  => {
+						let h = self.progress * 100;
+						let hb = 0;
+						let start = 0.4;
+
+						if(self.progress > start) { 
+							let diff = self.progress - start;
+							let koeff = 1 / (1 - start);
+							hb = diff * koeff * 100;
+						}
+						// h = self.progress * 2 * 100;
+						// hb = (self.progress - 0.5) * 2 * 100;
+						gsap.set(back, {
+							clipPath: "polygon(0 0, 100% 0, 100% " + 100 - h + "%, 0 " + 100 - h + "%)",
+						})
+						gsap.set(front, {
+							clipPath: "polygon(0 0, 100% 0, 100% " + hb + "%, 0 " + hb + "%)",
+						})
+						gsap.set(lime, {
+							clipPath: "polygon(0 0, 100% 0, 100% " + h + "%, 0 " + h + "%)",
+						})
+						gsap.set(sub, {
+							y: (cont.offsetHeight - sub.offsetHeight) * self.progress
+						})
+					}
+				}
+			})
+		})
+	}
+
+	/* О нас ЛОГО */
+	$(function(){
+		const img = document.querySelector('.abtop__img img');
+
+		if(!img) {return;}
+
+		const tl = gsap.timeline({ 
+			scrollTrigger: {
+				trigger: ".abtop__cont",
+				start: "top-=100 top",
+				end: "bottom+=250 botom+=250",    
+				anticipatePin: 1,
+				pin: true,
+				pinSpacing : true,
+				scrub: .5,
+				toggleActions: "play none reverse none",
+				onUpdate: self  => {
+					let h = self.progress * 100;
+					gsap.set(img, {
+						opacity: 1 - self.progress
+					})
+				}
+			}
+		})
+	})
+
+	/* футер */
+
+	$(function(){
+		const footer = document.querySelector('.footer');
+		const inner = footer.querySelector('.footer__inner');
+
+		gsap.set(inner, {yPercent: -50})
+
+		const tl = gsap.timeline({ 
+			scrollTrigger: {
+				trigger: footer,
+				start: "top bottom",   
+				end: "bottom bottom",   
+				scrub: .5,
+				toggleActions: "play none reverse none",
+				onUpdate: self  => {
+					let result = -50 + self.progress / 2 * 100;
+					gsap.set(inner, {
+						yPercent: result,
+					})
+				}
+			}
+		})
+	})
+
+
+
+	$(function(){
+		$('.line_title').each(function(){
+			$(this).splitLines({ keepHtml:true});  
+		});
+	});
 
 
 	/*Курсор*/
