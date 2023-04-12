@@ -272,17 +272,9 @@ header.scroll-up {
     pointer-events: none !important;
 }
 
-
-/*  ------- ! NEW ! -------  */
-.new-color .modserv__capt-original {
+.modserv__capt-original {
     visibility: visible !important;
 }
-.new-color .modserv__capt-original span{
+.modserv__capt-original span{
     color: rgba(200,200,200,0.3);
-}
-
-@media (min-width: 1200px){
-    .section_top-fix {
-        margin-bottom: 10vh !important;
-    }
 }

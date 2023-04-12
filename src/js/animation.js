@@ -126,14 +126,15 @@ $(function(){
 /*-----------------------------*/
 
 
+
 $(document).ready(function() {
-	
+
 	/* ------- ! NEW ! ------- ЗАКРАШИВАНИЕ ТЕКСТА ВОРОНКА ПРОДАЖ ------- ! NEW ! ------- */
-	if($('.new-color').length) {
+	if($('.modserv__cont').length) {
 		$(function(){
-			let revealText = document.querySelectorAll(".new-color");
+			let revealBlock = document.querySelectorAll(".modserv__cont");
 			gsap.registerPlugin(ScrollTrigger);
-			let revealLines = revealText.forEach((element) => {
+			let revealLines = revealBlock.forEach((element) => {
 				const lines = element.querySelectorAll(".modserv__capt-original span");
 				let color = gsap.timeline({
 					scrollTrigger: {
@@ -153,228 +154,7 @@ $(document).ready(function() {
 		});
 	};  
 
-	/* ------- ! NEW ! -------  II ВАРИАНТ ПЕРВЫХ 2-Х ЭКРАНОВ ------- ! NEW ! -------  */
-	var windowWidth = $(window).width();
-	if((windowWidth > 1200) & ($('.section_top-fix').length)){
-		
-		$(function(){
-			gsap.set(".top__title", { yPercent: -90});
-			gsap.to(".top__title", {
-				yPercent: 90,
-				ease: "none",
-				scrollTrigger: {
-					trigger: ".section_top-fix",
-					scrub: 0.2
-				}
-			});
-			gsap.to(".top__title", {
-				opacity: 0,
-				ease: "none",
-				scrollTrigger: {
-					trigger: ".section_top-fix",
-					start: "center center",
-					scrub: 0.2
-				}
-			}); 
-		})
-
-		$(function(){
-			tl =  gsap.timeline({
-				scrollTrigger: {
-					trigger: ".pin-but",
-					start: 'center center', 
-					endTrigger: '.lines-flip-one',
-					end: 'center center',
-					pin: true,
-					pinSpacing: true,
-					pinType: "transform",
-					pinReparent: true,
-					scrub:true
-				}
-			});
-			tl.to(".pin-but", {scale: 0.7})
-			.to(".pin-but", {scale: 1});
-
-			gsap.to(".pin-but", { duration: 1, ease: "none", repeat: -1, yoyo: true});
-		}); 
-
-		$(function(){
-			gsap.registerPlugin(Flip);
-			gsap.registerPlugin(ScrollTrigger);
-			const firstHeading = document.querySelector('.lines-flip-one');
-			const containerTwo = document.querySelector('.container-flip-one');
-			const firstHeading2 = document.querySelector('.lines-flip-two');
-			const containerTwo2 = document.querySelector('.container-flip-two');    
-			const firstHeading3 = document.querySelector('.lines-flip-three');
-			const containerTwo3 = document.querySelector('.container-flip-three');
-			const word = document.querySelectorAll('.lines__item .word');
-			let tl = gsap.timeline({
-				scrollTrigger: {
-					trigger: firstHeading2,
-					start: "center bottom"
-				}
-			});
-			tl.from(".flip-line", 0.4, {
-				scaleX:0, 
-				transformOrigin:"left",
-				ease: "Expo.easeOut",
-				stagger:0.2
-			})
-			tl.from(word, 0.5, {
-				yPercent: 130,
-				ease: "Expo.easeOut",
-				stagger: { 
-					from: "random", 
-					amount: 0.2 
-				},
-				onComplete: myEnterFunc
-			},0.2)        
-			function myEnterFunc() {
-				const state = Flip.getState(firstHeading, {
-					props: "justify-content",
-				})
-				containerTwo.appendChild(firstHeading);
-				Flip.from(state, {
-					ease: "Expo.easeOut",
-					delay: "random(0.1, 0.3)",
-					duration: 0.7
-				})
-				const state2 = Flip.getState(firstHeading2, {
-					props: "justify-content",
-				})
-				containerTwo2.appendChild(firstHeading2);
-				Flip.from(state2, {
-					ease: "Expo.easeOut",
-					delay: "random(0.1, 0.3)",
-					duration: 0.7
-				})
-				const state3 = Flip.getState(firstHeading3, {
-					props: "justify-content",
-				})
-				containerTwo3.appendChild(firstHeading3);
-				Flip.from(state3, {
-					ease: "Expo.easeOut",
-					delay: "random(0.1, 0.3)",
-					duration: 0.7
-				})
-			}
-		});
-	};
-
-	/* ------- ! NEW ! -------  III ВАРИАНТ ПЕРВЫХ 2-Х ЭКРАНОВ ------- ! NEW ! -------  */
-	if((windowWidth > 1200) & ($('.section_top-fix-var3').length)){
-		$(function(){
-			gsap.registerPlugin(ScrollTrigger);
-			gsap.to(".top__title", {
-				scrollTrigger: {
-					trigger: ".first-screen-fix-var3",
-					start: 0,
-					endTrigger: ".lines-flip-one",
-					end: "bottom bottom",
-					pin: ".top__title",
-					scrub: 3,
-					pinSpacing: false,
-					pinType: "trasnsform",
-					pinReparent: true
-				},
-				opacity: 0.03,
-				duration:0.5,
-				yPercent: 15
-			});
-		});
-		
-		$(function(){
-			gsap.registerPlugin(ScrollTrigger);
-			gsap.to(".pin-but", {
-				scrollTrigger: {
-					trigger: ".first-screen-fix-var3",
-					start: 0, 
-					endTrigger: '.lines-flip-one',
-					end: 'center center',
-					pin: ".pin-but",
-					pinSpacing: true,
-					pinType: "trasnsform",
-					pinReparent: true,
-					scrub: 1
-				},		   
-				xPercent: 200,
-				ease: "none"
-			});
-		});
-
-		$(function(){
-			gsap.registerPlugin(Flip);
-			gsap.registerPlugin(ScrollTrigger);
-			const firstHeading = document.querySelector('.lines-flip-one');
-			const containerTwo = document.querySelector('.container-flip-one');
-			const firstHeading2 = document.querySelector('.lines-flip-two');
-			const containerTwo2 = document.querySelector('.container-flip-two');    
-			const firstHeading3 = document.querySelector('.lines-flip-three');
-			const containerTwo3 = document.querySelector('.container-flip-three');
-			const word = document.querySelectorAll('.lines__item .word');
-			let tl = gsap.timeline({
-				scrollTrigger: {
-					trigger: firstHeading2,
-					start: "center bottom"
-				}
-			});
-			tl.from(".flip-line", 0.4, {
-				scaleX:0, 
-				transformOrigin:"left",
-				ease: "Expo.easeOut",
-				stagger:0.2
-			})
-			tl.from(word, 0.5, {
-				yPercent: 130,
-				ease: "Expo.easeOut",
-				stagger: { 
-					from: "random", 
-					amount: 0.2 
-				},
-				onComplete: myEnterFunc
-			},0.2)
-			function myEnterFunc() {
-				const state = Flip.getState(firstHeading, {
-					props: "justify-content",
-				})
-				containerTwo.appendChild(firstHeading);
-				Flip.from(state, {
-					ease: "Expo.easeOut",
-					delay: "random(0.1, 0.3)",
-					duration: 0.7
-				})
-				const state2 = Flip.getState(firstHeading2, {
-					props: "justify-content",
-				})
-				containerTwo2.appendChild(firstHeading2);
-				Flip.from(state2, {
-					ease: "Expo.easeOut",
-					delay: "random(0.1, 0.3)",
-					duration: 0.7
-				})
-				const state3 = Flip.getState(firstHeading3, {
-					props: "justify-content",
-				})
-				containerTwo3.appendChild(firstHeading3);
-				Flip.from(state3, {
-					ease: "Expo.easeOut",
-					delay: "random(0.1, 0.3)",
-					duration: 0.7
-				})
-			}
-		});
-	};
-});
-
-
-
-/*-----------------------------*/
-
-
-
-$(document).ready(function() {
-
-	/* Заголовок Услуги */
+	/* Заголовок Услуги 
 	if($('.first-screen-old-anim').length) { 
 		$(function(){
 			const cont = document.querySelector('.modserv__cont');
@@ -517,7 +297,7 @@ $(document).ready(function() {
 				}
 			})
 		})
-	}
+	}*/
 
 	/* О нас ЛОГО */
 	$(function(){
@@ -815,7 +595,7 @@ $(document).ready(function() {
 			}*/
 
 
-			/* 2 экран */
+			/* 2 экран 
 			$(function(){
 				gsap.registerPlugin(Flip);
 				gsap.registerPlugin(ScrollTrigger);
@@ -876,7 +656,7 @@ $(document).ready(function() {
 						duration: "random(0.5, 1)"
 					})
 				}
-			});
+			});*/
 		}
 
 		/*H2 О нас*/
