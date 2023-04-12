@@ -34,8 +34,9 @@
 	order: 1;
 	letter-spacing: -0.03em;
 
-	span{
-
+	strong{
+		font-weight: inherit;
+		color: var(--lime);
 	}
 
 	@include media($w-md) {
@@ -75,19 +76,31 @@
 		position: relative;
 		width: v(100);
 		height: v(100);
-		&:before{
+		&:before,
+		&:after{
 			content: '';
 			display: inline-block;
 			vertical-align: top;
 			position: absolute;
+			transition: .3s var(--ease-out);
+			border-radius: 50%;
+			will-change: transform;
+		}
+		&:before{
 			top: 0;
 			right: 0;
 			bottom: 0;
 			left: 0;
-			z-index: -1;
 			background: var(--lime);
-			border-radius: 50%;
-			transition: .3s var(--ease-out);
+			z-index: -2;
+		}
+		&:after{
+			top: v(5);
+			right: v(5);
+			bottom: v(5);
+			left: v(5);
+			z-index: -1;
+			border: 1px solid #fff;
 		}
 		svg{
 			width: v(12);
@@ -102,6 +115,12 @@
 				right: v(-10);
 				bottom: v(-10);
 				left: v(-10);
+			}
+			&:after{
+				top: v(0);
+				right: v(0);
+				bottom: v(0);
+				left: v(0);
 			}
 		}
 	}
@@ -118,12 +137,18 @@
 		}
 	}
 	@include media($w-xl) {
-		width: v(200);
-		height: v(200);
+		width: v(190);
+		height: v(190);
 		margin-bottom: v(-20);
 		&--item{
-			width: v(200);
-			height: v(200);
+			width: v(190);
+			height: v(190);
+			&:after{
+				top: v(10);
+				right: v(10);
+				bottom: v(10);
+				left: v(10);
+			}
 			svg{
 				width: v(20);
 				height: v(31);

@@ -17,7 +17,8 @@
 section.section_lines {
     z-index: 4;
 }
-.top__link--item:hover:before{
+.top__link--item:hover:before,
+.top__link--item:hover:after{
     transform: scale(1.1);
 }
 .top__link--item:hover svg.ico.ico-center {
