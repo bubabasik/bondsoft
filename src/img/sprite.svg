@@ -17,6 +17,8 @@
 
   <symbol id="arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 9"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.774 4.018H1.727L5.728.017H4.471L.653 3.834l-.629.629L4.47 8.908h1.257l-4-4.001h8.047v-.89Z" ></path></symbol>
 
+  <symbol id="arrow-diag-left" viewBox="0 0 81 80" xmlns="http://www.w3.org/2000/svg"><path d="M60.317 59.462 21.335 20.48l-.707.707L59.61 60.17z"/><path d="M20.148 21h40v-1h-40z"/><path d="M21.148 60V20h-1v40z"/></symbol>
+
   <symbol id="arr-down" viewBox="0 0 22 12" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M22.001 1.158 11.258 11.9l-.003.002L.512 1.159 1.572.1l9.684 9.683L20.94.097 22 1.157Z" /></symbol>
 
   <symbol id="check" viewBox="0 0 26 19" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#a)"><path fill-rule="evenodd" clip-rule="evenodd" d="M23.823.282a.5.5 0 0 1 .103.7l-12.79 17.214-.409-.424c-1.44-1.492-3.887-3.814-5.982-5.77a515.135 515.135 0 0 0-3.52-3.253l-.301-.276.336-.37.337-.37.304.278a460.389 460.389 0 0 1 3.526 3.26c1.908 1.78 4.125 3.88 5.608 5.385L23.123.386a.5.5 0 0 1 .7-.104ZM.891 7.766a.5.5 0 0 1 .706-.032l-.337.369-.336.37a.5.5 0 0 1-.033-.707Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M.703.683h24.593v17.754H.703z"/></clipPath></defs></symbol>

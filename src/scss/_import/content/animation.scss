@@ -211,13 +211,13 @@ header.scroll-up {
     }
     .top__sub {
         display: initial;
-        margin-bottom: 120px;
+        // margin-bottom: 120px;
         vertical-align: top;
     }
 }
 @media (max-width: 850px){
     .top__sub {
-        margin-bottom: 110px;
+        // margin-bottom: 110px;
     }
 }
 @media (max-width: 610px){
@@ -230,7 +230,7 @@ header.scroll-up {
         width: 310px;
     }
     .top__sub {
-        margin-bottom: 90px;
+        // margin-bottom: 90px;
     }
 }
 @media (max-width: 370px){
@@ -238,7 +238,7 @@ header.scroll-up {
         width: 250px;
     }
     .top__sub {
-        margin-bottom: 70px;
+        // margin-bottom: 70px;
     }   
 }
 

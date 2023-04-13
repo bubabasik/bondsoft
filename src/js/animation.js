@@ -25,101 +25,6 @@ function LineWrapper(node) {
 	});
 	node.innerHTML = finalHTML.trim();
 }
-$(function(){
-
-	let 
-	windowWidth = $(window).width();
-
-	Splitting();
-
-	$(function(line_title){
-		for(const node of document.getElementsByClassName('line-splitting')) { 
-			LineWrapper(node); 
-		}
-	});
-
-
-	/* dark mode */
-	$(function(darkMode){
-		const darks = gsap.utils.toArray('.dark-mode-trigger, .dark-mode-trigger-last');
-
-		darks.forEach((box, i) => {
-			let end_trigger, end_position;
-			if($(box).hasClass('dark-mode-trigger-last')) {
-				end_trigger = 'html';
-				end_position = 'bottom top';
-			}else{
-				end_trigger = box;
-				end_position = "bottom bottom-=30%";
-			}
-			
-			ScrollTrigger.create({
-				trigger: box,
-				endTrigger: end_trigger,
-				start: "top+=10% top",
-				end: end_position,
-				onToggle: self => {
-					if(self.isActive) {
-						$('body').addClass('dark-header');
-						$(box).addClass('dark-mode');
-					}else{
-						$(box).removeClass('dark-mode');
-						$('body').removeClass('dark-header');
-					}
-				},
-			});
-		});
-	});
-
-	/* dark mode header */
-	$(function(darkMode){
-		const darks = gsap.utils.toArray('.header-trigger');
-		const height = $('.header').outerHeight();
-
-		darks.forEach((box, i) => {			
-			ScrollTrigger.create({
-				trigger: box,
-				endTrigger: box,
-				start: "top-=10 top",
-				end: "bottom top",
-				onToggle: self => {
-					if(self.isActive) {
-						$('body').addClass('dark-header');
-					}else{
-						$('body').removeClass('dark-header');
-					}
-				},
-			});
-		});
-	});
-
-	/* btn hover */
-
-	buttonHover = function(e) {
-		let
-		fill = e.currentTarget.querySelector('.btn-fill'),
-		elem = e.currentTarget.getBoundingClientRect(),
-		w = elem.width,
-		h = elem.height,
-		scale = event.type == 'mouseenter' ? 1 : 0;
-
-		fill.style.transformOrigin = "".concat(Math.round((e.clientX - elem.left) / w * 100) - 50, "% ").concat(Math.round((e.clientY - elem.top) / h * 100) - 50, "%"),
-		fill.style.transform = "scale(".concat(scale, ") translate3d(-50%, -50%, 0)");
-	}
-	$(function(button){
-
-		const buttons = document.querySelectorAll('.btn, .btn-outer');
-
-		buttons.forEach((btn) => {
-			let fill = btn.querySelector('.btn-fill');
-			if(fill) {
-				btn.onmouseenter = btn.onmouseleave = buttonHover;
-			}			
-		})
-
-	}) 
-
-});
 
 
 
@@ -1153,15 +1058,7 @@ $(document).ready(function() {
 		if(!line) {return;}
 
 		let item = '<div class="marquee__inner">'+line.innerHTML+'</div>';
-		line.innerHTML = item + item + item;
-
-		const buttons = document.querySelectorAll('.btn, .btn-outer');
-		buttons.forEach((btn) => {
-			let fill = btn.querySelector('.btn-fill');
-			if(fill) {
-				btn.onmouseenter = btn.onmouseleave = buttonHover;
-			}			
-		})
+		line.innerHTML = item + item + item + item;
 
 		const inner = line.querySelectorAll('.marquee__inner');
 
@@ -1185,6 +1082,42 @@ $(document).ready(function() {
 				}
 			}
 		});
+
+		/*gsap.set(inner, {
+			y: 150
+		});
+
+		let tl_show = gsap.timeline({
+			scrollTrigger: {
+				trigger: ".section_topline",
+				start: "top bottom",
+				end: "bottom+=50% bottom",    
+				anticipatePin: 1,
+				pin: false,
+				pinType: "transform",
+				pinSpacing : false,
+				scrub: 2,
+				toggleActions: "play none reverse none",
+				onUpdate: self  => {
+					let h = self.progress * 100;
+					gsap.set(inner, {
+						y: 150 - h * 1.5
+					})
+				}
+			}
+		});*/
+
+		let tl_show2 = gsap.timeline({
+			scrollTrigger: {
+				trigger: ".section_topline"
+			}
+		});
+
+		tl_show2
+		.from(inner, {y: 150, duration: .7},)
+		.from(line.querySelectorAll('.topline__icon'), {scale: .5}, '-=.35')
+
+
 	}); 
 
 	/* логотипы */
@@ -2111,6 +2044,102 @@ $(document).ready(function() {
 	};
 });
 
+
+$(function(){
+
+	let 
+	windowWidth = $(window).width();
+
+	Splitting();
+
+	$(function(line_title){
+		for(const node of document.getElementsByClassName('line-splitting')) { 
+			LineWrapper(node); 
+		}
+	});
+
+
+	/* dark mode */
+	$(function(darkMode){
+		const darks = gsap.utils.toArray('.dark-mode-trigger, .dark-mode-trigger-last');
+
+		darks.forEach((box, i) => {
+			let end_trigger, end_position;
+			if($(box).hasClass('dark-mode-trigger-last')) {
+				end_trigger = 'html';
+				end_position = 'bottom top';
+			}else{
+				end_trigger = box;
+				end_position = "bottom bottom+=20%";
+			}
+			
+			ScrollTrigger.create({
+				trigger: box,
+				endTrigger: end_trigger,
+				start: "top top",
+				end: end_position,
+				onToggle: self => {
+					if(self.isActive) {
+						$('body').addClass('dark-header');
+						$(box).addClass('dark-mode');
+					}else{
+						$(box).removeClass('dark-mode');
+						$('body').removeClass('dark-header');
+					}
+				},
+			});
+		});
+	});
+
+	/* dark mode header */
+	$(function(darkMode){
+		const darks = gsap.utils.toArray('.header-trigger');
+		const height = $('.header').outerHeight();
+
+		darks.forEach((box, i) => {			
+			ScrollTrigger.create({
+				trigger: box,
+				endTrigger: box,
+				start: "top-=10 top",
+				end: "bottom top",
+				onToggle: self => {
+					if(self.isActive) {
+						$('body').addClass('dark-header');
+					}else{
+						$('body').removeClass('dark-header');
+					}
+				},
+			});
+		});
+	});
+
+	/* btn hover */
+
+	buttonHover = function(e) {
+		let
+		fill = e.currentTarget.querySelector('.btn-fill'),
+		elem = e.currentTarget.getBoundingClientRect(),
+		w = elem.width,
+		h = elem.height,
+		scale = event.type == 'mouseenter' ? 1 : 0;
+
+		fill.style.transformOrigin = "".concat(Math.round((e.clientX - elem.left) / w * 100) - 50, "% ").concat(Math.round((e.clientY - elem.top) / h * 100) - 50, "%"),
+		fill.style.transform = "scale(".concat(scale, ") translate3d(-50%, -50%, 0)");
+	}
+	$(function(button){
+
+		const buttons = document.querySelectorAll('.btn, .btn-outer');
+
+		buttons.forEach((btn) => {
+			let fill = btn.querySelector('.btn-fill');
+			if(fill) {
+				btn.onmouseenter = btn.onmouseleave = buttonHover;
+			}			
+		})
+
+	}) 
+
+});
 
 /*Плавный скролл*/
 (function() { let isSafari = (function() { let ua = navigator.userAgent; if (/safari/gi.test(ua) && !/chrome/gi.test(ua)) return true; else return false; })(); if (!isSafari) { SmoothScroll ({ animationTime: /*!stop!*/500/*!/stop!*/, stepSize: /*!speed!*/100/*!/speed!*/, accelerationDelta: 40, accelerationMax: 2, keyboardSupport: true, arrowScroll: 50, pulseAlgorithm: true, pulseScale: 4, pulseNormalize: 1, fixedBackground : true, touchpadSupport: true }) } }());

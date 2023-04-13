@@ -166,7 +166,9 @@
 	width: calc(100% - 100 * var(--fz));
 	order: 2;
 	margin-top: v(25);
+	margin-bottom: 0;
 	overflow: hidden;
+	height: v(80);
 
 	&--slider{
 		width: 100%;

@@ -11,8 +11,6 @@
 
 	.marquee__inner{
 		animation: none;
-		// transition: .1s var(--ease-out);
-		margin: 0 v(-10);
 		position: relative;
 		display: flex;
 		flex-shrink: 0;
@@ -22,20 +20,13 @@
 		margin: 0;
 		will-change: transform, right;
 	}
-
-	@include media($w-lg) {
-		margin: 0 v(-20);
-	}
-	@include media($w-xl) {
-		margin: 0 v(-40);
-	}
 }
 .topline__item{
 	color: #0C0C0C;
 	line-height: 1;
 	letter-spacing: -0.03em;
 	font-weight: 600;
-	margin: 0 v(10);
+	margin-right: v(20);
 	font-size: v(20);
 
 	@include media($w-md) {
@@ -44,11 +35,11 @@
 	@include media($w-lg) {
 		font-size: v(40);
 		letter-spacing: -0.05em;
-		margin: 0 v(20);
+		margin-right: v(40);
 	}
 	@include media($w-xl) {
 		font-size: v(60);
-		margin: 0 v(40);
+		margin-right: v(80);
 	}
 }
 .topline__icon{
