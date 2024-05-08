@@ -1,7 +1,7 @@
 .split-item, .pin-but, .top__link--item, .word, .words, .lines__item, .container.first-screen-fix,
 .top__cont.first-screen-title, .top__cont.first-screen-title, .flip-anim, .top__title, .top__sub,
 .line, .line span, .char{
-    will-change: transform;
+	will-change: transform;
 }
 .split-line {
 	position: relative;
@@ -12,35 +12,35 @@
 	overflow: hidden;
 }
 .serv__item--text.line_title .split-line, .serv-anim-block .serv__item--text.line_title .split-line {
-    overflow: visible;
+	overflow: visible;
 }    
 section.section_lines {
-    z-index: 4;
+	z-index: 4;
 }
 .top__link--item:hover:before,
 .top__link--item:hover:after{
-    transform: scale(1.1);
+	transform: scale(1.1);
 }
 .top__link--item:hover svg.ico.ico-center {
-    transform: rotate(-15deg);
+	transform: rotate(-15deg);
 }
 svg.ico.ico-center {
-    transition: 0.3s var(--ease-out);
+	transition: 0.3s var(--ease-out);
 }
 
 /*Предзагрузчик*/
 .preloader {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: white;
-    z-index: 99999999999999;
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: white;
+	z-index: 99999999999999;
 }
 .onComplete{
-    display: none;   
+	display: none;   
 }
 
 /*Курсор*/
@@ -54,29 +54,51 @@ svg.ico.ico-center {
 	width: 18px;
 	height: 18px;
 	border-radius: 50%;
-	background-color: #CCEF5C;
-	transition: transform 450ms ease-out;
+	// background-color: #CCEF5C;
+	transition: transform 450ms ease-out, width 450ms ease-out, height 450ms ease-out;
 	transform: translate(-50%, -50%);
 	z-index: 1000;
+
+	&:before,
+	&:after{
+		content: '';
+		width: 100%;
+		height: 100%;
+		left: 50%;
+		top: 50%;
+		position: absolute;
+		transform: translate(-50%, -50%);
+		transition: width 450ms ease-out, height 450ms ease-out;
+		border-radius: 50%;
+	}
+	&:before{
+		z-index: 1;
+		background-color: #CCEF5C;
+	}
 }
 .arrow {
-	transform: translate(-50%, -50%) scale(6.7) !important;
+	// transform: translate(-50%, -50%) scale(1) !important;
+	&:before,
+	&:after{
+		width: 120px;
+		height: 120px;
+	}
+	&:after {
+		background-image: url(../images/arrow-cursor.svg);
+		color: black;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 15% 15%;
+		z-index: 2;
+		width: 120px;
+		height: 120px;
+	}
 }
-.arrow::after {
-	background-image: url(../images/arrow-cursor.svg);
-	content: '';
-	color: black;
-	position: absolute;
-	top: 0;
-	left: -1px;
-	background-repeat: no-repeat;
-	background-position: center;
-	width: 20px;
-	height: 18px;
-	scale: 0.15;
-}
+
 .new-cursor--link {
-	transform: translate(-50%, -50%) scale(0.6)
+	// transform: translate(-50%, -50%) scale(0.6);
+	width: 11px;
+	height: 11px;
 }
 .circle{
 	opacity: 0 !important;
@@ -85,31 +107,31 @@ svg.ico.ico-center {
 	cursor: none;	
 }
 .plus, .minus, .arrow-min{
-    transform: translate(-50%, -50%) scale(4.5) !important;
+	transform: translate(-50%, -50%) scale(4.5) !important;
 }
 .plus::after, .minus::after, .arrow-min::after {
-    will-change: transform;
-    content: '';
-    color: black;
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 20px;
-    height: 20px;
+	will-change: transform;
+	content: '';
+	color: black;
+	position: absolute;
+	top: -1px;
+	left: -1px;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 20px;
+	height: 20px;
 }
 .plus::after {
-    background-image: url(../images/plus-cursor.svg);  
-    scale: 0.23;
+	background-image: url(../images/plus-cursor.svg);  
+	scale: 0.23;
 }
 .minus::after {
-    background-image: url(../images/minus-cursor.svg);
-    scale: 0.23;
+	background-image: url(../images/minus-cursor.svg);
+	scale: 0.23;
 }
 .arrow-min::after{
-    background-image: url(../images/arrow-cursor.svg);
-    scale: 0.15;   
+	background-image: url(../images/arrow-cursor.svg);
+	scale: 0.15;   
 }
 
 .line {
@@ -156,19 +178,19 @@ svg.ico.ico-center {
 
 /*Header*/
 .header {  
-    background-color: white;
-    display: flex;
-    transition: none !important;
+	background-color: white;
+	display: flex;
+	transition: none !important;
 }
 header.can-animate {
-  transition: 0.3s var(--ease-out) !important;
+	transition: 0.3s var(--ease-out) !important;
 }
 header.is-fixed {
-  position: fixed;
-  transform: translate3d(0, -100%, 0);
+	position: fixed;
+	transform: translate3d(0, -100%, 0);
 }
 header.scroll-up {
-  transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
 }
 .head__row a, .head__mmenu, .pagetop__prev .link, .pagetop__sub, .filter-anim a, 
 .pagetop__term--date, .pagetop__descr--btn a, .air-item-anim .pagetop__date, .bid-anim-text, .abtop__prev .link{
@@ -177,104 +199,104 @@ header.scroll-up {
 
 /*Кейсы и мы в эфире*/
 .batch-block {
-    overflow: hidden;
+	overflow: hidden;
 }        
 .batch-block img{
-    transition: none;
+	transition: none;
 }
 
 /*Слайдер из текста*/
 .top__title .line span{
-    line-height: 0.9;
+	line-height: 0.9;
 }
 .top__sub-text-slider {
-    position: relative;
-    width: 100%;
-    display: contents;
+	position: relative;
+	width: 100%;
+	display: contents;
 }
 @media (max-width: 990px){
-    .top__sub{
-        display: block;
-    }
-    .slide-text {
-        width: 410px;
-    }
+	.top__sub{
+		display: block;
+	}
+	.slide-text {
+		width: 410px;
+	}
 }
 @media (max-width: 850px){
-    .slide-text {
-        width: 350px;
-    }
+	.slide-text {
+		width: 350px;
+	}
 }
 @media (max-width: 767px){
-    .slide-text {
-        width: 500px;
-    }
-    .top__sub {
-        display: initial;
-        // margin-bottom: 120px;
-        vertical-align: top;
-    }
+	.slide-text {
+		width: 500px;
+	}
+	.top__sub {
+		display: initial;
+		// margin-bottom: 120px;
+		vertical-align: top;
+	}
 }
 @media (max-width: 850px){
-    .top__sub {
-        // margin-bottom: 110px;
-    }
+	.top__sub {
+		// margin-bottom: 110px;
+	}
 }
 @media (max-width: 610px){
-    .slide-text {
-        width: 400px;
-    }
+	.slide-text {
+		width: 400px;
+	}
 }
 @media (max-width: 450px){
-    .slide-text {
-        width: 310px;
-    }
-    .top__sub {
-        // margin-bottom: 90px;
-    }
+	.slide-text {
+		width: 310px;
+	}
+	.top__sub {
+		// margin-bottom: 90px;
+	}
 }
 @media (max-width: 370px){
-    .slide-text {
-        width: 250px;
-    }
-    .top__sub {
-        // margin-bottom: 70px;
-    }   
+	.slide-text {
+		width: 250px;
+	}
+	.top__sub {
+		// margin-bottom: 70px;
+	}   
 }
 
 /*Появление слайдов на стр. Карьера*/
 .slick-slide.slick-cloned .overlay{
-    display: none;
+	display: none;
 }
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: white;
-     -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    -webkit-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    transform: rotate(180deg);
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: white;
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
 }
 .slick-slide {
-    position: relative;
+	position: relative;
 }
 .overlay {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+	clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 .dark-header .preloader {
-   background: #222222;
+	background: #222222;
 }
 .abpoints__circle {
-    pointer-events: none !important;
+	pointer-events: none !important;
 }
 
 .modserv__capt-original {
-    visibility: visible !important;
+	visibility: visible !important;
 }
 .modserv__capt-original span{
-    color: rgba(200,200,200,0.3);
+	color: rgba(200,200,200,0.3);
 }

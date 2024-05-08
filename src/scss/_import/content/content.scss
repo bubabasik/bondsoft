@@ -109,7 +109,7 @@
 		flex-flow: column;
 		align-items: flex-start;
 		.btn{
-
+			padding: calc(10 * var(--fz)) var(--btn-padding);
 			margin-bottom: v(15);
 			font-size: v(16);
 		}
@@ -119,6 +119,7 @@
 			--btn-height: calc(65 * var(--fz));
 			--btn-padding: calc(30 * var(--fz));
 			font-size: v(28);
+			padding: calc(15 * var(--fz)) var(--btn-padding);
 		}
 	}
 }

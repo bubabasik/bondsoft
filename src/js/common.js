@@ -60,11 +60,17 @@ $(function(){
 
 
 	// GO TO 
-	var myHash = location.hash; 
-	location.hash = ''; 
-	if(myHash[1] != undefined){ 
-		scrollTo(myHash[1]);
+	var myHash = window.location.hash;
+	if(myHash != undefined){ 
+		location.hash = ''; 
+		setTimeout(function(){
+			scrollTo(myHash[1]);
+		}, 50);
+		$(function(){
+			location.hash = myHash; 
+		})
 	};
+
 	$(document).on('click', '.goTo', function(e){
 		e.preventDefault();
 		var target = $(this).attr('href');
@@ -140,8 +146,8 @@ $(function(){
 
 		if(inp_name.length) {
 			if(inp_name.val().length < 1) {
-				 inp_name.addClass('invalid');
-				 error=true;
+				inp_name.addClass('invalid');
+				error=true;
 			}else{
 				inp_name.removeClass('invalid');
 			}
@@ -149,8 +155,8 @@ $(function(){
 
 		if(inp_phone.length) {
 			if(!inp_phone.inputmask('isComplete')) {
-				 inp_phone.addClass('invalid');
-				 error=true;
+				inp_phone.addClass('invalid');
+				error=true;
 			}else{
 				inp_phone.removeClass('invalid');
 			}
@@ -158,8 +164,8 @@ $(function(){
 
 		if(inp_email.length) {
 			if(!rv_email.test(inp_email.val())) {
-				 inp_email.addClass('invalid');
-				 error=true;
+				inp_email.addClass('invalid');
+				error=true;
 			}else{
 				inp_email.removeClass('invalid');
 			}
@@ -167,8 +173,8 @@ $(function(){
 
 		if(inp_service.length) {
 			if(inp_service.val().length < 1) {
-				 inp_service.addClass('invalid');
-				 error=true;
+				inp_service.addClass('invalid');
+				error=true;
 			}else{
 				inp_service.removeClass('invalid');
 			}
